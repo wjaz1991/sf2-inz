@@ -1,0 +1,48 @@
+security:
+    encoders:
+        Inzynier\AppBundle\Entity\User:
+            algorithm: bcrypt
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: [ ROLE_USER, ROLE_ALLOWED_TO_SWITCH ]
+        
+    providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, users]
+        in_memory:
+            memory:
+                users:
+                    admin: { password: $2a$10$aP6jF/aqOGrXjzNz8LwRb.4zWR8E6.FXnOsSzHAuFGvTE8wBOGZXW, roles: ROLE_SUPER_ADMIN }
+        users:
+            entity: { class: InzynierAppBundle:User }
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        default:
+            remember_me:
+              key: %secret%
+              path: /
+              domain: ~
+            pattern: ^/
+            anonymous: ~
+            logout:
+                path: /logout
+                target: /
+            form_login:
+                login_path: /login
+                check_path: /login_check
+                csrf_provider: form.csrf_provider
+                
+    access_control:
+        - { path: ^/admin, roles: ROLE_SUPER_ADMIN }
+        - { path: ^/home, roles: ROLE_USER }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_USER, requires_channel:http }
+            

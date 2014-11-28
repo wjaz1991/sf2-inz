@@ -1,0 +1,12 @@
+app:
+    resource: "@InzynierAppBundle/Controller/"
+    type: annotation
+    
+logout:
+    path: /logout
+    
+login_check:
+    path: /login_check
+    
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

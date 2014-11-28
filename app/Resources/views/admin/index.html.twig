@@ -1,0 +1,51 @@
+{% extends '::base.html.twig' %}
+
+{% block top_avatar %}{% endblock %}
+{% block user_specific_links %}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets 'sass/admin/*' filter='compass' %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div class="row" id="admin-header">
+        <div class="col-md-3">
+            <h1 class="text-center"><a href="{{ path('admin_index') }}">Admin Home</a></h1>
+        </div>
+        <div class="col-md-9">
+            <h1 class="text-center">
+                {% block admin_page_title %}
+                    Administration panel
+                {% endblock %}
+            </h1>
+        </div>
+    </div>
+    <div class="row" id="admin-content-row">
+        <!-- START SIDEBAR -->
+        <div class="col-md-3" id="admin-left-sidebar">
+                <ul class="nav nav-pills nav-stacked" id="admin-left-nav">
+                {% block admin_left_nav %}
+                    <li><a href="{{ path('admin_users') }}">Manage users</a></li>
+                    <li><a href="#">Manage auctions</a></li>
+                    <li><a href="#">Manage categories</a></li>
+                    <li><a href="#">Some action</a></li>
+                    <li><a href="#">Some action</a></li>
+                    <li><a href="#">Some action</a></li>
+                {% endblock %}
+                </ul>
+        </div><!-- END SIDEBAR -->
+        
+        <!-- START CONTENT -->
+        <div class="col-md-9" id="admin-content">
+            <div id="admin-content-inner">
+                {% block admin_page_content %}
+                <h2>Website summary</h2>
+                <h4>Current user count: {{ user_count['all'] }} ({{ user_count['active'] }} active)</h4>
+            {% endblock %}
+            </div>
+        </div><!-- END CONTENT -->
+    </div>
+{% endblock %}

@@ -1,0 +1,201 @@
+@import 'partials/variables';
+@import 'partials/mixins';
+
+.clear {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+html {
+  min-height: 100%;
+  height: 100% !important;
+}
+
+body, html {
+    font-family: 'Lato', sans-serif;
+    //background: url('../../images/quilt.png');
+    background-color: $bg-color;
+    height: 100%;
+}
+
+#page-wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -$footer-height;
+}
+
+#page-wrap:after {
+  height: $footer-height;
+}
+
+footer#footer-main {
+  margin-top: 40px;
+  height: $footer-height;
+  width: 100%;
+  background-color: $footer-color;
+}
+
+#content-wrap {
+  padding-bottom: $footer-height;
+  padding-top: $nav-height + 30px;
+  -webkit-transition: margin-top 0.3s;
+  -moz-transition: margin-top 0.3s;
+  -ms-transition: margin-top 0.3s;
+  -o-transition: margin-top 0.3s;
+  transition: margin-top 0.3s;
+}
+
+#content-wrap.smaller {
+  padding-top: $nav-height-smaller + 30px;
+}
+
+header {
+  height: $nav-height;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: $nav-color;//#0683c9;
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  -ms-transition: height 0.3s;
+  -o-transition: height 0.3s;
+  transition: height 0.3s;
+
+  h1#logo {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    height: $nav-height;
+    line-height: $nav-height;
+    float: left;
+    font-size: 60px;
+    color: white;
+    font-weight: 400;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+
+    a {
+      color: white;
+    }
+  }
+
+  nav {
+    display: inline-block;
+    float: right;
+    
+    .nav-avatar {
+        background: $nav-link-color;
+        float: right;
+        height: $nav-height-smaller - 20px;
+        width: auto;
+        margin: 10px 0 10px 10px;
+        padding: 2px;
+        
+        @include border-radius(2px);
+        
+        
+        img {
+            height: 100%;
+            width: auto;
+        }
+    }
+
+    a {
+      line-height: $nav-height;
+      margin-left: 20px;
+      color: $nav-link-color;
+      font-weight: 700;
+      font-size: 18px;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+    }
+
+    a:hover {
+      color: white;
+    }
+  }
+}
+
+header.smaller {
+  height: $nav-height-smaller;
+
+  h1#logo {
+    width: 150px;
+    height: $nav-height-smaller;
+    line-height: $nav-height-smaller;
+    font-size: 30px;
+
+    a {
+      line-height: $nav-height-smaller;
+    }
+  }
+
+  nav a {
+    line-height: $nav-height-smaller;
+  }
+}
+
+.welcome-title {
+    font-size: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+
+@media all and (max-width: 660px) {
+  header {
+    h1#logo {
+      display: block;
+      float: none;
+      margin: 0 auto;
+      height: $nav-height-resp;
+      line-height: $nav-height-resp;
+      text-align: center;
+    }
+
+    nav {
+      display: block;
+      float: none;
+      height: 50px;
+      text-align: center;
+      margin: 0 auto;
+
+      a {
+        line-height: 50px;
+        margin: 0 10px;
+      }
+    }
+  }
+
+  header.smaller {
+    height: 75px;
+
+    h1#logo {
+      height: 40px;
+      line-height: 40px;
+      font-size: 30px;
+    }
+
+    nav {
+      height: 35px;
+
+      a {
+        line-height: 35px;
+      }
+    }
+  }
+}
+

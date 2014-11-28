@@ -1,0 +1,10 @@
+#register-form h3 {
+  text-align: center;
+}
+#register-form .checkbox,
+#register-form .form-group {
+  text-align: center;
+}
+#register-form #submit-button {
+  text-align: center;
+}

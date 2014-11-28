@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts 'js/dropzone/*' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block body %}
+    <form style="width: 400px; height: 300px; background-color: blue;" action='{{ path('drop_upload') }}' class='dropzone' enctype='multipart/form-data'>
+    {# form_widget(form) #}
+    </form>
+{% endblock %}

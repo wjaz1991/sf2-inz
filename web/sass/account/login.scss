@@ -1,0 +1,28 @@
+#login-form {
+  text-align: center;
+
+  .form-control {
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    margin-bottom: 30px;
+  }
+
+  #login-form-inner {
+    display: inline-block;
+  }
+
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    text-align: center;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+}
+
+.error-message {
+  font-size: 15px;
+}

@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {% stylesheets 'sass/account/*' filter="compass" %}
+        {{ parent() }}
+        <link href="{{ asset_url }}" rel="stylesheet">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div id="register-form" class="col-lg-6 col-lg-offset-3">
+        <h3>Provide your data to register</h3>
+        <form id="register-form" novalidate method="POST" {{ form_enctype(form) }}>
+            {{ form_widget(form.user) }}
+            <div class="register-terms">
+                {{ form_widget(form.terms) }} <a href="{{ path('account_terms') }}">Agree to the terms of service</a>
+            </div>
+            {{ form_errors(form.terms) }}
+            {{ form_rest(form) }}
+            <div id="submit-button">
+                <button type="submit" class="btn btn-primary">{{ icon('ok') }} Register</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {% javascripts 'js/registration/*' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

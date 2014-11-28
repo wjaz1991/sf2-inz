@@ -1,0 +1,8 @@
+services:
+#    inzynier_app.example:
+#        class: Inzynier\AppBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    path.locator:
+        class: Inzynier\AppBundle\Services\PathLocator
+        arguments: [@request_stack]

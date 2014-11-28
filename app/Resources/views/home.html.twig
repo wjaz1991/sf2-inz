@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    Hello {{ app.user.username }}
+    
+    {% for address in addresses %}
+        {{ address.street }} <br>
+        {{ address.city }} <br>
+        {{ address.country.name }} <br>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ app.user.username }}'s profile
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {% stylesheets 'sass/profile/*' filter='compass' %}
+        <link href="{{ asset_url }}" rel="stylesheet">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div class=" profile-wrap col-md-8 col-md-offset-2">
+        
+        {% if app.user.avatar %}
+            <div class="profile-avatar">
+                <img src="{{ path_locator.getWebImagesUploadDir() }}{{ app.user.avatar }}" alt="Avatar image">
+            </div>
+        {% endif %}
+        
+        <h1>Your profile page</h1>
+        
+        <!-- displaying all flash messages -->
+        {% include 'BraincraftedBootstrapBundle::flash.html.twig' %}
+        
+        <div class="col-md-8 col-md-offset-2">
+            <form novalidate action="" method="post" {{ form_enctype(editForm) }}> 
+                {{ form_widget(editForm) }}
+                
+                <div class="btn-submit">
+                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-save"></span>Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+            
+    <!-- closing all flash messages -->
+    {% include 'BraincraftedBootstrapBundle::flash.html.twig' with { 'close': true } %}
+{% endblock %}
