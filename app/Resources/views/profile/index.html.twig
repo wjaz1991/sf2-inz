@@ -17,7 +17,7 @@
         
         {% if app.user.avatar %}
             <div class="profile-avatar">
-                <img src="{{ path_locator.getWebImagesUploadDir() }}{{ app.user.avatar }}" alt="Avatar image">
+                <img src="{{ asset('images/' ~ app.user.avatar) }}" alt="Avatar image">
             </div>
         {% endif %}
         

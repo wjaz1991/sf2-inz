@@ -55,11 +55,10 @@ footer#footer-main {
 header {
   height: $nav-height;
   width: 100%;
-  overflow: hidden;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 900;
   background-color: $nav-color;//#0683c9;
   -webkit-transition: height 0.3s;
   -moz-transition: height 0.3s;
@@ -108,24 +107,56 @@ header {
             width: auto;
         }
     }
+    
+    > ul {
+        width: auto;
+        list-style-type: none;
+        float: right;
+        > li {
+            float: right;
+            > a {
+                line-height: $nav-height;
+                margin-left: 20px;
+                color: $nav-link-color;
+                font-weight: 700;
+                font-size: 18px;
+                -webkit-transition: all 0.3s;
+                -moz-transition: all 0.3s;
+                -ms-transition: all 0.3s;
+                -o-transition: all 0.3s;
+                transition: all 0.3s;
+            }
 
-    a {
-      line-height: $nav-height;
-      margin-left: 20px;
-      color: $nav-link-color;
-      font-weight: 700;
-      font-size: 18px;
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      -ms-transition: all 0.3s;
-      -o-transition: all 0.3s;
-      transition: all 0.3s;
-    }
+            > a:hover {
+              color: white;
+            }
+        }
+        
+        li.nav-dropdown {
+            ul {
+                list-style-type: none;
+                clear: both;
+                position: absolute;
+                background: $nav-color;
+                display: none;
+                padding-left: 0;
 
-    a:hover {
-      color: white;
+                li {
+                    a {
+                        display: block;
+                        font-size: 12px;
+                        color: $nav-link-color;
+                        padding: 5px 20px;
+                    }
+                    
+                    a:hover {
+                        background-color: darken($nav-color, 10%);
+                    }
+                }
+            }
+        }
     }
-  }
+}
 }
 
 header.smaller {
@@ -136,14 +167,20 @@ header.smaller {
     height: $nav-height-smaller;
     line-height: $nav-height-smaller;
     font-size: 30px;
-
+    
     a {
       line-height: $nav-height-smaller;
     }
   }
 
-  nav a {
-    line-height: $nav-height-smaller;
+  nav {
+      > ul {
+        > li {
+            > a {
+              line-height: $nav-height-smaller;
+            }
+        }
+      }
   }
 }
 
@@ -153,6 +190,8 @@ header.smaller {
     text-transform: uppercase;
     text-align: center;
 }
+
+
 
 
 @media all and (max-width: 660px) {

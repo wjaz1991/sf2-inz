@@ -30,7 +30,8 @@ monolog:
         #    level:  info
 
 assetic:
-    use_controller: "%use_assetic_controller%"
+    use_controller: true
+    bundles: ['InzynierAppBundle']
 
 #swiftmailer:
 #    delivery_address: me@example.com

@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Inzynier\AppBundle\Repository\AuctionRepository")
  * @ORM\Table(name="auctions")
  */
 class Auction {
@@ -160,7 +160,7 @@ class Auction {
         return $this;
     }
     
-    public function getDateAddedDate() {
+    public function getDateAdded() {
         return $this->dateAdded;
     }
     
@@ -222,5 +222,10 @@ class Auction {
     public function setImages($images) {
         $this->images = $images;
         return $this;
+    }
+    
+    public function getFirstImage() {
+        $image = $this->images->get(0);
+        return $image->getFilename();
     }
 }

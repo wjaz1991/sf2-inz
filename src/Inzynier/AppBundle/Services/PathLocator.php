@@ -17,7 +17,7 @@ class PathLocator {
     
     public function getWebImagesUploadDir() {
         return 'http://' . $this->request->server->get('HTTP_HOST')
-                . '/inzynier/web/images/';
+                . '/web/images/';
     }
     
     public function getAssetsPath() {
@@ -26,7 +26,7 @@ class PathLocator {
     
     public function getWebAssetsPath() {
         return 'http://' . $this->request->server->get('HTTP_HOST')
-                . '/inzynier/web/';
+                . '/web/';
     }
 }
 

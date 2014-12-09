@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>All auctions</h1>
+    
+    <ul style="position: relative;" class="list-group">
+        {% for auction in auctions %}
+            <li class="list-group-item">
+                <h4>{{ auction.title }}</h4>
+                <p>Added by {{ auction.user.username }} on {{ auction.dateAdded | date('Y-m-d') }}
+                    , ends on {{ auction.endDate | date('Y-m-d') }}
+                </p>
+                <p>
+                    {{ auction.description }}
+                </p>
+                <p>
+                    Price: {{ auction.price }}
+                </p>
+                
+                {# display first of the added images #}
+                {% if auction.images.count > 0 %}
+                    <a href="#" class="thumbnail">
+                        <img width="200px" class="thumbnail-image" data-src="holder.js/100%x100" src="{{ auction.getFirstImage }}">
+                        <img class="full-image" src="{{ auction.getFirstImage }}">
+                    </a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts 'js/utilities/*' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

@@ -12,8 +12,10 @@
         <h3>Provide your data to register</h3>
         <form id="register-form" novalidate method="POST" {{ form_enctype(form) }}>
             {{ form_widget(form.user) }}
-            <div class="register-terms">
-                {{ form_widget(form.terms) }} <a href="{{ path('account_terms') }}">Agree to the terms of service</a>
+            <div class="checkbox form-group">
+                <label>
+                    {{ form_widget(form.terms) }} <a href="{{ path('account_terms') }}">Agree to the terms of service</a>
+                </label>
             </div>
             {{ form_errors(form.terms) }}
             {{ form_rest(form) }}

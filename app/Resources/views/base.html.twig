@@ -26,24 +26,45 @@
                     {% block top_avatar %}
                         {% if not (is_granted('ROLE_SUPER_ADMIN')) and app.user and app.user.avatar %}
                             <div class="nav-avatar">
-                                <img src="{{ path_locator.getWebImagesUploadDir() }}{{ app.user.avatar }}" alt="No image">
+                                <img src="{{ asset( 'images/' ~  app.user.avatar ) }}" alt="No image">
                             </div>
                         {% endif %}
                     {% endblock %}
                     
                     {% block top_navigation %}
                         {% block nav_links %}
+                            <ul>
                             {% if app.user is null %}
-                                <a href="{{ path('access_login') }}">Login</a>
-                                <a href="{{ path('account_register') }}">Sign up</a>
+                                <li>
+                                    <a href="{{ path('access_login') }}">Login</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('account_register') }}">Sign up</a>
+                                </li>
                             {% else %}
                                 {% if not is_granted('ROLE_SUPER_ADMIN') %}
                                 {% block user_specific_links %}
-                                    <a href="{{ path('profile_index', { 'id': app.user.id }) }}">Profile</a>
+                                    <li class=" nav-dropdown" href="#">
+                                        <a class="title" href="">People</a>
+                                    </li>
+                                    <li class=" nav-dropdown" href="#">
+                                        <a class="title" href="">Auctions</a>
+                                        <ul>
+                                            <li><a href="{{ path('auction_new') }}">Add auction</a></li>
+                                            <li><a href="{{ path('auctions_all') }}">Browse all</a></li>
+                                            <li><a href="#">Browse friends auctions</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('profile_index', { 'id': app.user.id }) }}">Profile</a>
+                                    </li>
                                 {% endblock %}
                                 {% endif %}
-                                <a href="{{ path('logout') }}">Logout</a>
+                                <li>
+                                    <a href="{{ path('logout') }}">Logout</a>
+                                </li>
                             {% endif %}
+                            </ul>
                         {%  endblock %}
                     {% endblock %}
                 </nav>
@@ -87,9 +108,10 @@
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         {% block javascripts %}
             {% if app.request.get('_route') == 'welcome' %}
-                <script src="{{ asset('js/base/base.js') }}"></script>
+                <script src="{{ asset('js/utils/header.js') }}"></script>
             {% endif %}
-            {% javascripts %}
+            {% javascripts 'js/base/*' %}
+                <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}
     </body>

@@ -11,7 +11,7 @@ use Inzynier\AppBundle\Form\Type\AuctionType;
 
 class AuctionController extends Controller {
     /**
-     * @Route("/auction/new", name="auction_new")
+     * @Route("/auctions/new", name="auction_new")
      */
     public function newAction(Request $request) {
         $auction = new Auction();
@@ -73,4 +73,17 @@ class AuctionController extends Controller {
             'form' => $form->createView(),
         ));
     }
+    
+    /**
+     * @Route("/auctions", name="auctions_all")
+     */
+    function showAuction() {
+        $repo = $this->get('doctrine')->getManager()->getRepository('InzynierAppBundle:Auction');
+        
+        $auctions = $repo->findAll();
+        
+        return $this->render('auction/show_all.html.twig', array(
+            'auctions' => $auctions
+        ));
+    }   
 }

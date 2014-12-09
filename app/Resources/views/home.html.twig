@@ -1,5 +1,12 @@
 {% extends '::base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets 'sass/home/*' filter="compass"%}
+        <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
     Hello {{ app.user.username }}
     
@@ -7,5 +14,10 @@
         {{ address.street }} <br>
         {{ address.city }} <br>
         {{ address.country.name }} <br>
+        <p>Some text</p>
     {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}

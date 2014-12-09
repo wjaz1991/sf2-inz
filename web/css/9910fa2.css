@@ -1,0 +1,48 @@
+/* line 1, assetic_compass8xEoz7.scss */
+#login-form {
+  text-align: center;
+}
+/* line 4, assetic_compass8xEoz7.scss */
+#login-form .form-control {
+  margin-bottom: 10px;
+}
+/* line 8, assetic_compass8xEoz7.scss */
+#login-form h3 {
+  margin-bottom: 30px;
+}
+/* line 12, assetic_compass8xEoz7.scss */
+#login-form #login-form-inner {
+  display: inline-block;
+}
+/* line 16, assetic_compass8xEoz7.scss */
+#login-form input[type="text"], #login-form input[type="password"] {
+  width: 100%;
+  text-align: center;
+}
+/* line 21, assetic_compass8xEoz7.scss */
+#login-form button {
+  margin-top: 10px;
+}
+
+/* line 26, assetic_compass8xEoz7.scss */
+.error-message {
+  font-size: 15px;
+}
+
+/* line 2, assetic_compassEK4Qf5.scss */
+#register-form h3 {
+  text-align: center;
+}
+/* line 6, assetic_compassEK4Qf5.scss */
+#register-form .checkbox, #register-form .form-group {
+  text-align: center;
+}
+/* line 10, assetic_compassEK4Qf5.scss */
+#register-form #submit-button {
+  text-align: center;
+}
+/* line 14, assetic_compassEK4Qf5.scss */
+#register-form .register-terms {
+  text-align: center;
+  margin-bottom: 10px;
+}
