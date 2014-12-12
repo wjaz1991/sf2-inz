@@ -4,3 +4,24 @@
     -ms-border-radius: $radius;
     border-radius: $radius;
 }
+
+@mixin transition($property, $time, $type) {
+    -webkit-transition: $property $time $type;
+    -moz-transition: $property $time $type;
+    -ms-transition: $property $time $type;
+    -o-transition: $property $time $type;
+    transition: $property $time $type;
+}
+
+@mixin scale($factor) {
+    -moz-transform: scale($factor);
+    -webkit-transform: scale($factor);
+    -o-transform: scale($factor);
+    transform: scale($factor);
+}
+
+@mixin box-shadow($shadow) {
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
+}

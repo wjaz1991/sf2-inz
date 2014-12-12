@@ -1,25 +1,25 @@
 @import url(http://fonts.googleapis.com/css?family=Lato);
-/* line 4, assetic_compassFthgJQ.scss */
+/* line 4, assetic_compassOJiUrS.scss */
 .clear {
   display: block;
   clear: both;
   content: "";
 }
 
-/* line 10, assetic_compassFthgJQ.scss */
+/* line 10, assetic_compassOJiUrS.scss */
 html {
   min-height: 100%;
   height: 100% !important;
 }
 
-/* line 15, assetic_compassFthgJQ.scss */
+/* line 15, assetic_compassOJiUrS.scss */
 body, html {
   font-family: 'Lato', sans-serif;
   background-color: #eee;
   height: 100%;
 }
 
-/* line 22, assetic_compassFthgJQ.scss */
+/* line 22, assetic_compassOJiUrS.scss */
 #page-wrap {
   min-height: 100%;
   height: auto !important;
@@ -28,12 +28,12 @@ body, html {
   margin: 0 auto-75px;
 }
 
-/* line 30, assetic_compassFthgJQ.scss */
+/* line 30, assetic_compassOJiUrS.scss */
 #page-wrap:after {
   height: 75px;
 }
 
-/* line 34, assetic_compassFthgJQ.scss */
+/* line 34, assetic_compassOJiUrS.scss */
 footer#footer-main {
   margin-top: 40px;
   height: 75px;
@@ -41,7 +41,7 @@ footer#footer-main {
   background-color: #022B52;
 }
 
-/* line 41, assetic_compassFthgJQ.scss */
+/* line 41, assetic_compassOJiUrS.scss */
 #content-wrap {
   padding-bottom: 75px;
   padding-top: 180px;
@@ -52,12 +52,12 @@ footer#footer-main {
   transition: margin-top 0.3s;
 }
 
-/* line 51, assetic_compassFthgJQ.scss */
+/* line 51, assetic_compassOJiUrS.scss */
 #content-wrap.smaller {
   padding-top: 105px;
 }
 
-/* line 55, assetic_compassFthgJQ.scss */
+/* line 55, assetic_compassOJiUrS.scss */
 header {
   height: 150px;
   width: 100%;
@@ -66,13 +66,13 @@ header {
   left: 0;
   z-index: 900;
   background-color: #022B52;
-  -webkit-transition: height 0.3s;
-  -moz-transition: height 0.3s;
-  -ms-transition: height 0.3s;
-  -o-transition: height 0.3s;
-  transition: height 0.3s;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-/* line 69, assetic_compassFthgJQ.scss */
+/* line 65, assetic_compassOJiUrS.scss */
 header h1#logo {
   margin: 0;
   padding: 0;
@@ -83,50 +83,56 @@ header h1#logo {
   font-size: 60px;
   color: white;
   font-weight: 400;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-/* line 85, assetic_compassFthgJQ.scss */
+/* line 77, assetic_compassOJiUrS.scss */
 header h1#logo a {
   color: white;
 }
-/* line 90, assetic_compassFthgJQ.scss */
+/* line 82, assetic_compassOJiUrS.scss */
 header nav {
   display: inline-block;
   float: right;
 }
-/* line 94, assetic_compassFthgJQ.scss */
+/* line 86, assetic_compassOJiUrS.scss */
 header nav .nav-avatar {
-  background: #9fdbfc;
+  background: white;
   float: right;
   height: 55px;
   width: auto;
   margin: 10px 0 10px 10px;
   padding: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  border-radius: 2px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
 }
-/* line 105, assetic_compassFthgJQ.scss */
+/* line 97, assetic_compassOJiUrS.scss */
 header nav .nav-avatar img {
   height: 100%;
   width: auto;
 }
-/* line 111, assetic_compassFthgJQ.scss */
+/* line 103, assetic_compassOJiUrS.scss */
+header nav .nav-avatar:hover {
+  -webkit-box-shadow: 0 0 5px 5px red;
+  -moz-box-shadow: 0 0 5px 5px red;
+  box-shadow: 0 0 5px 5px red;
+}
+/* line 107, assetic_compassOJiUrS.scss */
 header nav > ul {
   width: auto;
   list-style-type: none;
   float: right;
 }
-/* line 115, assetic_compassFthgJQ.scss */
+/* line 111, assetic_compassOJiUrS.scss */
 header nav > ul > li {
   float: right;
 }
-/* line 117, assetic_compassFthgJQ.scss */
+/* line 113, assetic_compassOJiUrS.scss */
 header nav > ul > li > a {
   line-height: 150px;
   margin-left: 20px;
@@ -139,11 +145,11 @@ header nav > ul > li > a {
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-/* line 130, assetic_compassFthgJQ.scss */
+/* line 126, assetic_compassOJiUrS.scss */
 header nav > ul > li > a:hover {
   color: white;
 }
-/* line 136, assetic_compassFthgJQ.scss */
+/* line 132, assetic_compassOJiUrS.scss */
 header nav > ul li.nav-dropdown ul {
   list-style-type: none;
   clear: both;
@@ -151,40 +157,58 @@ header nav > ul li.nav-dropdown ul {
   background: #022B52;
   display: none;
   padding-left: 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-/* line 145, assetic_compassFthgJQ.scss */
+/* line 141, assetic_compassOJiUrS.scss */
+header nav > ul li.nav-dropdown ul li {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 143, assetic_compassOJiUrS.scss */
 header nav > ul li.nav-dropdown ul li a {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   display: block;
   font-size: 12px;
   color: #9fdbfc;
   padding: 5px 20px;
 }
-/* line 152, assetic_compassFthgJQ.scss */
+/* line 151, assetic_compassOJiUrS.scss */
 header nav > ul li.nav-dropdown ul li a:hover {
   background-color: #011120;
 }
 
-/* line 162, assetic_compassFthgJQ.scss */
+/* line 161, assetic_compassOJiUrS.scss */
 header.smaller {
   height: 75px;
 }
-/* line 165, assetic_compassFthgJQ.scss */
+/* line 164, assetic_compassOJiUrS.scss */
 header.smaller h1#logo {
   width: 150px;
   height: 75px;
   line-height: 75px;
   font-size: 30px;
 }
-/* line 171, assetic_compassFthgJQ.scss */
+/* line 170, assetic_compassOJiUrS.scss */
 header.smaller h1#logo a {
   line-height: 75px;
 }
-/* line 179, assetic_compassFthgJQ.scss */
+/* line 178, assetic_compassOJiUrS.scss */
 header.smaller nav > ul > li > a {
   line-height: 75px;
 }
 
-/* line 187, assetic_compassFthgJQ.scss */
+/* line 186, assetic_compassOJiUrS.scss */
 .welcome-title {
   font-size: 50px;
   font-weight: bold;
@@ -193,8 +217,14 @@ header.smaller nav > ul > li > a {
 }
 
 @media all and (max-width: 660px) {
-  /* line 199, assetic_compassFthgJQ.scss */
-  header h1#logo {
+  /* line 197, assetic_compassOJiUrS.scss */
+  header.smaller {
+    display: block;
+    position: relative;
+    height: auto !important;
+  }
+  /* line 202, assetic_compassOJiUrS.scss */
+  header.smaller h1#logo {
     display: block;
     float: none;
     margin: 0 auto;
@@ -202,35 +232,60 @@ header.smaller nav > ul > li > a {
     line-height: 100px;
     text-align: center;
   }
-  /* line 208, assetic_compassFthgJQ.scss */
-  header nav {
+  /* line 211, assetic_compassOJiUrS.scss */
+  header.smaller nav {
     display: block;
     float: none;
-    height: 50px;
+    height: auto !important;
     text-align: center;
     margin: 0 auto;
   }
-  /* line 215, assetic_compassFthgJQ.scss */
-  header nav a {
+  /* line 218, assetic_compassOJiUrS.scss */
+  header.smaller nav .nav-avatar {
+    display: none;
+  }
+  /* line 222, assetic_compassOJiUrS.scss */
+  header.smaller nav ul {
+    float: none;
+    padding-left: 0;
+    padding-top: 20px;
+  }
+  /* line 227, assetic_compassOJiUrS.scss */
+  header.smaller nav ul li {
+    float: none;
+  }
+  /* line 229, assetic_compassOJiUrS.scss */
+  header.smaller nav ul li a {
     line-height: 50px;
     margin: 0 10px;
   }
+  /* line 234, assetic_compassOJiUrS.scss */
+  header.smaller nav ul li ul {
+    position: relative;
+    padding-top: 0;
+  }
+  /* line 239, assetic_compassOJiUrS.scss */
+  header.smaller nav ul li ul li a {
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+  }
 
-  /* line 222, assetic_compassFthgJQ.scss */
+  /* line 251, assetic_compassOJiUrS.scss */
   header.smaller {
     height: 75px;
   }
-  /* line 225, assetic_compassFthgJQ.scss */
+  /* line 254, assetic_compassOJiUrS.scss */
   header.smaller h1#logo {
     height: 40px;
     line-height: 40px;
     font-size: 30px;
   }
-  /* line 231, assetic_compassFthgJQ.scss */
+  /* line 260, assetic_compassOJiUrS.scss */
   header.smaller nav {
     height: 35px;
   }
-  /* line 234, assetic_compassFthgJQ.scss */
+  /* line 263, assetic_compassOJiUrS.scss */
   header.smaller nav a {
     line-height: 35px;
   }

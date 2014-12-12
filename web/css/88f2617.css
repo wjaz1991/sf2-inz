@@ -1,29 +1,29 @@
 @import url(http://fonts.googleapis.com/css?family=Lato);
-/* line 5, assetic_compassv44UfY.scss */
+/* line 5, assetic_compassH1qUe0.scss */
 .profile-wrap h1 {
   text-align: center;
 }
-/* line 9, assetic_compassv44UfY.scss */
+/* line 9, assetic_compassH1qUe0.scss */
 .profile-wrap .profile-avatar {
   text-align: center;
 }
-/* line 12, assetic_compassv44UfY.scss */
+/* line 12, assetic_compassH1qUe0.scss */
 .profile-wrap .profile-avatar img {
   height: 100%;
   max-height: 150px;
   width: auto;
 }
-/* line 20, assetic_compassv44UfY.scss */
+/* line 20, assetic_compassH1qUe0.scss */
 .profile-wrap form .btn-submit {
   margin: 0 auto;
   text-align: center;
 }
-/* line 24, assetic_compassv44UfY.scss */
+/* line 24, assetic_compassH1qUe0.scss */
 .profile-wrap form .btn-submit button {
   color: #9fdbfc;
   background-color: #022B52;
 }
-/* line 29, assetic_compassv44UfY.scss */
+/* line 29, assetic_compassH1qUe0.scss */
 .profile-wrap form .btn-submit button:hover {
   background-color: #034584;
 }

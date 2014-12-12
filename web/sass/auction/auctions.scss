@@ -1,0 +1,48 @@
+@import '../partials/mixins';
+
+$title-font: 24px;
+$base-font-size: 16px;
+
+span.text-label {
+    font-weight: bold;
+}
+
+.list-group-item:hover {
+    background-color: #ccc;
+}
+
+.auction-entry {
+    font-size: $base-font-size;
+    h4 {
+        font-weight: bold;
+        font-size: $title-font;
+    }
+    
+    .auction-meta {
+        color: #333;
+        font-weight: bold;
+    }
+}
+img.thumbnail-image {
+    max-height: 200px;
+    text-align: left;
+    position: relative;
+    z-index: 899;
+    @include transition(all, 0.5s, ease-in-out);
+}
+
+.thumb-show {
+    height: auto;
+    display: inline-block;
+    @include scale(2);
+}
+
+div.auction-image {
+    position: relative;
+    
+    a {
+        display: block;
+        height: 100%;
+    }
+}
+

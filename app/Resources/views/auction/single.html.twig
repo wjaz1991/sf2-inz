@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ auction.title }} -
+{% endblock %}
+
+{% block body %}
+    <div class="single-auction">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h1>{{ auction.title }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 auction-category">
+                <span>
+                    CATEGORY: {{ auction.category.name }}
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            {% if auction.images.count > 0 %}
+            <div class="col-md-4 auction-image">
+                <img src="{{ asset(auction.getFirstImage) }}">
+            </div>
+            {% endif %}
+            <div class="col-md-8 auction-meta">
+                <p><strong>Price:</strong> {{ auction.price }}</p>
+                <p><strong>Placed by:</strong> {{ auction.user.username }}</p>
+                <p><strong>Started on:</strong> {{ auction.startDate | date('Y-m-d') }}</p>
+                <p><strong>Ends on:</strong> {{ auction.endDate | date('Y-m-d') }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 auction-description">
+                {{ auction.description }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 auction-views">
+                <p>Viewed {{ auction.views }} times</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {% stylesheets filter="compass" 'sass/auction/single.scss' %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="//localhost:35729/livereload.js"></script>
+    {{ parent() }}
+{% endblock %}

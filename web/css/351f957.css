@@ -1,0 +1,57 @@
+/* line 6, assetic_compassvdxDWy.scss */
+span.text-label {
+  font-weight: bold;
+}
+
+/* line 10, assetic_compassvdxDWy.scss */
+.list-group-item:hover {
+  background-color: #ccc;
+}
+
+/* line 14, assetic_compassvdxDWy.scss */
+.auction-entry {
+  font-size: 16px;
+}
+/* line 16, assetic_compassvdxDWy.scss */
+.auction-entry h4 {
+  font-weight: bold;
+  font-size: 24px;
+}
+/* line 21, assetic_compassvdxDWy.scss */
+.auction-entry .auction-meta {
+  color: #333;
+  font-weight: bold;
+}
+
+/* line 26, assetic_compassvdxDWy.scss */
+img.thumbnail-image {
+  max-height: 200px;
+  text-align: left;
+  position: relative;
+  z-index: 899;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+/* line 34, assetic_compassvdxDWy.scss */
+.thumb-show {
+  height: auto;
+  display: inline-block;
+  -moz-transform: scale(2);
+  -webkit-transform: scale(2);
+  -o-transform: scale(2);
+  transform: scale(2);
+}
+
+/* line 40, assetic_compassvdxDWy.scss */
+div.auction-image {
+  position: relative;
+}
+/* line 43, assetic_compassvdxDWy.scss */
+div.auction-image a {
+  display: block;
+  height: 100%;
+}

@@ -60,11 +60,7 @@ header {
   left: 0;
   z-index: 900;
   background-color: $nav-color;//#0683c9;
-  -webkit-transition: height 0.3s;
-  -moz-transition: height 0.3s;
-  -ms-transition: height 0.3s;
-  -o-transition: height 0.3s;
-  transition: height 0.3s;
+  @include transition(all, 0.3s, ease-in-out);
 
   h1#logo {
     margin: 0;
@@ -76,11 +72,7 @@ header {
     font-size: 60px;
     color: white;
     font-weight: 400;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
+    @include transition(all, 0.3s, ease-in-out);
 
     a {
       color: white;
@@ -92,20 +84,24 @@ header {
     float: right;
     
     .nav-avatar {
-        background: $nav-link-color;
+        background: white;
         float: right;
         height: $nav-height-smaller - 20px;
         width: auto;
         margin: 10px 0 10px 10px;
         padding: 2px;
         
-        @include border-radius(2px);
+        @include border-radius(50%);
         
         
         img {
             height: 100%;
             width: auto;
         }
+    }
+    
+    .nav-avatar:hover {
+        @include box-shadow(0 0 5px 5px red);
     }
     
     > ul {
@@ -140,9 +136,12 @@ header {
                 background: $nav-color;
                 display: none;
                 padding-left: 0;
+                @include transition(all, 0.3s, ease-in-out);
 
                 li {
+                    @include transition(all, 0.3s, ease-in-out);
                     a {
+                        @include transition(all, 0.3s, ease-in-out);
                         display: block;
                         font-size: 12px;
                         color: $nav-link-color;
@@ -195,7 +194,11 @@ header.smaller {
 
 
 @media all and (max-width: 660px) {
-  header {
+  header.smaller {
+    display: block;
+    position: relative;
+    height: auto !important;
+    
     h1#logo {
       display: block;
       float: none;
@@ -208,13 +211,39 @@ header.smaller {
     nav {
       display: block;
       float: none;
-      height: 50px;
+      height: auto !important;
       text-align: center;
       margin: 0 auto;
-
-      a {
-        line-height: 50px;
-        margin: 0 10px;
+      
+      .nav-avatar {
+          display: none;
+      }
+      
+      ul {
+          float: none;
+          padding-left: 0;
+          padding-top: 20px;
+          
+          li {
+              float: none;
+                a {
+                      line-height: 50px;
+                      margin: 0 10px;
+                }
+                
+                ul {
+                    position: relative;
+                    padding-top: 0;
+                    
+                    li {
+                        a {
+                            height: 30px;
+                            line-height: 30px;
+                            padding: 0;
+                        }
+                    }
+                }
+          }
       }
     }
   }

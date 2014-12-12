@@ -85,5 +85,25 @@ class AuctionController extends Controller {
         return $this->render('auction/show_all.html.twig', array(
             'auctions' => $auctions
         ));
-    }   
+    }
+    
+    /**
+     * 
+     * @Route("/auction/{id}", name="auction_single")
+     */
+    function singleAction($id) {
+        $em = $this->get('doctrine')->getManager();
+        $repo = $em->getRepository('InzynierAppBundle:Auction');
+        
+        $auction = $repo->find($id);
+        
+        $views = $auction->getViews();
+        $auction->setViews($views + 1);
+        $em->persist($auction);
+        $em->flush();
+        
+        return $this->render('auction/single.html.twig', array(
+            'auction' => $auction
+        ));
+    }
 }

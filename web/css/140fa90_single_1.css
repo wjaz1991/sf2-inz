@@ -1,0 +1,49 @@
+/* line 4, assetic_compasseeozCu.scss */
+div.single-auction .row {
+  overflow: hidden;
+}
+/* line 7, assetic_compasseeozCu.scss */
+div.single-auction .row [class*="col-"] {
+  padding-bottom: 9999px;
+  margin-bottom: -9999px;
+}
+/* line 12, assetic_compasseeozCu.scss */
+div.single-auction .auction-image {
+  text-align: center;
+  display: table-row;
+  vertical-align: middle;
+}
+/* line 17, assetic_compasseeozCu.scss */
+div.single-auction .auction-image img {
+  vertical-align: middle;
+  max-height: 300px;
+  max-width: 100%;
+}
+/* line 24, assetic_compasseeozCu.scss */
+div.single-auction .auction-meta {
+  padding-top: 20px;
+  font-size: 20px;
+}
+/* line 29, assetic_compasseeozCu.scss */
+div.single-auction .auction-description {
+  padding: 40px 10px;
+  font-size: 18px;
+}
+/* line 34, assetic_compasseeozCu.scss */
+div.single-auction .auction-views {
+  padding: 10px;
+  margin: 10px;
+  background: #ccc;
+  font-weight: bold;
+  font-size: 15px;
+}
+/* line 43, assetic_compasseeozCu.scss */
+div.single-auction .auction-category span {
+  margin: 10px 0;
+  text-align: center;
+  background: #333;
+  display: block;
+  color: white;
+  width: 300px;
+  padding: 10px;
+}

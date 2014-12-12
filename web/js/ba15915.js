@@ -1,7 +1,7 @@
 $(function() {
     $(".nav-dropdown").hover(function() {
-        $(this).find('ul').stop(true, true).show();
+        $(this).find('ul').stop(true, true).slideDown();
     }, function() {
-        $(this).find('ul').stop(true, true).hide();
+        $(this).find('ul').stop(true, true).slideUp();
     });
 });
