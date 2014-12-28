@@ -8,11 +8,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Inzynier\AppBundle\Entity\Country;
 use Inzynier\AppBundle\Entity\User;
 
+use Inzynier\AppBundle\Interfaces\AddressInterface;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="addresses")
  */
-class Address {
+class Address implements AddressInterface {
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -102,7 +104,7 @@ class Address {
         return $this;
     }
     
-    public function setCountry(Country $country = null) {
+    public function setCountry($country = null) {
         $this->country = $country;
         return $this;
     }

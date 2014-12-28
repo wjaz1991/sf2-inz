@@ -30,4 +30,68 @@ class AjaxController extends Controller {
         
         return new JsonResponse($json);
     }
+    
+    /**
+     * An AJAX method that returns array of User objects, which requested
+     * friendship with provided user.
+     * 
+     * @param Request $request object representing current HTTP request
+     * 
+     * @return JsonResponse json array containing user objects
+     *
+     * @Route("/ajax/get_pending_friends", name="ajax_pending_friends", options={"expose": true})
+     */
+    public function getPendingFriendsAction(Request $request) {
+        $id = $request->request->get('id');
+        $repo = $this->getDoctrine()->getManager()->getRepository('InzynierAppBundle:User');
+        $user = $repo->find($id);
+        
+        $friend_service = $this->get('friends.service');
+        $pending = $friend_service->getFriendRequestsArray($user, false);
+        
+        $counter = 0;
+        $users = array();
+        foreach($pending as $friendship) {
+            $invitee = $friendship->getUserOne();
+            $users[$counter]['username'] = $invitee->getUsername();
+            $users[$counter]['id'] = $invitee->getId();
+            if($invitee->getAvatar()) {
+                $users[$counter]['avatar'] = $invitee->getAvatar()->getWebPath();
+            }
+            $counter++;
+        }
+        
+        return new JsonResponse($users);
+    }
+    
+    /**
+     * 
+     * @param Request $request
+     * 
+     * @Route("/ajax/friend_accept", name="ajax_friend_accept", options={"expose": true})
+     */
+    public function acceptFriendAction(Request $request) {
+        $id = $request->request->get('id');
+        
+        $em = $this->getDoctrine()->getManager();
+        $userRepo = $em->getRepository('InzynierAppBundle:User');
+        $friendRepo = $em->getRepository('InzynierAppBundle:Friendship');
+        
+        $user = $this->getUser();
+        $accepted = $userRepo->find($id);
+        
+        $friendship = $friendRepo->findOneBy(array(
+            'user_one' => $accepted,
+            'user_two' => $user,
+        ));
+        
+        $friendship->setAccepted(true);
+        
+        $em->flush();
+        
+        $json['user_one'] = $friendship->getUserOne()->getUsername();
+        $json['user_two'] = $friendship->getUserTwo()->getUsername();
+        
+        return new JsonResponse($json);
+    }
 }

@@ -5,6 +5,7 @@ namespace Inzynier\AppBundle\Form\Type;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Inzynier\AppBundle\Form\Type\AuctionAddressType;
 
 class AuctionType extends AbstractType {
     public function getName() {
@@ -32,7 +33,8 @@ class AuctionType extends AbstractType {
                     'required' => false,
                     'allow_add' => true,
                     'type' => new GalleryType(),
-                ));
-            ;
+                    'label' => false,
+                ))
+                ->add('address', new AuctionAddressType());
     }
 }

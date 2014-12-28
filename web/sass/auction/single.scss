@@ -1,5 +1,7 @@
 @import '../partials/mixins';
 
+$headers-color: #ccc;
+
 div.single-auction {
     .row {
         overflow: hidden;
@@ -9,6 +11,11 @@ div.single-auction {
             margin-bottom: -9999px;
         }
     }
+    
+    .address-row {
+        margin-bottom: 20px;
+    }
+    
     .auction-image {
         text-align: center;
         display: table-row;
@@ -27,16 +34,17 @@ div.single-auction {
     }
     
     .auction-description {
-        padding: 40px 10px;
+        padding: 40px 20px;
         font-size: 18px;
     }
     
     .auction-views {
-        padding: 10px;
-        margin: 10px;
-        background: #ccc;
-        font-weight: bold;
-        font-size: 15px;
+        p {
+            padding: 10px;
+            background: #ccc;
+            font-weight: bold;
+            font-size: 15px;
+        }
     }
     
     .auction-category {
@@ -47,6 +55,49 @@ div.single-auction {
             display: block;
             color: white;
             width: 300px;
+            padding: 10px;
+        }
+    }
+    
+    .auction-bids {
+        .highest-bid {
+            background: black;
+            color: white;
+            padding: 2px 5px;
+            @include border-radius(2px);
+        }
+        
+        h3 {
+            background: $headers-color;
+            padding: 10px;
+        }
+        
+        h4 {
+            font-weight: bold;
+        }
+        
+        .bid-price, .bid-date {
+            font-weight: bold;
+        }
+    }
+    
+    .auction-new-bid {
+        h3 {
+            background: $headers-color;
+            padding: 10px;
+        }
+    }
+    
+    .auction-address {
+        h3 {
+            background: $headers-color;
+            padding: 10px;
+        }
+    }
+    
+    .auction-address-map {
+        h3 {
+            background: $headers-color;
             padding: 10px;
         }
     }

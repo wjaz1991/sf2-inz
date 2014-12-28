@@ -34,7 +34,7 @@ img.thumbnail-image {
 .thumb-show {
     height: auto;
     display: inline-block;
-    @include scale(2);
+    @include scale(1.3);
 }
 
 div.auction-image {

@@ -15,9 +15,9 @@
 {% block body %}
     <div class=" profile-wrap col-md-8 col-md-offset-2">
         
-        {% if app.user.avatar %}
+        {% if app.user.avatar.getPath %}
             <div class="profile-avatar">
-                <img src="{{ asset('images/' ~ app.user.avatar) }}" alt="Avatar image">
+                <img src="{{ asset(app.user.avatar.getWebPath) }}" alt="Avatar image">
             </div>
         {% endif %}
         

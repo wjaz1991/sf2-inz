@@ -64,4 +64,43 @@ class UserRepository extends EntityRepository implements UserProviderInterface {
     public function supportsClass($class) {
         return $this->getEntityName() === $class || is_subclass_of($class, $this->getEntityName());
     }
+    
+    //getting user friends
+    public function getFriends(User $user, $accepted = true) {
+        $em = $this->getEntityManager();
+        
+        $dql = 'SELECT DISTINCT f FROM Inzynier\AppBundle\Entity\Friendship f '
+                . 'JOIN f.user_one uo JOIN f.user_two ut '
+                . 'WHERE f.accepted = :accepted AND (uo.id=:id OR ut.id=:id)';
+        $query = $em->createQuery($dql);
+        $query->setParameter('id', $user->getId());
+        $query->setParameter('accepted', $accepted);
+        
+        $results = $query->getResult();
+        
+        $friends = array();
+        foreach($results as $friendship) {
+            //dump($friendship);
+            $friends[] = ($friendship->getUserOne() === $user)
+                    ? $friendship->getUserTwo()
+                    : $friendship->getUserOne();
+        }
+        
+        return $friends;
+    }
+    
+    //getting friend requests
+    public function getFriendRequests(User $user, $accepted = true) {
+        $em = $this->getEntityManager();
+        
+        $dql = 'SELECT DISTINCT f FROM Inzynier\AppBundle\Entity\Friendship f '
+                . 'WHERE f.user_two = :id AND f.accepted = :accepted';
+        $query = $em->createQuery($dql);
+        $query->setParameter('id', $user->getId());
+        $query->setParameter('accepted', $accepted);
+        
+        $results = $query->getResult();
+        
+        return $results;
+    }
 }

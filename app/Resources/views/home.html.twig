@@ -7,17 +7,64 @@
     {% endstylesheets %}
 {% endblock %}
 
+{% block nav_notifications %}
+    {% if friend_req_count %}
+    <div class="pending-requests" data-user="{{ app.user.id }}">
+        {{ icon('bell') }} 
+        {{ friend_req_count }}
+    </div>
+    {% endif %}
+{% endblock %}
+
 {% block body %}
-    Hello {{ app.user.username }}
+    <div class="row content-wrap">
+        <!-- MAIN USER WALL -->
+        <div class="column col-md-7 text-center">
+            <h1>User Wall</h1>
+            {% for friend in friends %}
+                {{ friend.username }}
+            {% endfor %}
+        </div> <!-- END USER WALL -->
+        <!-- SIDEBAR WITH OTHER USEFUL INFORMATIONS -->
+        <div class="column col-md-4 text-center">
+            {% if auctions %}
+            <div class="col-md-12 sidebar-container">
+                <ul class="list-group text-left sidebar-list">
+                    <h3 class="text-center">
+                        Latest auctions
+                    </h3>
+                    {% for auction in auctions %}
+                        <li class="list-group-item">
+                            <div class="auction-img-small">
+                                <img src="{{ asset(auction.getFirstImage) }}" alt="No image">
+                            </div>
+                            <div class="auction-meta-small">
+                                <a href="{{ path('auction_single', { 'id': auction.id }) }}">{{ auction.title}}</a><br>
+                                started on {{ auction.startDate | date('Y-m-d H:i:s') }} <br>
+                                {% if auction.address %} from {{ auction.address.city }} {% endif %}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                    
+            </div>
+            {% endif %}
+            
+            <div class="col-md-12 sidebar-container">
+                <h3>Auctions near me</h3>
+            </div>
+            <div class="col-md-12 sidebar-container">
+                <h3>People you may know</h3>
+            </div>
+        </div><!-- END OF SIDEBAR -->
+    </div>
     
-    {% for address in addresses %}
-        {{ address.street }} <br>
-        {{ address.city }} <br>
-        {{ address.country.name }} <br>
-        <p>Some text</p>
-    {% endfor %}
 {% endblock %}
 
 {% block javascripts %}
+    <script src="//localhost:35729/livereload.js"></script>
     {{ parent() }}
+    {% javascripts 'js/home/*' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

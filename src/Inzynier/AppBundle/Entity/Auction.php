@@ -85,6 +85,12 @@ class Auction {
      */
     protected $images;
     
+    /**
+     * @ORM\OneToOne(targetEntity="AuctionAddress", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
+     */
+    private $address;
+    
     public function __construct() {
         $this->dateAdded = new \DateTime();
         $this->views = 0;
@@ -227,5 +233,14 @@ class Auction {
     public function getFirstImage() {
         $image = $this->images->get(0);
         return $image->getFilename();
+    }
+    
+    public function getAddress() {
+        return $this->address;
+    }
+    
+    public function setAddress(AuctionAddress $address) {
+        $this->address = $address;
+        return $this;
     }
 }

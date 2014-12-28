@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/wojtek/Documents/public_html/inzynier/web/sass/base.scss</file>
+            <file>file:/home/wojtek/Documents/public_html/inzynier/app/Resources/views/home.html.twig</file>
+            <file>file:/home/wojtek/Documents/public_html/inzynier/web/sass/partials/_mixins.scss</file>
+            <file>file:/home/wojtek/Documents/public_html/inzynier/web/js/home/home.js</file>
+            <file>file:/home/wojtek/Documents/public_html/inzynier/web/sass/auction/auctions.scss</file>
+            <file>file:/home/wojtek/Documents/public_html/inzynier/app/Resources/views/base.html.twig</file>
+        </group>
     </open-files>
 </project-private>

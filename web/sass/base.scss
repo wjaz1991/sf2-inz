@@ -84,19 +84,19 @@ header {
     float: right;
     
     .nav-avatar {
-        background: white;
+        background: $nav-color;
         float: right;
         height: $nav-height-smaller - 20px;
-        width: auto;
+        width: $nav-height-smaller - 20px;
         margin: 10px 0 10px 10px;
-        padding: 2px;
         
         @include border-radius(50%);
         
         
         img {
-            height: 100%;
-            width: auto;
+            height: $nav-height-smaller - 20px;
+            width: $nav-height-smaller - 20px;
+            @include border-radius(50%);
         }
     }
     
@@ -136,12 +136,9 @@ header {
                 background: $nav-color;
                 display: none;
                 padding-left: 0;
-                @include transition(all, 0.3s, ease-in-out);
 
                 li {
-                    @include transition(all, 0.3s, ease-in-out);
                     a {
-                        @include transition(all, 0.3s, ease-in-out);
                         display: block;
                         font-size: 12px;
                         color: $nav-link-color;
@@ -193,7 +190,7 @@ header.smaller {
 
 
 
-@media all and (max-width: 660px) {
+@media all and (max-width: 700px) {
   header.smaller {
     display: block;
     position: relative;
@@ -267,3 +264,40 @@ header.smaller {
   }
 }
 
+.search-wrap {
+    display: inline;
+    line-height: $nav-height-smaller;
+    margin-right: 50px;
+    
+    input[type="text"] {
+        margin-right: 10px;
+    }
+}
+
+.search-trigger {
+    width: 50px;
+    height: 50px;
+    float: left;
+    background: white;
+    text-align: center;
+    display: block;
+    font-size: 18px;
+    color: $nav-color;
+    margin-top: $nav-height-smaller - 62px;
+    padding: 0 10px;
+    margin-right: 10px;
+    
+    @include transition(all, 0.3s, ease-in-out);
+    @include border-radius(50%);
+    
+    span {
+        line-height: 50px;
+    }
+}
+
+.search-trigger:hover {
+    cursor: pointer;
+    background: red;
+    color: $nav-link-color;
+    @include box-shadow(0px 0px 5px 5px white);
+}

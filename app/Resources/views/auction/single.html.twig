@@ -6,6 +6,7 @@
 
 {% block body %}
     <div class="single-auction">
+        {% include 'BraincraftedBootstrapBundle::flash.html.twig' %}
         <div class="row text-center">
             <div class="col-md-12">
                 <h1>{{ auction.title }}</h1>
@@ -20,11 +21,11 @@
         </div>
         <div class="row">
             {% if auction.images.count > 0 %}
-            <div class="col-md-4 auction-image">
+            <div class="col-md-5 col-sm-6 auction-image">
                 <img src="{{ asset(auction.getFirstImage) }}">
             </div>
             {% endif %}
-            <div class="col-md-8 auction-meta">
+            <div class="col-md-7 col-sm-6 auction-meta">
                 <p><strong>Price:</strong> {{ auction.price }}</p>
                 <p><strong>Placed by:</strong> {{ auction.user.username }}</p>
                 <p><strong>Started on:</strong> {{ auction.startDate | date('Y-m-d') }}</p>
@@ -33,15 +34,85 @@
         </div>
         <div class="row">
             <div class="col-md-12 auction-description">
-                {{ auction.description }}
+                <p>{{ auction.description }}</p>
+            </div>
+        </div>
+        <div class="row address-row">
+            <div class="col-md-6 auction-address">
+                <h3>{{ icon('envelope') }} Auction address</h3>
+                {% if auction.address %}
+                    <p><strong>Street:</strong> {{ auction.address.street }}</p>
+                {% endif %}
+                {% if auction.address %}
+                    <p><strong>Postcode:</strong> {{ auction.address.postcode }}</p>
+                {% endif %}
+                {% if auction.address %}
+                    <p><strong>City:</strong> {{ auction.address.city }}</p>
+                {% endif %}
+                {% if auction.address %}
+                    <p><strong>Country:</strong> {{ auction.address.country }}</p>
+                {% endif %}
+            </div>
+            <div class="col-md-6 auction-address-map">
+                <h3>{{ icon('map-marker') }} Place on map</h3>
+                {% if map %}
+                    {{ google_map(map) }}
+                {% endif %}
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 auction-views">
-                <p>Viewed {{ auction.views }} times</p>
+                <p>{{ icon('stats') }} Viewed {{ auction.views }} times</p>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6 auction-bids">
+                <h3>{{ icon('th-list') }} Current bids</h3>
+                {% if highest_bid %}
+                    <h4>Current highest bid is 
+                        <span class="highest-bid">
+                            {{ highest_bid.price }}
+                        </span>
+                    </h4>
+                {% else %}
+                    <h4>There are no bids. Be the first!</h4>
+                {% endif %}
+                {% if bids | length > 0 %}
+                    {% for bid in bids %}
+                        <div class="bid-entry">
+                            <p>
+                                {{ icon('record') }}
+                                <span class="bid-price">
+                                    {{ bid.price }}
+                                </span>
+                                placed by {{ bid.user.username }}
+                                on 
+                                <span class="bid-date">
+                                    {{ bid.date | date('Y-m-d H:i:s') }}
+                                </span>
+                            </p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="col-md-6 auction-new-bid">
+                <h3>{{ icon('shopping-cart') }} Place new bid</h3>
+                <form action="" method="post" {{ form_enctype(bid_form) }} novalidate>
+                    {{ form_widget(bid_form) }}
+                    {{ form_rest(bid_form) }}
+                    <button type="submit" class="btn btn-default">
+                        {{ icon('ok') }}
+                        Place it
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            
+        </div>
     </div>
+                
+    {% include 'BraincraftedBootstrapBundle::flash.html.twig' with { 'close': true } %}
 {% endblock %}
 
 {% block stylesheets %}

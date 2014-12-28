@@ -1,47 +1,47 @@
-/* line 1, assetic_compass4BGFtg.scss */
+/* line 1, assetic_compass23BOCz.scss */
 #login-form {
   text-align: center;
 }
-/* line 4, assetic_compass4BGFtg.scss */
+/* line 4, assetic_compass23BOCz.scss */
 #login-form .form-control {
   margin-bottom: 10px;
 }
-/* line 8, assetic_compass4BGFtg.scss */
+/* line 8, assetic_compass23BOCz.scss */
 #login-form h3 {
   margin-bottom: 30px;
 }
-/* line 12, assetic_compass4BGFtg.scss */
+/* line 12, assetic_compass23BOCz.scss */
 #login-form #login-form-inner {
   display: inline-block;
 }
-/* line 16, assetic_compass4BGFtg.scss */
+/* line 16, assetic_compass23BOCz.scss */
 #login-form input[type="text"], #login-form input[type="password"] {
   width: 100%;
   text-align: center;
 }
-/* line 21, assetic_compass4BGFtg.scss */
+/* line 21, assetic_compass23BOCz.scss */
 #login-form button {
   margin-top: 10px;
 }
 
-/* line 26, assetic_compass4BGFtg.scss */
+/* line 26, assetic_compass23BOCz.scss */
 .error-message {
   font-size: 15px;
 }
 
-/* line 2, assetic_compassdV4Mnz.scss */
+/* line 2, assetic_compass4u2eHE.scss */
 #register-form h3 {
   text-align: center;
 }
-/* line 6, assetic_compassdV4Mnz.scss */
+/* line 6, assetic_compass4u2eHE.scss */
 #register-form .checkbox, #register-form .form-group {
   text-align: center;
 }
-/* line 10, assetic_compassdV4Mnz.scss */
+/* line 10, assetic_compass4u2eHE.scss */
 #register-form #submit-button {
   text-align: center;
 }
-/* line 14, assetic_compassdV4Mnz.scss */
+/* line 14, assetic_compass4u2eHE.scss */
 #register-form .register-terms {
   text-align: center;
   margin-bottom: 10px;

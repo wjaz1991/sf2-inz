@@ -26,26 +26,8 @@ class ProfileController extends Controller {
         $flash = $this->get('braincrafted_bootstrap.flash');
         
         if($editForm->isValid() && $editForm->isSubmitted()) {
-            $pathLocator = $this->get('path.locator');
-            
-            //handling file upload
-            $file = $editForm['avatar_image']->getData();
-            
-            if($file) {
-                $extension = $file->guessExtension();
-                if(!$extension) {
-                    $extension = 'png';
-                }
-                
-                $fileName = uniqid() . '.' . $extension;
-                
-                $file->move($pathLocator->getImagesUploadDir(), $fileName);
-                
-                $user->setAvatar($fileName);
-            }
-            
             $em = $this->get('doctrine')->getManager();
-            
+            dump($user);
             $em->persist($user);
             $em->flush();
             $msg = $flash->success('Successfully updated your data.');

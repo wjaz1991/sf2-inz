@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+use Inzynier\AppBundle\Entity\Friendship;
+use Inzynier\AppBundle\Entity\User;
+
 class DefaultController extends Controller
 {
     /**
@@ -36,10 +39,38 @@ class DefaultController extends Controller
     public function homeAction() {
         $user = $this->getUser();
         
-        $addresses = $user->getAddresses();
+        $em = $this->getDoctrine()->getManager();
+        $repo = $this->get('doctrine')->getManager()->getRepository('InzynierAppBundle:Auction');
+        $auctions = $repo->getNewestAuctions(5);
+        
+        $repo = $this->get('doctrine')->getManager()->getRepository('InzynierAppBundle:User');
+        $user2 = $repo->find(3);
+        
+        $friend_service = $this->get('friends.service');
+        $friend_requests = $friend_service->getFriendRequests($user, false);
+        
+        $friends = $friend_service->getUserFriends($user, true);
+        
+        //dump($friends);
+        
+        
         
         return $this->render('home.html.twig', array(
-            'addresses' => $addresses,
+            'auctions' => $auctions,
+            'friends' => $friends,
+            'friend_req_count' => $friend_requests,
+        ));
+    }
+    
+    /**
+     * @Route("/people", name="user_list")
+     */
+    public function listUsers() {
+        $repo = $this->getDoctrine()->getManager()->getRepository('InzynierAppBundle:User');
+        $users = $repo->findAll();
+        
+        return $this->render('default/people.html.twig', array(
+            'users' => $users,
         ));
     }
     

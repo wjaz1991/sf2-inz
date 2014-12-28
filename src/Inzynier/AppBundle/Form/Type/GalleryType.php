@@ -14,6 +14,7 @@ class GalleryType extends AbstractType {
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'Inzynier\AppBundle\Entity\Gallery',
+            'label' => false,
         ));
     }
     

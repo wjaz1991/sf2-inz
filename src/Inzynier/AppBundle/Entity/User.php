@@ -47,11 +47,6 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable {
     protected $password;
     
     /**
-     * @ORM\Column(type="text")
-     */
-    protected $avatar;
-    
-    /**
      * @ORM\Column(type="boolean")
      */
     protected $isActive;
@@ -76,6 +71,22 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable {
      */
     protected $auctions;
     
+    /**
+     * @ORM\OneToMany(targetEntity="Friendship", mappedBy="user_one", cascade={"persist", "remove"}, orphanRemoval=TRUE)
+     */
+    protected $my_friends;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Friendship", mappedBy="user_two", cascade={"persist", "remove"}, orphanRemoval=TRUE)
+     */
+    protected $friends_with_me;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Avatar", cascade={"persist"})
+     * @ORM\JoinColumn(name="avatar_id", referencedColumnName="id")
+     */
+    private $avatar;
+    
     public function __construct() {
         $this->isActive = true;
         $this->addresses = new ArrayCollection;
@@ -83,10 +94,21 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable {
         $this->bids = new ArrayCollection;
         $this->auctions = new ArrayCollection;
         $this->dateAdded = new \DateTime();
+        $this->my_friends = new ArrayCollection();
+        $this->friends_with_me = new ArrayCollection();
     }
     
     public function getId() {
         return $this->id;
+    }
+    
+    public function getAvatar() {
+        return $this->avatar;
+    }
+    
+    public function setAvatar(Avatar $avatar) {
+        $this->avatar = $avatar;
+        return $this;
     }
     
     public function getUsername() {
@@ -123,15 +145,6 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable {
     
     public function getIsActive() {
         return $this->isActive;
-    }
-    
-    public function setAvatar($path) {
-        $this->avatar = $path;
-        return $this;
-    }
-    
-    public function getAvatar() {
-        return $this->avatar;
     }
     
     public function addBid(Bid $bid) {
@@ -202,6 +215,94 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable {
     {
         return $this->addresses;
     }
+    
+    public function getMyFriends() {
+        return $this->my_friends;
+    }
+    
+    public function addMyFriend(Friendship $friendship) {
+        if(!$this->my_friends->contains($friendship)) {
+            $this->my_friends->add($friendship);
+            $friendship->setUserOne($this);
+        }
+        
+        return $this;
+    }
+    
+    public function removeMyFriend(Friendship $friendship) {
+        if(!$this->my_friends->contains($friendship)) {
+            $this->my_friends->remove($friendship);
+            $friendship->setUserOne(null);
+        }
+        
+        return $this;
+    }
+    
+    public function getFriendsWithMe() {
+        return $this->friends_with_me;
+    }
+    
+    public function addFriendWithMe(Friendship $friendship) {
+        if(!$this->friends_with_me->contains($friendship)) {
+            $this->friends_with_me->add($friendship);
+            $friendship->setUserTwo($this);
+        }
+        
+        return $this;
+    }
+    
+    public function removeFriendWithMe(Friendship $friendship) {
+        if(!$this->friends_with_me->contains($friendship)) {
+            $this->friends_with_me->remove($friendship);
+            $friendship->setUserTwo(null);
+        }
+        
+        return $this;
+    }
+    
+//    public function getMyFriends() {
+//        return $this->friends;
+//    }
+//    
+//    public function addMyFriend(User $user) {
+//        if(!$this->my_friends->contains($user)) {
+//            $this->my_friends->add($user);
+//            $user->addFriendWithMe($this);
+//        }
+//        
+//        return $this;
+//    }
+//    
+//    public function removeMyFriend(User $user) {
+//        if(!$this->my_friends->contains($user)) {
+//            $this->my_friends->remove($user);
+//            $user->removeFriendWithMe($this);
+//        }
+//        
+//        return $this;
+//    }
+//    
+//    public function getFriendsWithMe() {
+//        return $this->friends_with_me;
+//    }
+//    
+//    public function addFriendWithMe(User $user) {
+//        if(!$this->friends_with_me->contains($user)) {
+//            $this->friends_with_me->add($user);
+//            $user->addMyFriend($user);
+//        }
+//        
+//        return $this;
+//    }
+//    
+//    public function removeFriendWithMe(User $user) {
+//        if(!$this->friends_with_me->contains($user)) {
+//            $this->friends_with_me->remove($user);
+//            $user->removeMyFriend($user);
+//        }
+//        
+//        return $this;
+//    }
     
     //implementing interfaces
     public function getSalt() {

@@ -6,3 +6,11 @@ services:
     path.locator:
         class: Inzynier\AppBundle\Services\PathLocator
         arguments: [@request_stack]
+        
+    geolocator:
+        class: Inzynier\AppBundle\Services\Geolocator
+        arguments: [@ivory_google_map.map.builder]
+        
+    friends.service:
+        class: Inzynier\AppBundle\Services\FriendsService
+        arguments: [@doctrine]
