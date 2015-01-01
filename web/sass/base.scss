@@ -1,6 +1,11 @@
 @import 'partials/variables';
 @import 'partials/mixins';
+@import 'partials/buttons';
 
+.file-type-image {
+    width: 300px;
+    height: auto;
+}
 .clear {
   display: block;
   clear: both;
@@ -187,10 +192,125 @@ header.smaller {
     text-align: center;
 }
 
+//notifications bar settings
+ul.nav-notifications {
+    float: left;
+    
+    li {
+        position: relative;
+        
+        .search-dropdown, .requests-dropdown {
+            position: absolute;
+            top: $nav-height-smaller;
+            left: 0;
+            width: 350px;
+        }
+    }
+    
+    >li>a {
+        color: $nav-color;
+        background: white;
+        display: block;
+        width: 50px;
+        height: 50px;
+        line-height: 50px !important;
+        text-align: center;
+        font-size: 15px;
+        margin-top: $nav-height-smaller - 62px;
+        text-decoration: none;
+        
+        @include transition(all, 0.3s, ease-in-out);
+        @include border-radius(50%);
+        
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    
+    .search-trigger {
+        &:hover {
+            cursor: pointer;
+            background: red;
+            color: $nav-link-color;
+            @include box-shadow(0px 0px 5px 5px white); 
+        }
+    }
+    
+    .pending-requests-trigger {
+        &:hover{
+            cursor: pointer;
+            background: lighten($nav-color, 10%);
+            color: $nav-link-color;
+            @include box-shadow(0px 0px 5px 5px);
+        }
+    }
+}
 
 
+.requests-dropdown {
+    ul.requests-results {
+        li {
+            text-align: center;
+            
+            img {
+                height: 40px;
+                width: 40px;
+                margin-right: 10px;
+            }
+            
+            button {
+                margin-left: 10px;
+            }
+        }
+    }
+}
 
-@media all and (max-width: 700px) {
+.search-dropdown {
+    list-style-type: none;
+}
+
+.search-dropdown, .requests-dropdown {
+    background: $nav-color;
+    padding: 10px 10px;
+
+    > li {
+        padding: 10px 20px;
+    }
+}
+
+a.nav-btn-clicked {
+    background: green !important;
+    color: white !important;
+}
+
+.search-results {
+    list-style-type: none;
+    padding: 0 20px;
+    color: white;
+    
+    img {
+        width: 40px;
+        height: auto;
+        margin-right: 5px;
+    }
+}
+
+
+@media all and (max-width: 880px) {
+    
+    header.smaller {
+        nav ul li a {
+            font-size: 13px;
+        }
+    }
+    
+    .nav-links {
+        padding-left: 0;
+    }
+}
+
+
+@media all and (max-width: 768px) {
   header.smaller {
     display: block;
     position: relative;
@@ -244,6 +364,18 @@ header.smaller {
       }
     }
   }
+    
+  .nav-notifications {
+      margin-top: 10px;
+      
+      li {
+          display: inline-block;
+      }
+  }
+  
+  ul.nav-links {
+      padding-top: 0 !important;
+  }
 
   header.smaller {
     height: 75px;
@@ -262,42 +394,4 @@ header.smaller {
       }
     }
   }
-}
-
-.search-wrap {
-    display: inline;
-    line-height: $nav-height-smaller;
-    margin-right: 50px;
-    
-    input[type="text"] {
-        margin-right: 10px;
-    }
-}
-
-.search-trigger {
-    width: 50px;
-    height: 50px;
-    float: left;
-    background: white;
-    text-align: center;
-    display: block;
-    font-size: 18px;
-    color: $nav-color;
-    margin-top: $nav-height-smaller - 62px;
-    padding: 0 10px;
-    margin-right: 10px;
-    
-    @include transition(all, 0.3s, ease-in-out);
-    @include border-radius(50%);
-    
-    span {
-        line-height: 50px;
-    }
-}
-
-.search-trigger:hover {
-    cursor: pointer;
-    background: red;
-    color: $nav-link-color;
-    @include box-shadow(0px 0px 5px 5px white);
 }

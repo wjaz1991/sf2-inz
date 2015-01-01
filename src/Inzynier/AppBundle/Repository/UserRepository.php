@@ -71,7 +71,8 @@ class UserRepository extends EntityRepository implements UserProviderInterface {
         
         $dql = 'SELECT DISTINCT f FROM Inzynier\AppBundle\Entity\Friendship f '
                 . 'JOIN f.user_one uo JOIN f.user_two ut '
-                . 'WHERE f.accepted = :accepted AND (uo.id=:id OR ut.id=:id)';
+                . 'WHERE f.accepted = :accepted AND (uo.id=:id OR ut.id=:id)'
+                . ' AND f.rejected != 1';
         $query = $em->createQuery($dql);
         $query->setParameter('id', $user->getId());
         $query->setParameter('accepted', $accepted);
@@ -94,7 +95,7 @@ class UserRepository extends EntityRepository implements UserProviderInterface {
         $em = $this->getEntityManager();
         
         $dql = 'SELECT DISTINCT f FROM Inzynier\AppBundle\Entity\Friendship f '
-                . 'WHERE f.user_two = :id AND f.accepted = :accepted';
+                . 'WHERE f.user_two = :id AND f.accepted = :accepted AND f.rejected != 1';
         $query = $em->createQuery($dql);
         $query->setParameter('id', $user->getId());
         $query->setParameter('accepted', $accepted);

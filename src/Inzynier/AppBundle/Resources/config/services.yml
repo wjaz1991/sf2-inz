@@ -14,3 +14,11 @@ services:
     friends.service:
         class: Inzynier\AppBundle\Services\FriendsService
         arguments: [@doctrine]
+        
+    image_type_extension:
+        class: Inzynier\AppBundle\Form\Extension\ImageTypeExtension
+        tags:
+            - { name: form.type_extension, alias: file }
+            
+    category.service:
+        class: Inzynier\AppBundle\Services\CategoryService

@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Inzynier\AppBundle\InzynierAppBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
+            new FOS\ElasticaBundle\FOSElasticaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

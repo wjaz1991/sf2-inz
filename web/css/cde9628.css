@@ -1,25 +1,98 @@
-@import url(http://fonts.googleapis.com/css?family=Lato);
-/* line 4, assetic_compassaZpmUh.scss */
+@import url(../../fonts/Lato/Lato-Regular.css);
+@import url(../../fonts/Lato/Lato-Regular.css);
+/* line 25, ../home/wojtek/Documents/public_html/inzynier/web/sass/partials/_buttons.scss */
+button.btn-custom-red, button.button-red {
+  height: 100%;
+  width: 200px;
+  border: 2px solid #cc0029;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #cc0029;
+  background: transparent;
+  border-radius: 0px;
+}
+/* line 13, ../home/wojtek/Documents/public_html/inzynier/web/sass/partials/_buttons.scss */
+button.btn-custom-red a, button.button-red a {
+  color: #cc0029;
+  text-decoration: none;
+}
+/* line 19, ../home/wojtek/Documents/public_html/inzynier/web/sass/partials/_buttons.scss */
+button.btn-custom-red:hover, button.button-red:hover {
+  border: 2px solid #99001f;
+  color: #99001f;
+}
+
+/* line 29, ../home/wojtek/Documents/public_html/inzynier/web/sass/partials/_buttons.scss */
+button.button-green {
+  height: 100%;
+  width: 200px;
+  border: 2px solid green;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: green;
+  background: transparent;
+  border-radius: 0px;
+}
+/* line 13, ../home/wojtek/Documents/public_html/inzynier/web/sass/partials/_buttons.scss */
+button.button-green a {
+  color: green;
+  text-decoration: none;
+}
+/* line 19, ../home/wojtek/Documents/public_html/inzynier/web/sass/partials/_buttons.scss */
+button.button-green:hover {
+  border: 2px solid #004d00;
+  color: #004d00;
+}
+
+/* line 33, ../home/wojtek/Documents/public_html/inzynier/web/sass/partials/_buttons.scss */
+button.button-blue {
+  height: 100%;
+  width: 200px;
+  border: 2px solid #022B52;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #022B52;
+  background: transparent;
+  border-radius: 0px;
+}
+/* line 13, ../home/wojtek/Documents/public_html/inzynier/web/sass/partials/_buttons.scss */
+button.button-blue a {
+  color: #022B52;
+  text-decoration: none;
+}
+/* line 19, ../home/wojtek/Documents/public_html/inzynier/web/sass/partials/_buttons.scss */
+button.button-blue:hover {
+  border: 2px solid #011120;
+  color: #011120;
+}
+
+/* line 5, assetic_compasst5pfDV.scss */
+.file-type-image {
+  width: 300px;
+  height: auto;
+}
+
+/* line 9, assetic_compasst5pfDV.scss */
 .clear {
   display: block;
   clear: both;
   content: "";
 }
 
-/* line 10, assetic_compassaZpmUh.scss */
+/* line 15, assetic_compasst5pfDV.scss */
 html {
   min-height: 100%;
   height: 100% !important;
 }
 
-/* line 15, assetic_compassaZpmUh.scss */
+/* line 20, assetic_compasst5pfDV.scss */
 body, html {
   font-family: 'Lato', sans-serif;
-  background-color: #eee;
+  background-color: #f9f8f8;
   height: 100%;
 }
 
-/* line 22, assetic_compassaZpmUh.scss */
+/* line 27, assetic_compasst5pfDV.scss */
 #page-wrap {
   min-height: 100%;
   height: auto !important;
@@ -28,12 +101,12 @@ body, html {
   margin: 0 auto-75px;
 }
 
-/* line 30, assetic_compassaZpmUh.scss */
+/* line 35, assetic_compasst5pfDV.scss */
 #page-wrap:after {
   height: 75px;
 }
 
-/* line 34, assetic_compassaZpmUh.scss */
+/* line 39, assetic_compasst5pfDV.scss */
 footer#footer-main {
   margin-top: 40px;
   height: 75px;
@@ -41,7 +114,7 @@ footer#footer-main {
   background-color: #022B52;
 }
 
-/* line 41, assetic_compassaZpmUh.scss */
+/* line 46, assetic_compasst5pfDV.scss */
 #content-wrap {
   padding-bottom: 75px;
   padding-top: 180px;
@@ -52,12 +125,12 @@ footer#footer-main {
   transition: margin-top 0.3s;
 }
 
-/* line 51, assetic_compassaZpmUh.scss */
+/* line 56, assetic_compasst5pfDV.scss */
 #content-wrap.smaller {
   padding-top: 105px;
 }
 
-/* line 55, assetic_compassaZpmUh.scss */
+/* line 60, assetic_compasst5pfDV.scss */
 header {
   height: 150px;
   width: 100%;
@@ -72,7 +145,7 @@ header {
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 65, assetic_compassaZpmUh.scss */
+/* line 70, assetic_compasst5pfDV.scss */
 header h1#logo {
   margin: 0;
   padding: 0;
@@ -89,16 +162,16 @@ header h1#logo {
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 77, assetic_compassaZpmUh.scss */
+/* line 82, assetic_compasst5pfDV.scss */
 header h1#logo a {
   color: white;
 }
-/* line 82, assetic_compassaZpmUh.scss */
+/* line 87, assetic_compasst5pfDV.scss */
 header nav {
   display: inline-block;
   float: right;
 }
-/* line 86, assetic_compassaZpmUh.scss */
+/* line 91, assetic_compasst5pfDV.scss */
 header nav .nav-avatar {
   background: #022B52;
   float: right;
@@ -110,7 +183,7 @@ header nav .nav-avatar {
   -ms-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 96, assetic_compassaZpmUh.scss */
+/* line 101, assetic_compasst5pfDV.scss */
 header nav .nav-avatar img {
   height: 55px;
   width: 55px;
@@ -119,23 +192,23 @@ header nav .nav-avatar img {
   -ms-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 103, assetic_compassaZpmUh.scss */
+/* line 108, assetic_compasst5pfDV.scss */
 header nav .nav-avatar:hover {
   -webkit-box-shadow: 0 0 5px 5px red;
   -moz-box-shadow: 0 0 5px 5px red;
   box-shadow: 0 0 5px 5px red;
 }
-/* line 107, assetic_compassaZpmUh.scss */
+/* line 112, assetic_compasst5pfDV.scss */
 header nav > ul {
   width: auto;
   list-style-type: none;
   float: right;
 }
-/* line 111, assetic_compassaZpmUh.scss */
+/* line 116, assetic_compasst5pfDV.scss */
 header nav > ul > li {
   float: right;
 }
-/* line 113, assetic_compassaZpmUh.scss */
+/* line 118, assetic_compasst5pfDV.scss */
 header nav > ul > li > a {
   line-height: 150px;
   margin-left: 20px;
@@ -148,11 +221,11 @@ header nav > ul > li > a {
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-/* line 126, assetic_compassaZpmUh.scss */
+/* line 131, assetic_compasst5pfDV.scss */
 header nav > ul > li > a:hover {
   color: white;
 }
-/* line 132, assetic_compassaZpmUh.scss */
+/* line 137, assetic_compasst5pfDV.scss */
 header nav > ul li.nav-dropdown ul {
   list-style-type: none;
   clear: both;
@@ -161,39 +234,39 @@ header nav > ul li.nav-dropdown ul {
   display: none;
   padding-left: 0;
 }
-/* line 141, assetic_compassaZpmUh.scss */
+/* line 146, assetic_compasst5pfDV.scss */
 header nav > ul li.nav-dropdown ul li a {
   display: block;
   font-size: 12px;
   color: #9fdbfc;
   padding: 5px 20px;
 }
-/* line 148, assetic_compassaZpmUh.scss */
+/* line 153, assetic_compasst5pfDV.scss */
 header nav > ul li.nav-dropdown ul li a:hover {
   background-color: #011120;
 }
 
-/* line 158, assetic_compassaZpmUh.scss */
+/* line 163, assetic_compasst5pfDV.scss */
 header.smaller {
   height: 75px;
 }
-/* line 161, assetic_compassaZpmUh.scss */
+/* line 166, assetic_compasst5pfDV.scss */
 header.smaller h1#logo {
   width: 150px;
   height: 75px;
   line-height: 75px;
   font-size: 30px;
 }
-/* line 167, assetic_compassaZpmUh.scss */
+/* line 172, assetic_compasst5pfDV.scss */
 header.smaller h1#logo a {
   line-height: 75px;
 }
-/* line 175, assetic_compassaZpmUh.scss */
+/* line 180, assetic_compasst5pfDV.scss */
 header.smaller nav > ul > li > a {
   line-height: 75px;
 }
 
-/* line 183, assetic_compassaZpmUh.scss */
+/* line 188, assetic_compasst5pfDV.scss */
 .welcome-title {
   font-size: 50px;
   font-weight: bold;
@@ -201,104 +274,33 @@ header.smaller nav > ul > li > a {
   text-align: center;
 }
 
-@media all and (max-width: 700px) {
-  /* line 194, assetic_compassaZpmUh.scss */
-  header.smaller {
-    display: block;
-    position: relative;
-    height: auto !important;
-  }
-  /* line 199, assetic_compassaZpmUh.scss */
-  header.smaller h1#logo {
-    display: block;
-    float: none;
-    margin: 0 auto;
-    height: 100px;
-    line-height: 100px;
-    text-align: center;
-  }
-  /* line 208, assetic_compassaZpmUh.scss */
-  header.smaller nav {
-    display: block;
-    float: none;
-    height: auto !important;
-    text-align: center;
-    margin: 0 auto;
-  }
-  /* line 215, assetic_compassaZpmUh.scss */
-  header.smaller nav .nav-avatar {
-    display: none;
-  }
-  /* line 219, assetic_compassaZpmUh.scss */
-  header.smaller nav ul {
-    float: none;
-    padding-left: 0;
-    padding-top: 20px;
-  }
-  /* line 224, assetic_compassaZpmUh.scss */
-  header.smaller nav ul li {
-    float: none;
-  }
-  /* line 226, assetic_compassaZpmUh.scss */
-  header.smaller nav ul li a {
-    line-height: 50px;
-    margin: 0 10px;
-  }
-  /* line 231, assetic_compassaZpmUh.scss */
-  header.smaller nav ul li ul {
-    position: relative;
-    padding-top: 0;
-  }
-  /* line 236, assetic_compassaZpmUh.scss */
-  header.smaller nav ul li ul li a {
-    height: 30px;
-    line-height: 30px;
-    padding: 0;
-  }
-
-  /* line 248, assetic_compassaZpmUh.scss */
-  header.smaller {
-    height: 75px;
-  }
-  /* line 251, assetic_compassaZpmUh.scss */
-  header.smaller h1#logo {
-    height: 40px;
-    line-height: 40px;
-    font-size: 30px;
-  }
-  /* line 257, assetic_compassaZpmUh.scss */
-  header.smaller nav {
-    height: 35px;
-  }
-  /* line 260, assetic_compassaZpmUh.scss */
-  header.smaller nav a {
-    line-height: 35px;
-  }
+/* line 196, assetic_compasst5pfDV.scss */
+ul.nav-notifications {
+  float: left;
 }
-/* line 267, assetic_compassaZpmUh.scss */
-.search-wrap {
-  display: inline;
-  line-height: 75px;
-  margin-right: 50px;
+/* line 199, assetic_compasst5pfDV.scss */
+ul.nav-notifications li {
+  position: relative;
 }
-/* line 272, assetic_compassaZpmUh.scss */
-.search-wrap input[type="text"] {
-  margin-right: 10px;
+/* line 202, assetic_compasst5pfDV.scss */
+ul.nav-notifications li .search-dropdown, ul.nav-notifications li .requests-dropdown {
+  position: absolute;
+  top: 75px;
+  left: 0;
+  width: 350px;
 }
-
-/* line 277, assetic_compassaZpmUh.scss */
-.search-trigger {
+/* line 210, assetic_compasst5pfDV.scss */
+ul.nav-notifications > li > a {
+  color: #022B52;
+  background: white;
+  display: block;
   width: 50px;
   height: 50px;
-  float: left;
-  background: white;
+  line-height: 50px !important;
   text-align: center;
-  display: block;
-  font-size: 18px;
-  color: #022B52;
+  font-size: 15px;
   margin-top: 13px;
-  padding: 0 10px;
-  margin-right: 10px;
+  text-decoration: none;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -309,13 +311,12 @@ header.smaller nav > ul > li > a {
   -ms-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 293, assetic_compassaZpmUh.scss */
-.search-trigger span {
-  line-height: 50px;
+/* line 225, assetic_compasst5pfDV.scss */
+ul.nav-notifications > li > a:hover {
+  text-decoration: none;
 }
-
-/* line 298, assetic_compassaZpmUh.scss */
-.search-trigger:hover {
+/* line 231, assetic_compasst5pfDV.scss */
+ul.nav-notifications .search-trigger:hover {
   cursor: pointer;
   background: red;
   color: #9fdbfc;
@@ -323,4 +324,161 @@ header.smaller nav > ul > li > a {
   -moz-box-shadow: 0px 0px 5px 5px white;
   box-shadow: 0px 0px 5px 5px white;
 }
+/* line 240, assetic_compasst5pfDV.scss */
+ul.nav-notifications .pending-requests-trigger:hover {
+  cursor: pointer;
+  background: #034584;
+  color: #9fdbfc;
+  -webkit-box-shadow: 0px 0px 5px 5px;
+  -moz-box-shadow: 0px 0px 5px 5px;
+  box-shadow: 0px 0px 5px 5px;
+}
 
+/* line 252, assetic_compasst5pfDV.scss */
+.requests-dropdown ul.requests-results li {
+  text-align: center;
+}
+/* line 255, assetic_compasst5pfDV.scss */
+.requests-dropdown ul.requests-results li img {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+/* line 261, assetic_compasst5pfDV.scss */
+.requests-dropdown ul.requests-results li button {
+  margin-left: 10px;
+}
+
+/* line 268, assetic_compasst5pfDV.scss */
+.search-dropdown {
+  list-style-type: none;
+}
+
+/* line 272, assetic_compasst5pfDV.scss */
+.search-dropdown, .requests-dropdown {
+  background: #022B52;
+  padding: 10px 10px;
+}
+/* line 276, assetic_compasst5pfDV.scss */
+.search-dropdown > li, .requests-dropdown > li {
+  padding: 10px 20px;
+}
+
+/* line 281, assetic_compasst5pfDV.scss */
+a.nav-btn-clicked {
+  background: green !important;
+  color: white !important;
+}
+
+/* line 286, assetic_compasst5pfDV.scss */
+.search-results {
+  list-style-type: none;
+  padding: 0 20px;
+  color: white;
+}
+/* line 291, assetic_compasst5pfDV.scss */
+.search-results img {
+  width: 40px;
+  height: auto;
+  margin-right: 5px;
+}
+
+@media all and (max-width: 880px) {
+  /* line 302, assetic_compasst5pfDV.scss */
+  header.smaller nav ul li a {
+    font-size: 13px;
+  }
+
+  /* line 307, assetic_compasst5pfDV.scss */
+  .nav-links {
+    padding-left: 0;
+  }
+}
+@media all and (max-width: 768px) {
+  /* line 314, assetic_compasst5pfDV.scss */
+  header.smaller {
+    display: block;
+    position: relative;
+    height: auto !important;
+  }
+  /* line 319, assetic_compasst5pfDV.scss */
+  header.smaller h1#logo {
+    display: block;
+    float: none;
+    margin: 0 auto;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+  }
+  /* line 328, assetic_compasst5pfDV.scss */
+  header.smaller nav {
+    display: block;
+    float: none;
+    height: auto !important;
+    text-align: center;
+    margin: 0 auto;
+  }
+  /* line 335, assetic_compasst5pfDV.scss */
+  header.smaller nav .nav-avatar {
+    display: none;
+  }
+  /* line 339, assetic_compasst5pfDV.scss */
+  header.smaller nav ul {
+    float: none;
+    padding-left: 0;
+    padding-top: 20px;
+  }
+  /* line 344, assetic_compasst5pfDV.scss */
+  header.smaller nav ul li {
+    float: none;
+  }
+  /* line 346, assetic_compasst5pfDV.scss */
+  header.smaller nav ul li a {
+    line-height: 50px;
+    margin: 0 10px;
+  }
+  /* line 351, assetic_compasst5pfDV.scss */
+  header.smaller nav ul li ul {
+    position: relative;
+    padding-top: 0;
+  }
+  /* line 356, assetic_compasst5pfDV.scss */
+  header.smaller nav ul li ul li a {
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+  }
+
+  /* line 368, assetic_compasst5pfDV.scss */
+  .nav-notifications {
+    margin-top: 10px;
+  }
+  /* line 371, assetic_compasst5pfDV.scss */
+  .nav-notifications li {
+    display: inline-block;
+  }
+
+  /* line 376, assetic_compasst5pfDV.scss */
+  ul.nav-links {
+    padding-top: 0 !important;
+  }
+
+  /* line 380, assetic_compasst5pfDV.scss */
+  header.smaller {
+    height: 75px;
+  }
+  /* line 383, assetic_compasst5pfDV.scss */
+  header.smaller h1#logo {
+    height: 40px;
+    line-height: 40px;
+    font-size: 30px;
+  }
+  /* line 389, assetic_compasst5pfDV.scss */
+  header.smaller nav {
+    height: 35px;
+  }
+  /* line 392, assetic_compasst5pfDV.scss */
+  header.smaller nav a {
+    line-height: 35px;
+  }
+}

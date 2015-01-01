@@ -26,7 +26,7 @@ class AuctionCategory {
     
     /**
      * @ORM\OneToOne(targetEntity="AuctionCategory")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
      */
     protected $parent;
     
@@ -42,7 +42,7 @@ class AuctionCategory {
     
     //== SETTERS, GETTERS ==
     public function __construct() {
-        $this->parent = 0;
+        $this->parent = null;
         $this->auctions = new ArrayCollection;
         $this->images = new ArrayCollection;
     }

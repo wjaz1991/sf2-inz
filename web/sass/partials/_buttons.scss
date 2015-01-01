@@ -1,0 +1,35 @@
+@import 'variables';
+
+@mixin button_template($btn-color) {
+    height: 100%;
+    width: 200px;
+    border: 2px solid $btn-color;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $btn-color;
+    background: transparent;
+    border-radius: 0px;
+    
+    a {
+        color: $btn-color;
+        text-decoration: none;
+    }
+
+
+    &:hover {
+        border: 2px solid darken($btn-color, 10%);
+        color: darken($btn-color, 10%);
+    }
+}
+
+button.btn-custom-red, button.button-red {
+    @include button_template(#cc0029);
+}
+
+button.button-green {
+    @include button_template(green);
+}
+
+button.button-blue {
+    @include button_template($nav-color);
+}

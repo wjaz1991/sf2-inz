@@ -1,29 +1,35 @@
-/* line 6, assetic_compass3S5zmy.scss */
+/* line 6, assetic_compassuFiIla.scss */
 span.text-label {
   font-weight: bold;
 }
 
-/* line 10, assetic_compass3S5zmy.scss */
+/* line 10, assetic_compassuFiIla.scss */
 .list-group-item:hover {
   background-color: #ccc;
 }
 
-/* line 14, assetic_compass3S5zmy.scss */
+/* line 14, assetic_compassuFiIla.scss */
 .auction-entry {
   font-size: 16px;
 }
-/* line 16, assetic_compass3S5zmy.scss */
+/* line 16, assetic_compassuFiIla.scss */
 .auction-entry h4 {
   font-weight: bold;
   font-size: 24px;
+  display: block;
 }
-/* line 21, assetic_compass3S5zmy.scss */
-.auction-entry .auction-meta {
+/* line 21, assetic_compassuFiIla.scss */
+.auction-entry h4 a {
+  display: block;
+}
+
+/* line 27, assetic_compassuFiIla.scss */
+.auction-meta {
   color: #333;
   font-weight: bold;
 }
 
-/* line 26, assetic_compass3S5zmy.scss */
+/* line 32, assetic_compassuFiIla.scss */
 img.thumbnail-image {
   max-height: 200px;
   text-align: left;
@@ -36,7 +42,7 @@ img.thumbnail-image {
   transition: all 0.5s ease-in-out;
 }
 
-/* line 34, assetic_compass3S5zmy.scss */
+/* line 40, assetic_compassuFiIla.scss */
 .thumb-show {
   height: auto;
   display: inline-block;
@@ -46,12 +52,14 @@ img.thumbnail-image {
   transform: scale(1.3);
 }
 
-/* line 40, assetic_compass3S5zmy.scss */
+/* line 46, assetic_compassuFiIla.scss */
 div.auction-image {
   position: relative;
 }
-/* line 43, assetic_compass3S5zmy.scss */
+/* line 49, assetic_compassuFiIla.scss */
 div.auction-image a {
-  display: block;
+  display: inline-block;
+  float: left;
+  margin-right: 20px;
   height: 100%;
 }

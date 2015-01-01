@@ -26,5 +26,18 @@ class AuctionRepository extends EntityRepository {
         
         return $auctions;
     }
+    
+    public function findActive() {
+        $em = $this->getEntityManager();
+        $now = new \DateTime();
+        
+        $dql = 'SELECT a FROM Inzynier\AppBundle\Entity\Auction a WHERE a.endDate >= :now ORDER BY a.startDate DESC';
+        $query = $em->createQuery($dql);
+        $query->setParameter('now', $now->format('Y-m-d H:i:s'));
+        
+        $auctions = $query->getResult();
+        
+        return $auctions;
+    }
 }
 

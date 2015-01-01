@@ -52,7 +52,7 @@ div.single-auction {
             margin: 10px 0;
             text-align: center;
             background: #333;
-            display: block;
+            display: inline-block;
             color: white;
             width: 300px;
             padding: 10px;
@@ -101,4 +101,11 @@ div.single-auction {
             padding: 10px;
         }
     }
+}
+
+//edit auction form
+.form-edit-link {
+    display: inline;
+    float: right;
+    height: 100%;
 }

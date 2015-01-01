@@ -1,2 +1,66 @@
-{% extends '::base.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome to{% endblock %}inzynier.dev.com</title>
+        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+        {% block stylesheets %}
+            {% stylesheets 'sass/*' filter="compass"%}
+                <link rel="stylesheet" href="{{ asset_url }}">
+            {% endstylesheets %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+        {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+    </head>
+    
+    <body>
+    <div id="page-wrap">
+        <!-- top navigation -->
+        <header  {% if app.request.get('_route') != 'welcome' %} class="smaller" {% endif %}>
+            <div class="container-fluid" id="nav-wrap">
+                <h1 id="logo">
+                    <a href="{{ path('welcome') }}">LOGO</a>
+                </h1>
+                <nav id="nav-top">
+                    {% block nav_notifications %}
+                    {% endblock %}
+                    {% block top_avatar %}
+                    {% endblock %}
+                    
+                    {% block top_navigation %}
+                        {% block nav_links %}
+                        {%  endblock %}
+                    {% endblock %}
+                </nav>
+            </div>
+        </header>
+        <div class="clear"></div>
+        
+        <div id="content-wrap" class="container-fluid {% if app.request.get('_route') != 'welcome' %}smaller{% endif %}">
+            {# any flash notifications #}
+            {% include 'BraincraftedBootstrapBundle::flash.html.twig' with {'close': true } %}
+            
+            {% block body %}
+            {% endblock %}
+        </div>
+    </div>
+    <footer id="footer-main">
 
+    </footer>
+         <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <!-- Include all JavaScripts, compiled by Assetic -->
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        {% block javascripts %}
+            {% if app.request.get('_route') == 'welcome' %}
+                <script src="{{ asset('js/utils/header.js') }}"></script>
+            {% endif %}
+            {% javascripts 'js/base/*' %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+    </body>
+</html>

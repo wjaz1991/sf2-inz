@@ -22,8 +22,14 @@ class AuctionType extends AbstractType {
         $builder->add('title', 'text')
                 ->add('description', 'textarea')
                 ->add('private', 'checkbox')
-                ->add('startDate', 'date')
-                ->add('endDate', 'date')
+                ->add('startDate', 'date', array(
+                    'widget' => 'single_text',
+                    'format' => 'dd/MM/yyyy',
+                ))
+                ->add('endDate', 'date', array(
+                    'widget' => 'single_text',
+                    'format' => 'dd/MM/yyyy',
+                ))
                 ->add('price', 'number')
                 ->add('category', 'entity', array(
                     'class' => 'InzynierAppBundle:AuctionCategory',
@@ -32,8 +38,10 @@ class AuctionType extends AbstractType {
                 ->add('images', 'collection', array(
                     'required' => false,
                     'allow_add' => true,
+                    'allow_delete' => true,
                     'type' => new GalleryType(),
                     'label' => false,
+                    'by_reference' => true,
                 ))
                 ->add('address', new AuctionAddressType());
     }

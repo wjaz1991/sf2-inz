@@ -30,6 +30,9 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         path_locator: "@path.locator"
+    form:
+        resources:
+            - 'form/global/image_form_type.html.twig'
 
 # Assetic Configuration
 assetic:
@@ -77,3 +80,29 @@ swiftmailer:
 
 braincrafted_bootstrap:
     less_filter: sass
+    
+fos_elastica:
+    clients:
+        default: { host: localhost, port: 9200 }
+    indexes:
+        website:
+            finder: ~
+            types:
+                user:
+                    mappings:
+                        username: ~
+                        email: ~
+                    persistence:
+                        driver: orm
+                        model: Inzynier\AppBundle\Entity\User
+                        provider: ~
+                        listener: ~
+                auction:
+                    mappings:
+                        title: ~
+                        description: ~
+                    persistence:
+                        driver: orm
+                        model: Inzynier\AppBundle\Entity\Auction
+                        provider: ~
+                        listener: ~

@@ -18,6 +18,7 @@ use Inzynier\AppBundle\Entity\Address;
  * @ORM\Table(name="users")
  * @UniqueEntity(fields="email", message="Provided email is in use")
  * @UniqueEntity(fields="username", message="Choosed username is in use")
+ * @ORM\HasLifecycleCallbacks
  */
 class User implements UserInterface, AdvancedUserInterface, \Serializable {
     /**
@@ -82,7 +83,7 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable {
     protected $friends_with_me;
     
     /**
-     * @ORM\OneToOne(targetEntity="Avatar", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Avatar", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="avatar_id", referencedColumnName="id")
      */
     private $avatar;
@@ -90,7 +91,7 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable {
     public function __construct() {
         $this->isActive = true;
         $this->addresses = new ArrayCollection;
-        $this->avatar = '';
+        $this->avatar = null;
         $this->bids = new ArrayCollection;
         $this->auctions = new ArrayCollection;
         $this->dateAdded = new \DateTime();

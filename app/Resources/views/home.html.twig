@@ -7,15 +7,6 @@
     {% endstylesheets %}
 {% endblock %}
 
-{% block nav_notifications %}
-    {% if friend_req_count %}
-    <div class="pending-requests" data-user="{{ app.user.id }}">
-        {{ icon('bell') }} 
-        {{ friend_req_count }}
-    </div>
-    {% endif %}
-{% endblock %}
-
 {% block body %}
     <div class="row content-wrap">
         <!-- MAIN USER WALL -->
@@ -35,9 +26,11 @@
                     </h3>
                     {% for auction in auctions %}
                         <li class="list-group-item">
+                            {% if auction.images | length %}
                             <div class="auction-img-small">
                                 <img src="{{ asset(auction.getFirstImage) }}" alt="No image">
                             </div>
+                            {% endif %}
                             <div class="auction-meta-small">
                                 <a href="{{ path('auction_single', { 'id': auction.id }) }}">{{ auction.title}}</a><br>
                                 started on {{ auction.startDate | date('Y-m-d H:i:s') }} <br>

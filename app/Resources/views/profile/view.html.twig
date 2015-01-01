@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ dump(status) }}
+    {{ dump(is_logged) }}
+    {{ dump(user) }}
+    
+    {% if is_logged %}
+        <button class="btn btn-default button-blue">Logged in</button>
+    {% endif %}
+{% endblock %}

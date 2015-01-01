@@ -42,29 +42,15 @@ class AuctionController extends Controller {
             
             $em = $this->get('doctrine')->getManager();
             
-            $images = $form['images']->getData();
+            $images = $auction->getImages();
             
-            $path_locator = $this->get('path.locator');
-            
-            //setting gallery objects paths
             foreach($images as $image) {
-                $extension = $image->getImage()->guessExtension();
-                if(!$extension) {
-                    $extension = 'png';
+                if($image) {
+                    $image->setAuction($auction);
                 }
-                
-                $fileName = uniqid() . '.' . $extension;
-                $filePath = 'images/galleries/' . $fileName;
-                $image->setFilename($filePath);
-                
-                $file = $image->getImage();
-                $file->move($path_locator->getAssetsPath() . 'images/galleries/', $fileName);
-                
-                $image->setAuction($auction);
             }
             
             $auction->setUser($user);
-            
             $em->persist($auction);
             $em->flush();
         }
@@ -77,10 +63,11 @@ class AuctionController extends Controller {
     /**
      * @Route("/auctions", name="auctions_all")
      */
-    function showAuction() {
+    function showAuctions() {
         $repo = $this->get('doctrine')->getManager()->getRepository('InzynierAppBundle:Auction');
         
-        $auctions = $repo->findAll();
+        $auctions = $repo->findActive();
+        dump($auctions);
         
         return $this->render('auction/show_all.html.twig', array(
             'auctions' => $auctions
@@ -114,6 +101,8 @@ class AuctionController extends Controller {
             $map = null;
         }
         
+        $active = $auction->isActive();
+        
         //incrementing view count
         $views = $auction->getViews();
         $auction->setViews($views + 1);
@@ -129,17 +118,23 @@ class AuctionController extends Controller {
         $bid_form->handleRequest($request);
         
         if($bid_form->isValid() && $bid_form->isSubmitted()) {
-            $bid->setUser($user);
-            $bid->setAuction($auction);
-            
-            $em->persist($bid);
-            $em->flush();
-            
             $flash = $this->get('braincrafted_bootstrap.flash');
             
+            if($highest_bid->getPrice() < $bid->getPrice()) {
+                $bid->setUser($user);
+                $bid->setAuction($auction);
+
+                $em->persist($bid);
+                $em->flush();
+                
+                $msg = $flash->success('You just have placed an offer!');
+            } else {
+                $msg = $flash->error('Failed to place new bid! You must specify an offer with higher value than current highest bid.');
+            }
+
             return $this->redirectToRoute('auction_single', array(
                 'id' => $auction->getId(),
-                'msg' => $flash->success('You just have placed an offer!'),
+                'msg' => $msg,
             ));
         }
         
@@ -149,6 +144,62 @@ class AuctionController extends Controller {
             'bids' => $bids,
             'highest_bid' => $highest_bid,
             'map' => $map,
+            'active' => $active,
         ));
+    }
+    
+    /**
+     * @Route("/auction/edit/{id}", name="auction_edit")
+     */
+    public function editAction(Request $request, $id) {
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('InzynierAppBundle:Auction');
+        $auction = $repo->find($id);
+        
+        $images = $auction->getImages();
+        
+        if($user->getId() != $auction->getUser()->getId()) {
+            return $this->redirectToRoute('auction_single', array(
+                'id' => $id,
+            ));
+        }
+        
+        $form = $this->createForm(new AuctionType(), $auction);
+        
+        $form->handleRequest($request);
+        
+        if($form->isValid() && $form->isSubmitted()) {
+            $images = $auction->getImages();
+            
+            foreach($images as $image) {
+                if($image) {
+                    $image->setAuction($auction);
+                }
+            }
+            
+            $em->persist($auction);
+            $em->flush();
+            
+            return $this->redirectToRoute('auction_single', array(
+                'id' => $id,
+            ));
+        }
+        
+        return $this->render('auction/edit.html.twig', array(
+            'form' => $form->createView(),
+            'auction' => $auction,
+        ));
+    }
+    
+    /**
+     * @Route("/auction/{auction}/delete", name="auction_delete")
+     */
+    public function deleteAction(Auction $auction) {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($auction);
+        $em->flush();
+        
+        return $this->redirectToRoute('profile_auctions');
     }
 }

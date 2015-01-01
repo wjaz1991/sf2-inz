@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% form_theme form 'form/auction/edit.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Edit auction {{ auction.title }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 auction-form-wrap">
+            {{ form(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/datepicker/datepicker.css') }}">
+    {% stylesheets 'sass/auction/edit.scss' filter="compass"%}
+        <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+    {{ parent() }}
+    {% javascripts 'js/utilities/datepicker/*' 
+        'js/auctions/*' %}
+        <script src="{{ asset_url}}"></script>
+    {% endjavascripts %}
+{% endblock %}

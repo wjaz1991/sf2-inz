@@ -30,7 +30,7 @@ class DefaultController extends Controller
         }
 
         //return welcome page
-        return $this->render('::layout.html.twig');
+        return $this->render('::welcome.html.twig');
     }
 
     /**
@@ -98,5 +98,18 @@ class DefaultController extends Controller
         $json = array($result);
         
         return new \Symfony\Component\HttpFoundation\JsonResponse($json);
+    }
+    
+    /**
+     * @Route("/search", name="search")
+     */
+    public function searchAction() {
+        $elastica = $this->get('fos_elastica.finder.website');
+        
+        $users = $elastica->find('*iteration*');
+        
+        return $this->render('search/search.html.twig', [
+            'users' => $users,
+        ]);
     }
 }

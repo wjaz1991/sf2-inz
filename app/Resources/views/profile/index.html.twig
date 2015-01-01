@@ -1,21 +1,11 @@
-{% extends "::base.html.twig" %}
+{% extends "profile/profile_layout.html.twig" %}
 
 {% block title %}
     {{ app.user.username }}'s profile
 {% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    
-    {% stylesheets 'sass/profile/*' filter='compass' %}
-        <link href="{{ asset_url }}" rel="stylesheet">
-    {% endstylesheets %}
-{% endblock %}
-
-{% block body %}
-    <div class=" profile-wrap col-md-8 col-md-offset-2">
-        
-        {% if app.user.avatar.getPath %}
+{% block profile_page_content %}
+        {% if app.user.avatar %}
             <div class="profile-avatar">
                 <img src="{{ asset(app.user.avatar.getWebPath) }}" alt="Avatar image">
             </div>
@@ -26,16 +16,13 @@
         <!-- displaying all flash messages -->
         {% include 'BraincraftedBootstrapBundle::flash.html.twig' %}
         
-        <div class="col-md-8 col-md-offset-2">
-            <form novalidate action="" method="post" {{ form_enctype(editForm) }}> 
-                {{ form_widget(editForm) }}
-                
-                <div class="btn-submit">
-                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-save"></span>Update</button>
-                </div>
-            </form>
-        </div>
-    </div>
+        <form novalidate action="" method="post" {{ form_enctype(editForm) }}> 
+            {{ form_widget(editForm) }}
+
+            <div class="btn-submit">
+                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-save"></span>Update</button>
+            </div>
+        </form>
             
     <!-- closing all flash messages -->
     {% include 'BraincraftedBootstrapBundle::flash.html.twig' with { 'close': true } %}

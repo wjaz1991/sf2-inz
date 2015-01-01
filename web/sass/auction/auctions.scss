@@ -16,13 +16,19 @@ span.text-label {
     h4 {
         font-weight: bold;
         font-size: $title-font;
-    }
-    
-    .auction-meta {
-        color: #333;
-        font-weight: bold;
+        display: block;
+        
+        a {
+            display: block;
+        }
     }
 }
+    
+.auction-meta {
+    color: #333;
+    font-weight: bold;
+}
+
 img.thumbnail-image {
     max-height: 200px;
     text-align: left;
@@ -41,7 +47,9 @@ div.auction-image {
     position: relative;
     
     a {
-        display: block;
+        display: inline-block;
+        float: left;
+        margin-right: 20px;
         height: 100%;
     }
 }

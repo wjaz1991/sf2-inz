@@ -5,11 +5,16 @@
 {% endblock %}
 
 {% block body %}
-    <div class="single-auction">
+    <div class="single-auction col-md-10 col-md-offset-1">
         {% include 'BraincraftedBootstrapBundle::flash.html.twig' %}
+        {% if not active %}
+            <div class="alert alert-warning text-center text-uppercase">
+                This auction has ended.
+            </div>
+        {% endif %}
         <div class="row text-center">
             <div class="col-md-12">
-                <h1>{{ auction.title }}</h1>
+                <h1 class="auction-title">{{ auction.title }}</h1>
             </div>
         </div>
         <div class="row">
@@ -17,24 +22,55 @@
                 <span>
                     CATEGORY: {{ auction.category.name }}
                 </span>
+                
+                {% if auction.getUser.id == app.user.id and active %}
+                <a class="form-edit-link" href="{{ path('auction_edit', {'id': auction.id }) }}">
+                    <button type="submit" name="btn-auction-edit" class="btn btn-default btn-custom-red">
+                        Edit
+                    </button>
+                </a>
+                {% endif %}
             </div>
         </div>
         <div class="row">
             {% if auction.images.count > 0 %}
-            <div class="col-md-5 col-sm-6 auction-image">
-                <img src="{{ asset(auction.getFirstImage) }}">
+            <div class="col-md-5 col-sm-5 col-sm-offset-0 col-xs-8 col-xs-offset-2 auction-image">
+                <div class="photoset" data-layout="122" style="visibility: hidden;">
+                    {% for image in auction.images %}
+                        <!-- <a href="{{ asset(image.getWebPath) }}"> -->
+                            <img src="{{ asset(image.getWebPath) }}" data-highres="{{ asset(image.getWebPath) }}">
+                        <!-- </a> -->
+                    {% endfor %}
+                </div>
             </div>
             {% endif %}
-            <div class="col-md-7 col-sm-6 auction-meta">
-                <p><strong>Price:</strong> {{ auction.price }}</p>
+            <div class="col-md-7 col-sm-7 col-xs-12 auction-meta">
+                <p><strong>Price:</strong> {{ auction.price | number_format(2, ',', ' ') }}</p>
                 <p><strong>Placed by:</strong> {{ auction.user.username }}</p>
                 <p><strong>Started on:</strong> {{ auction.startDate | date('Y-m-d') }}</p>
-                <p><strong>Ends on:</strong> {{ auction.endDate | date('Y-m-d') }}</p>
+                <p>
+                    <strong>
+                        {% if active %}
+                            Ends on:
+                        {% else %}
+                            Ended on:
+                        {% endif %}
+                    </strong> 
+                    {{ auction.endDate | date('Y-m-d') }}
+                </p>
+                {% if active %}
+                    <p>
+                        <strong>
+                            Time left:
+                        </strong>
+                        {{ auction.getDaysLeft }} days
+                    </p>
+                {% endif %}
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 auction-description">
-                <p>{{ auction.description }}</p>
+                <p>{{ auction.description | raw }}</p>
             </div>
         </div>
         <div class="row address-row">
@@ -67,9 +103,12 @@
         </div>
         <div class="row">
             <div class="col-md-6 auction-bids">
-                <h3>{{ icon('th-list') }} Current bids</h3>
+                <h3>{{ icon('th-list') }}
+                    {% if active %} Current bids {% else %} Bid history {% endif %}
+                </h3>
                 {% if highest_bid %}
-                    <h4>Current highest bid is 
+                    <h4>
+                        {% if active %} Current highest bid is {% else %} Highest bid was {% endif %}
                         <span class="highest-bid">
                             {{ highest_bid.price }}
                         </span>
@@ -96,6 +135,7 @@
                 {% endif %}
             </div>
             <div class="col-md-6 auction-new-bid">
+                {% if active and app.user.id != auction.user.id %}
                 <h3>{{ icon('shopping-cart') }} Place new bid</h3>
                 <form action="" method="post" {{ form_enctype(bid_form) }} novalidate>
                     {{ form_widget(bid_form) }}
@@ -105,6 +145,7 @@
                         Place it
                     </button>
                 </form>
+                {% endif %}
             </div>
         </div>
         <div class="row">
@@ -117,7 +158,8 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    
+    <link rel="stylesheet" href="{{ asset('js/utilities/lightbox/css/lightbox.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('js/utilities/photoset-grid/css/main.css') }}"> -->
     {% stylesheets filter="compass" 'sass/auction/single.scss' %}
         <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
@@ -125,5 +167,11 @@
 
 {% block javascripts %}
     <script src="//localhost:35729/livereload.js"></script>
+    <script src="{{ asset('js/utilities/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="{{ asset('js/utilities/photoset-grid/jquery.photoset-grid.min.js') }}"></script>
     {{ parent() }}
+    
+    {% javascripts 'js/auctions/single_view.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

@@ -81,7 +81,7 @@ class Auction {
     protected $bids;
     
     /**
-     * @ORM\OneToMany(targetEntity="Gallery", mappedBy="auction", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Gallery", mappedBy="auction", cascade={"persist"}, orphanRemoval=true)
      */
     protected $images;
     
@@ -96,6 +96,26 @@ class Auction {
         $this->views = 0;
         $this->bids = new ArrayCollection;
         $this->images = new ArrayCollection;
+    }
+    
+    //helper methods
+    public function getDaysLeft() {
+        $now = new \DateTime();
+        if($this->endDate >= $now) {
+            $diff = $this->endDate->diff($now)->format('%a');
+            return $diff;
+        } else {
+            return null;
+        }
+    }
+    
+    public function isActive() {
+        $now = new \DateTime();
+        if($this->endDate >= $now) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
     //setters, getters
@@ -217,6 +237,7 @@ class Auction {
     }
     
     public function removeImage(Gallery $image) {
+        $image->setAuction(null);
         $this->images->removeElement($image);
         return $this;
     }
@@ -232,7 +253,7 @@ class Auction {
     
     public function getFirstImage() {
         $image = $this->images->get(0);
-        return $image->getFilename();
+        return $image->getWebPath();
     }
     
     public function getAddress() {

@@ -4,7 +4,4 @@ $(function() {
     }, function() {
         $(this).find('ul').stop(true, true).slideUp();
     });
-    
-    
-    $("#e1").select2();
 });

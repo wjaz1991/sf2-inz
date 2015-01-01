@@ -1,0 +1,9 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block admin_page_content %}
+    <h1>Add category</h1>
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'} }) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-default button-blue" type="submit">Add category</button>
+    {{ form_end(form) }}
+{% endblock %}

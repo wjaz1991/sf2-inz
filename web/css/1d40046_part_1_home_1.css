@@ -1,10 +1,10 @@
-@import url(http://fonts.googleapis.com/css?family=Lato);
-/* line 4, assetic_compassXtt01d.scss */
+@import url(../../fonts/Lato/Lato-Regular.css);
+/* line 4, assetic_compassS4dEzz.scss */
 .content-wrap {
-  background: #eee;
+  background: #f9f8f8;
   overflow: hidden;
 }
-/* line 8, assetic_compassXtt01d.scss */
+/* line 8, assetic_compassS4dEzz.scss */
 .content-wrap .column {
   padding: 0;
   margin: 20px;
@@ -12,13 +12,13 @@
   padding-bottom: 9999px;
   margin-bottom: -9999px;
 }
-/* line 15, assetic_compassXtt01d.scss */
+/* line 15, assetic_compassS4dEzz.scss */
 .content-wrap .column .sidebar-container {
   padding: 0;
   width: 90%;
   margin: 20px 5%;
 }
-/* line 21, assetic_compassXtt01d.scss */
+/* line 21, assetic_compassS4dEzz.scss */
 .content-wrap .column .sidebar-container ul.sidebar-list li {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -27,68 +27,15 @@
   padding: 10px 30px;
   position: relative;
 }
-/* line 26, assetic_compassXtt01d.scss */
+/* line 26, assetic_compassS4dEzz.scss */
 .content-wrap .column .sidebar-container ul.sidebar-list li div.auction-img-small {
   text-align: center;
   width: 80px;
   float: left;
 }
-/* line 32, assetic_compassXtt01d.scss */
+/* line 32, assetic_compassS4dEzz.scss */
 .content-wrap .column .sidebar-container ul.sidebar-list li img {
   width: auto;
   height: 45px;
   margin-right: 10px;
-}
-
-/* line 44, assetic_compassXtt01d.scss */
-.pending-requests {
-  float: left;
-  display: block;
-  margin-top: 13px;
-  line-height: 50px;
-  height: 50px;
-  color: white;
-  font-size: 18px;
-  color: #022B52;
-  padding: 0 10px;
-  border-radius: 50%;
-  background: white;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-/* line 60, assetic_compassXtt01d.scss */
-.pending-requests:hover {
-  cursor: pointer;
-  background: #034584;
-  color: #9fdbfc;
-  -webkit-box-shadow: 0px 0px 5px 5px;
-  -moz-box-shadow: 0px 0px 5px 5px;
-  box-shadow: 0px 0px 5px 5px;
-}
-
-/* line 67, assetic_compassXtt01d.scss */
-.popover-pending {
-  width: 300px;
-  max-width: 500px;
-  text-align: center;
-}
-/* line 73, assetic_compassXtt01d.scss */
-.popover-pending ul li {
-  margin: 2px 10px;
-  height: 55px;
-  padding: 8px 4px;
-}
-/* line 78, assetic_compassXtt01d.scss */
-.popover-pending ul li img {
-  height: 40px;
-  width: 40px;
-  margin-right: 4px;
-}
-/* line 84, assetic_compassXtt01d.scss */
-.popover-pending ul li button {
-  margin-left: 10px;
 }

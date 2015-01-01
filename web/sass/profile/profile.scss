@@ -38,3 +38,46 @@
         }
     }
 }
+
+ul.sidebar-nav {
+    $sidebar-color: red;
+    
+    li {
+        background-color: transparent;
+        border-radius: 0;
+        border: 2px solid $nav-color;
+            
+        a {
+            border-radius: 0;
+            color: $nav-color;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            
+            &:hover {
+                background-color: #ccc;
+            }
+        }
+    }
+}
+
+.nav-static {
+    position: static;
+}
+
+//profile auctions page
+ul.profile-auctions-list {
+    img.prof-auction-img {
+        height: 120px;
+        width: auto;
+    }
+    
+    li {
+        .auction-buttons {
+            a {
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

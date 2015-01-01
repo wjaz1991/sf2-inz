@@ -19,6 +19,11 @@ class GalleryType extends AbstractType {
     }
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('image', 'file');
+        $builder->add('image', 'file', [
+            'image_path' => 'webPath',
+            'label' => false,
+        ])
+            ->add('uploaded', 'hidden')
+            ->add('filename', 'hidden');
     }
 }

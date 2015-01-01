@@ -1,0 +1,23 @@
+<ul class="nav-notifications">
+    <li>
+        <a class="search-trigger" href="#">
+            {{ icon('search') }}
+        </a>
+        <ul class="hide search-dropdown">
+            <li>
+                <input class="form-control" id="nav-searchbar" type="text" placeholder="Type something to search...">
+            </li>
+            <ul class="search-results"></ul>
+        </ul>
+    </li>
+    {% if friend_req_count %}
+    <li>
+        <a class="pending-requests-trigger" data-user="{{ app.user.id }}" href="">
+            {{ icon('bell') }} 
+            <span class="requests-count" data-count="{{ friend_req_count }}">{{ friend_req_count }}</span>
+        </a>
+        <ul class="hide requests-dropdown">
+        </ul>
+    </li>
+    {% endif %}
+</ul>

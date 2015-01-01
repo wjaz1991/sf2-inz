@@ -72,6 +72,7 @@ class AjaxController extends Controller {
      */
     public function acceptFriendAction(Request $request) {
         $id = $request->request->get('id');
+        $action = $request->request->get('action');
         
         $em = $this->getDoctrine()->getManager();
         $userRepo = $em->getRepository('InzynierAppBundle:User');
@@ -85,12 +86,63 @@ class AjaxController extends Controller {
             'user_two' => $user,
         ));
         
-        $friendship->setAccepted(true);
+        if($action == 'accept') {
+            $friendship->setAccepted(true);
+        } else {
+            $friendship->setRejected(true);
+        }
         
         $em->flush();
         
         $json['user_one'] = $friendship->getUserOne()->getUsername();
         $json['user_two'] = $friendship->getUserTwo()->getUsername();
+        
+        return new JsonResponse($json);
+    }
+    
+    /**
+     * @Route("/ajax/search", name="ajax_search", options={"expose": true})
+     */
+    public function searchAction(Request $request) {
+        $search_term = $request->request->get('text');
+        
+        if(strlen($search_term) == 0) {
+            return new JsonResponse([]);
+        }
+        
+        //searching for users
+        $elastic = $this->get('fos_elastica.finder.website');
+        $results = $elastic->find('*' . $search_term . '*');
+        
+        $json = [];
+        
+        //if there are some results, segregate them
+        if(count($results)) {
+            $counter_users = 0;
+            $counter_auctions = 0;
+            foreach($results as $entity) {
+                if($entity instanceof \Inzynier\AppBundle\Entity\User) {
+                    $json['users'][$counter_users]['username'] = $entity->getUsername();
+                    if($entity->getAvatar()) {
+                        $json['users'][$counter_users]['avatar'] = $entity->getAvatar()->getWebPath();
+                    }
+                    $counter_users++;
+                } else if($entity instanceof \Inzynier\AppBundle\Entity\Auction) {
+                    $json['auctions'][$counter_auctions]['title'] = $entity->getTitle();
+                    if(strlen($entity->getDescription()) > 70) {
+                        $json['auctions'][$counter_auctions]['description'] = substr($entity->getDescription(), 0, 70) . '...';
+                    } else {
+                        $json['auctions'][$counter_auctions]['description'] = $entity->getDescription();
+                    }
+                    $json['auctions'][$counter_auctions]['image'] = $entity->getFirstImage();
+                    $json['auctions'][$counter_auctions]['link'] = $this->generateUrl('auction_single', [
+                        'id' => $entity->getId(),
+                    ]);
+                    
+                    $counter_auctions++;
+                }
+            }
+        }
         
         return new JsonResponse($json);
     }

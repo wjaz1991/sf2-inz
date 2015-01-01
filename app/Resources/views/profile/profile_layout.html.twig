@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {% stylesheets 'sass/profile/*' filter='compass' %}
+        <link href="{{ asset_url }}" rel="stylesheet">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div class="row profile-wrap">
+        <div class="col-md-3 profile-sidebar">
+            <ul class="nav nav-pills nav-stacked sidebar-nav">
+                <li><a href="{{ path('profile_index', {'id': app.user.id}) }}">Main profile page</a></li>
+                <li><a href="{{ path('profile_auctions') }}">Auctions settings</a></li>
+                <li><a href="#">Address settings</a></li>
+                <li><a href="#">Friend settings</a></li>
+            </ul>
+        </div>
+        <div class="col-md-8 profile-content col-md-offset-1">
+            {% block profile_page_content %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {% javascripts 'js/profile/*' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+    

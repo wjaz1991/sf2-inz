@@ -1,0 +1,27 @@
+/* line 2, assetic_compassq2dAn2.scss */
+.auction-form-wrap input#auction_title {
+  height: 40px;
+  font-size: 15px;
+}
+/* line 7, assetic_compassq2dAn2.scss */
+.auction-form-wrap textarea#auction_description {
+  height: 300px;
+}
+/* line 11, assetic_compassq2dAn2.scss */
+.auction-form-wrap div[id^="auction_images_"] {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+}
+/* line 16, assetic_compassq2dAn2.scss */
+.auction-form-wrap div[id^="auction_images_"] input[type="file"] {
+  width: 50%;
+}
+/* line 21, assetic_compassq2dAn2.scss */
+.auction-form-wrap button[type="submit"] {
+  margin-top: 20px;
+}
+/* line 25, assetic_compassq2dAn2.scss */
+.auction-form-wrap button#image-add {
+  margin-top: 10px;
+}
