@@ -63,6 +63,13 @@ class AuctionController extends Controller {
             $auction->setUser($user);
             $em->persist($auction);
             $em->flush();
+            
+            $flash = $this->get('braincrafted_bootstrap.flash');
+            $flash->success('Successfully added new auction.');
+            
+            return $this->redirectToRoute('auction_single', [
+                'id' => $auction->getId(),
+            ]);
         }
         
         return $this->render('auction/new.html.twig', array(

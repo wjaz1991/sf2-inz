@@ -33,6 +33,11 @@ class AccountController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+            
+            $flash = $this->get('braincrafted_bootstrap.flash');
+            $flash->success('Successfully created your account. You can login using new credentials.');
+            
+            return $this->redirectToRoute('access_login');
         }
         
         return $this->render('account/register.html.twig', array(
