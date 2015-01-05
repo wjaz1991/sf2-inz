@@ -124,6 +124,10 @@ class Gallery {
         if($this->getImage() !== null) {
             $name = uniqid();
             $extension = $this->getImage()->guessExtension();
+            if(!$extension) {
+                $name = explode('.', $this->getImage()->getClientOriginalName());
+                $extension = end($name);
+            }
             $filename = $name . '.' . $extension;
             
             $this->filename = $filename;
