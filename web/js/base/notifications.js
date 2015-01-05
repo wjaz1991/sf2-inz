@@ -189,7 +189,6 @@ $(function() {
                     var elem = $('<li class="search-auction"></li>');
                     elem.append('<img src="/' + data.auctions[i].image + '">');
                     elem.append('<a href="' + data.auctions[i].link + '">' + data.auctions[i].title + '</a>');
-                    elem.append('<p>' + data.auctions[i].description + '</p>');
                     
                     $('.search-results').append(elem);
                 }

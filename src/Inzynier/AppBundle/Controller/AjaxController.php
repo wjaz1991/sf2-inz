@@ -125,6 +125,9 @@ class AjaxController extends Controller {
             $counter_auctions = 0;
             foreach($results as $entity) {
                 if($entity instanceof \Inzynier\AppBundle\Entity\User) {
+                    if($counter_users >= 5) {
+                        continue;
+                    }
                     $json['users'][$counter_users]['username'] = $entity->getUsername();
                     $json['users'][$counter_users]['link'] = $this->generateUrl('user_view', ['user' => $entity->getId()]);
                     if($entity->getAvatar()) {
@@ -132,6 +135,13 @@ class AjaxController extends Controller {
                     }
                     $counter_users++;
                 } else if($entity instanceof \Inzynier\AppBundle\Entity\Auction) {
+                    if($counter_auctions >= 5) {
+                        continue;
+                    }
+                    $now = new \DateTime();
+                    if($entity->getEndDate() <= $now) {
+                        continue;
+                    }
                     $json['auctions'][$counter_auctions]['title'] = $entity->getTitle();
                     if(strlen($entity->getDescription()) > 70) {
                         $json['auctions'][$counter_auctions]['description'] = substr($entity->getDescription(), 0, 70) . '...';
