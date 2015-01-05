@@ -50,7 +50,10 @@
             {% endif %}
             <div class="col-md-7 col-sm-7 col-xs-12 auction-meta">
                 <p><strong>Price:</strong> {{ auction.price | number_format(2, ',', ' ') }}</p>
-                <p><strong>Placed by:</strong> {{ auction.user.username }}</p>
+                <p><strong>Placed by:</strong> <a href='{{ path('user_view', {'user': auction.user.id }) }}'>
+                    {{ auction.user.username }}
+                    </a>
+                </p>
                 <p><strong>Started on:</strong> {{ auction.startDate | date('Y-m-d') }}</p>
                 <p>
                     <strong>
