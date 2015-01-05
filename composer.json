@@ -40,7 +40,8 @@
         "egeloen/google-map-bundle": "2.2.*@dev",
         "friendsofsymfony/elastica-bundle": "~3.1@dev",
         "knplabs/knp-paginator-bundle": "~2.4@dev",
-        "widop/http-adapter-bundle": "~1.2@dev"
+        "widop/http-adapter-bundle": "~1.2@dev",
+        "sensio/generator-bundle": "~2.3"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
