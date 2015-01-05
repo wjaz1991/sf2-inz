@@ -25,7 +25,7 @@
             <li class="list-group-item col-md-12">
                 {% if images_count > 0 %}
                 <div class="col-md-3">
-                    <img class="prof-auction-img" src="{{ auction.getFirstImage }}">
+                    <img class="prof-auction-img" src="{{ asset(auction.getFirstImage) }}">
                 </div>
                 <div class="col-md-6">
                 {% else %}

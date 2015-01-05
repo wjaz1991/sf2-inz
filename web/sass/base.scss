@@ -185,6 +185,10 @@ header.smaller {
   }
 }
 
+.auctions-actions {
+    width: 140px;
+}
+
 .welcome-title {
     font-size: 50px;
     font-weight: bold;
@@ -364,6 +368,10 @@ a.nav-btn-clicked {
       }
     }
   }
+  
+    .auctions-actions {
+        width: auto;
+    }
     
   .nav-notifications {
       margin-top: 10px;
