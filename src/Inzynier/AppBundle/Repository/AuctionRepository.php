@@ -19,8 +19,10 @@ class AuctionRepository extends EntityRepository {
     
     public function getNewestAuctions($number) {
         $em = $this->getEntityManager();
-        $dql = 'SELECT a FROM Inzynier\AppBundle\Entity\Auction a ORDER BY a.startDate DESC';
+        $dql = 'SELECT a FROM Inzynier\AppBundle\Entity\Auction a WHERE a.endDate > :date ORDER BY a.startDate DESC';
         $query = $em->createQuery($dql);
+        $now = new \DateTime();
+        $query->setParameter('date', $now);
         $query->setMaxResults($number);
         
         $auctions = $query->getResult();

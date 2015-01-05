@@ -57,7 +57,7 @@ class Geolocator {
             $address_map->setAutoZoom(false);
             $address_map->setStylesheetOptions([
                 'height' => '300px',
-                'width' => '400px',
+                'width' => '100%',
             ]);
             
             /*
