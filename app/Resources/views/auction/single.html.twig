@@ -196,7 +196,7 @@
                         <div class="col-md-12 comment-entry">
                             <p class="comment-meta">
                                 {% if comment.user.avatar %}
-                                    <img class="wall-avatar img-circle" src="{{ comment.user.avatar.getWebPath }}">
+                                    <img class="wall-avatar img-circle" src="{{ asset(comment.user.avatar.getWebPath) }}">
                                 {% endif %}
                                 posted by 
                                 <a href="{{ path('user_view', {'user': comment.user.id }) }}">

@@ -102,7 +102,7 @@
                         {% for person in recommended_people %}
                             <li class="list-group-item text-left">
                                 {% if person.avatar %}
-                                    <img class="wall-avatar img-circle" src="{{ person.avatar.getWebPath }}">
+                                    <img class="wall-avatar img-circle" src="{{ asset(person.avatar.getWebPath) }}">
                                 {% endif %}
                                 <a href="{{ path('user_view', {'user': person.id }) }}">
                                     {{ person.username }}
@@ -133,7 +133,7 @@
     <div class="col-md-10 col-md-offset-1 wall-auction">
         <p>
             {% if auction.user.avatar %}
-                <img class="wall-avatar img-circle" src="{{ auction.user.avatar.getWebPath }}">
+                <img class="wall-avatar img-circle" src="{{ asset(auction.user.avatar.getWebPath) }}">
             {% endif %}
             <a href="{{ path('user_view', {'user': auction.user.id }) }}">
                 {{ auction.user.username }}
@@ -207,7 +207,7 @@
                     <div class="col-md-12 comment-entry">
                         <p class="comment-meta">
                             {% if comment.user.avatar %}
-                                <img class="wall-avatar img-circle" src="{{ comment.user.avatar.getWebPath }}">
+                                <img class="wall-avatar img-circle" src="{{ asset(comment.user.avatar.getWebPath) }}">
                             {% endif %}
                             posted by 
                             <a href="{{ path('user_view', {'user': comment.user.id }) }}">
@@ -230,7 +230,7 @@
     <div class="col-md-10 col-md-offset-1 wall-post">
         <p>
             {% if post.user.avatar %}
-                <img class="wall-avatar img-circle" src="{{ post.user.avatar.getWebPath }}">
+                <img class="wall-avatar img-circle" src="{{ asset(post.user.avatar.getWebPath) }}">
             {% endif %}
             <a href="{{ path('user_view', {'user': post.user.id }) }}">
                 {{ post.user.username }}
@@ -280,7 +280,7 @@
                     <div class="col-md-12 comment-entry">
                         <p class="comment-meta">
                             {% if comment.user.avatar %}
-                                <img class="wall-avatar img-circle" src="{{ comment.user.avatar.getWebPath }}">
+                                <img class="wall-avatar img-circle" src="{{ asset(comment.user.avatar.getWebPath) }}">
                             {% endif %}
                             posted by 
                             <a href="{{ path('user_view', {'user': comment.user.id }) }}">

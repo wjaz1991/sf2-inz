@@ -109,7 +109,7 @@ class Gallery {
     }
     
     public function getWebPath() {
-        return $this->filename === null ? null : '/' . $this->getUploadDir() . '/' . $this->filename;
+        return $this->filename === null ? null : $this->getUploadDir() . '/' . $this->filename;
     }
     
     public function getAbsolutePath() {

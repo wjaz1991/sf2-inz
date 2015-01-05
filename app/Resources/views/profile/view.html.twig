@@ -4,7 +4,7 @@
     <div class="row user-information">
         {% if user.avatar %}
             <div class="col-md-2 user-image">
-                <img src="{{ user.avatar.getWebPath }}" class="user-avatar img-circle">
+                <img src="{{ asset(user.avatar.getWebPath) }}" class="user-avatar img-circle">
             </div>
             <div class="col-md-7 user-info">
         {% else %}

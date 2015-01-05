@@ -31,7 +31,7 @@
         {% for user in users %}
             <li class="list-group-item">
                 {% if user.avatar %}
-                    <img src="{{ user.avatar.getWebPath }}" alt="no avatar">
+                    <img src="{{ asset(user.avatar.getWebPath) }}" alt="no avatar">
                 {% else %}
                     <img src="/images/light_honeycomb.png" alt="no avatar">
                 {% endif %}
