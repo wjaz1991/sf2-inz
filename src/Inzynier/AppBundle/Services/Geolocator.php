@@ -179,7 +179,6 @@ class Geolocator {
         
         foreach($auctions as $auction) {
             $address = $auction->getAddress();
-            dump($address);
             
             $marker = new Marker();
             $marker->setPrefixJavascriptVariable('marker_auction_' . $auction->getId() . '_');

@@ -31,7 +31,6 @@ class ProfileController extends Controller {
         
         if($editForm->isValid() && $editForm->isSubmitted()) {
             $em = $this->get('doctrine')->getManager();
-            dump($user);
             $em->persist($user);
             $em->flush();
             $msg = $flash->success('Successfully updated your data.');

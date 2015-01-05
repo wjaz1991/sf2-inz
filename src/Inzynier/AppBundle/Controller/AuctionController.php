@@ -77,7 +77,6 @@ class AuctionController extends Controller {
         $repo = $this->get('doctrine')->getManager()->getRepository('InzynierAppBundle:Auction');
         
         $auctions = $repo->findActive();
-        dump($auctions);
         
         return $this->render('auction/show_all.html.twig', array(
             'auctions' => $auctions

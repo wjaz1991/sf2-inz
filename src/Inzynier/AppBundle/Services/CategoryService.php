@@ -104,8 +104,6 @@ class CategoryService {
             $counter++;
         }
         
-        dump($this->lists);
-        
         $result['data'] = $categories;
         $result['levels'] = max($this->levels);
         $result['lists'] = $this->lists;

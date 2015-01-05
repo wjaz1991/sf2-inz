@@ -128,7 +128,6 @@ class Gallery {
             
             $this->filename = $filename;
         }
-        dump($this->image);
     }
     
     /**
