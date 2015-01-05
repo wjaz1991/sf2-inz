@@ -175,7 +175,7 @@ $(function() {
                 $('.search-results').append('<li><h4>Users</h4></li>');
                 for(var i=0; i<data.users.length; i++) {
                     var elem = $('<li class="search-user"></li>');
-                    elem.append('<img src="' + data.users[i].avatar + '">');
+                    elem.append('<img src="/' + data.users[i].avatar + '">');
                     elem.append('<a href="' + data.users[i].link + '">' + data.users[i].username + '</a>');
                     
                     $('.search-results').append(elem);
@@ -187,7 +187,7 @@ $(function() {
                 $('.search-results').append('<li><h4>Auctions</h4></li>');
                 for(var i=0; i<data.auctions.length; i++) {
                     var elem = $('<li class="search-auction"></li>');
-                    elem.append('<img src="' + data.auctions[i].image + '">');
+                    elem.append('<img src="/' + data.auctions[i].image + '">');
                     elem.append('<a href="' + data.auctions[i].link + '">' + data.auctions[i].title + '</a>');
                     elem.append('<p>' + data.auctions[i].description + '</p>');
                     
