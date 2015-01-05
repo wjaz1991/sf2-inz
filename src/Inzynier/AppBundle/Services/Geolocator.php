@@ -60,17 +60,6 @@ class Geolocator {
                 'width' => '100%',
             ]);
             
-            /*
-            $info_window = new InfoWindow();
-            $info_window->setPrefixJavascriptVariable('info_window_');
-            $content = '<h4>' . $auction->getTitle() . '</h4>'
-                    . '<p>' . $address->getStreet() . '</p>'
-                    . '<p>' . $address->getPostcode() . ' ' . $address->getCity() . '</p>'
-                    . '<p>' . $address->getCountry() . '</p>';
-            $info_window->setContent($content);
-            $info_window->setOpen(TRUE);
-            */
-            
             $marker = new Marker();
             //$marker->setInfoWindow($info_window);
             $marker->setPrefixJavascriptVariable('marker_');
@@ -196,7 +185,8 @@ class Geolocator {
             $content = '<h4><a href="' . $link . '">' . $auction->getTitle() . '</a></h4>'
                     . '<p>' . $address->getStreet() . '</p>'
                     . '<p>' . $address->getPostcode() . ' ' . $address->getCity() . '</p>'
-                    . '<p>' . $address->getCountry() . '</p>';
+                    . '<p>' . $address->getCountry() . '</p>'
+                    . '<p>' . number_format($address->getDistance(), 2, '.', ',') . ' km. from your location</p>';
             $info_window->setContent($content);
             $info_window->setOpen(false);
             $marker->setInfoWindow($info_window);
