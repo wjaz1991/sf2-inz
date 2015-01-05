@@ -59,7 +59,7 @@ class AjaxController extends Controller {
             $users[$counter]['id'] = $invitee->getId();
             $users[$counter]['link'] = $this->generateUrl('user_view', ['user' => $invitee->getId()]);
             if($invitee->getAvatar()) {
-                $users[$counter]['avatar'] = $invitee->getAvatar()->getWebPath();
+                $users[$counter]['avatar'] = '/' . $invitee->getAvatar()->getWebPath();
             }
             $counter++;
         }
