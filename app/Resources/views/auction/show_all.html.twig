@@ -3,7 +3,10 @@
 {% block body %}
     <div class="col-md-10 col-md-offset-1">
         <h1 class="text-center">Newest active auctions</h1><br>
-
+        <div class="col-md-12 pagination-small text-center">
+            {{ knp_pagination_render(auctions) }}
+        </div>
+        <div class="col-md-12">
         <ul style="position: relative;" class="list-group">
             {% for auction in auctions %}
                 <li class="list-group-item">
@@ -45,6 +48,7 @@
                 </li>
             {% endfor %}
         </ul>
+        </div>
     </div>
 {% endblock %}
 

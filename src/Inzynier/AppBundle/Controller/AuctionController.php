@@ -80,13 +80,17 @@ class AuctionController extends Controller {
     /**
      * @Route("/auctions", name="auctions_all")
      */
-    function showAuctions() {
+    function showAuctions(Request $request) {
         $repo = $this->get('doctrine')->getManager()->getRepository('InzynierAppBundle:Auction');
         
         $auctions = $repo->findActive();
         
+        $page = $request->query->get('page', 1);
+        $paginator = $this->get('knp_paginator');
+        $paged_auctions = $paginator->paginate($auctions, $page, 10);
+        
         return $this->render('auction/show_all.html.twig', array(
-            'auctions' => $auctions
+            'auctions' => $paged_auctions
         ));
     }
     
