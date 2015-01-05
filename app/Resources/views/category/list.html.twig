@@ -1,5 +1,65 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ dump(categories) }}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Browse categories</h2>
+        </div>
+        
+        <div class="col-md-12">
+            <div class="category-tree">
+                {% set start = 0 %}
+                <div class="col-md-3">
+                    {% for list in lists %}
+                        {% if loop.index - 1 == start %}
+                            {{ list | raw }}
+                            {% set start = start + 4 %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% set start = 1 %}
+                <div class="col-md-3">
+                    {% for list in lists %}
+                        {% if loop.index - 1 == start %}
+                            {{ list | raw }}
+                            {% set start = start + 4 %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% set start = 2 %}
+                <div class="col-md-3">
+                    {% for list in lists %}
+                        {% if loop.index - 1 == start %}
+                            {{ list | raw }}
+                            {% set start = start + 4 %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% set start = 3 %}
+                <div class="col-md-3">
+                    {% for list in lists %}
+                        {% if loop.index - 1 == start %}
+                            {{ list | raw }}
+                            {% set start = start + 4 %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    {% javascripts 'js/category/category_list.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets 'sass/category/list.scss' filter='compass' %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
 {% endblock %}

@@ -1,13 +1,13 @@
 @import url(../../fonts/Lato/Lato-Regular.css);
-/* line 6, assetic_compassdHUr81.scss */
+/* line 6, assetic_compassK6twNc.scss */
 .profile-wrap h1 {
   text-align: center;
 }
-/* line 10, assetic_compassdHUr81.scss */
+/* line 10, assetic_compassK6twNc.scss */
 .profile-wrap .profile-avatar {
   text-align: center;
 }
-/* line 13, assetic_compassdHUr81.scss */
+/* line 13, assetic_compassK6twNc.scss */
 .profile-wrap .profile-avatar img {
   height: 100%;
   max-height: 400px;
@@ -17,34 +17,34 @@
   -ms-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 20, assetic_compassdHUr81.scss */
+/* line 20, assetic_compassK6twNc.scss */
 .profile-wrap .profile-avatar img:hover {
   -webkit-box-shadow: 0 0 10px 10px #022B52;
   -moz-box-shadow: 0 0 10px 10px #022B52;
   box-shadow: 0 0 10px 10px #022B52;
 }
-/* line 26, assetic_compassdHUr81.scss */
+/* line 26, assetic_compassK6twNc.scss */
 .profile-wrap form .btn-submit {
   margin: 0 auto;
   text-align: center;
 }
-/* line 30, assetic_compassdHUr81.scss */
+/* line 30, assetic_compassK6twNc.scss */
 .profile-wrap form .btn-submit button {
   color: #9fdbfc;
   background-color: #022B52;
 }
-/* line 35, assetic_compassdHUr81.scss */
+/* line 35, assetic_compassK6twNc.scss */
 .profile-wrap form .btn-submit button:hover {
   background-color: #034584;
 }
 
-/* line 45, assetic_compassdHUr81.scss */
+/* line 45, assetic_compassK6twNc.scss */
 ul.sidebar-nav li {
   background-color: transparent;
   border-radius: 0;
   border: 2px solid #022B52;
 }
-/* line 50, assetic_compassdHUr81.scss */
+/* line 50, assetic_compassK6twNc.scss */
 ul.sidebar-nav li a {
   border-radius: 0;
   color: #022B52;
@@ -52,23 +52,32 @@ ul.sidebar-nav li a {
   text-transform: uppercase;
   text-align: center;
 }
-/* line 57, assetic_compassdHUr81.scss */
+/* line 57, assetic_compassK6twNc.scss */
 ul.sidebar-nav li a:hover {
   background-color: #ccc;
 }
 
-/* line 64, assetic_compassdHUr81.scss */
+/* line 64, assetic_compassK6twNc.scss */
 .nav-static {
   position: static;
 }
 
-/* line 70, assetic_compassdHUr81.scss */
-ul.profile-auctions-list img.prof-auction-img {
-  height: 120px;
-  width: auto;
+/* line 69, assetic_compassK6twNc.scss */
+ul.profile-auctions-list {
+  margin-top: 30px;
 }
-/* line 77, assetic_compassdHUr81.scss */
+/* line 72, assetic_compassK6twNc.scss */
+ul.profile-auctions-list img.prof-auction-img {
+  height: auto;
+  width: 195px;
+}
+/* line 79, assetic_compassK6twNc.scss */
 ul.profile-auctions-list li .auction-buttons a {
   display: block;
   margin-bottom: 10px;
+}
+
+/* line 87, assetic_compassK6twNc.scss */
+td button {
+  height: auto !important;
 }

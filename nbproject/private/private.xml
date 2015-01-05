@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/wojtek/Documents/public_html/inzynier/web/sass/partials/_buttons.scss</file>
-            <file>file:/home/wojtek/Documents/public_html/inzynier/web/sass/auction/edit.scss</file>
-            <file>file:/home/wojtek/Documents/public_html/inzynier/app/Resources/views/form/auction/edit.html.twig</file>
-            <file>file:/home/wojtek/Documents/public_html/inzynier/web/js/auctions/images.js</file>
-            <file>file:/home/wojtek/Documents/public_html/inzynier/app/Resources/views/form/auction/new.html.twig</file>
-            <file>file:/home/wojtek/Documents/public_html/inzynier/app/Resources/views/auction/new.html.twig</file>
-            <file>file:/home/wojtek/Documents/public_html/inzynier/app/Resources/views/auction/edit.html.twig</file>
+            <file>file:/home/wojtek/Documents/public_html/inzynier/app/Resources/views/profile/map.html.twig</file>
+            <file>file:/home/wojtek/Documents/public_html/inzynier/src/Inzynier/AppBundle/Controller/ProfileController.php</file>
+            <file>file:/home/wojtek/Documents/public_html/inzynier/app/Resources/views/home.html.twig</file>
+            <file>file:/home/wojtek/Documents/public_html/inzynier/app/Resources/views/auction/single.html.twig</file>
+            <file>file:/home/wojtek/Documents/public_html/inzynier/src/Inzynier/AppBundle/Services/Geolocator.php</file>
+            <file>file:/home/wojtek/Documents/public_html/inzynier/src/Inzynier/AppBundle/Controller/DefaultController.php</file>
         </group>
     </open-files>
 </project-private>

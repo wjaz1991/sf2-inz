@@ -1,0 +1,71 @@
+/* line 1, assetic_compassoQ7B18.scss */
+.user-avatar {
+  width: 200px;
+  height: 200px;
+}
+
+/* line 6, assetic_compassoQ7B18.scss */
+.friend-avatar {
+  height: 50px;
+  width: 50px;
+}
+
+/* line 11, assetic_compassoQ7B18.scss */
+.table-responsive {
+  margin-top: 40px;
+}
+
+/* line 16, assetic_compassoQ7B18.scss */
+tr td:first-child {
+  text-align: center;
+}
+
+/* line 21, assetic_compassoQ7B18.scss */
+td {
+  vertical-align: middle !important;
+}
+/* line 24, assetic_compassoQ7B18.scss */
+td img {
+  max-width: 200px;
+  height: auto;
+}
+
+/* line 31, assetic_compassoQ7B18.scss */
+.action-buttons button {
+  margin-bottom: 10px;
+}
+
+/* line 36, assetic_compassoQ7B18.scss */
+.user-post {
+  background-color: #ccc;
+}
+/* line 39, assetic_compassoQ7B18.scss */
+.user-post .post-meta {
+  padding: 5px 5px 3px 5px;
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+}
+/* line 46, assetic_compassoQ7B18.scss */
+.user-post .post-text {
+  padding: 0 5px 5px 5px;
+  margin-bottom: 0;
+}
+/* line 51, assetic_compassoQ7B18.scss */
+.user-post .post-votes {
+  padding: 0 5px 5px 5px;
+  background-color: #ccc;
+  margin-top: 0;
+}
+/* line 56, assetic_compassoQ7B18.scss */
+.user-post .post-votes .votes-up, .user-post .post-votes .votes-down {
+  background-color: white;
+  font-size: 13px;
+}
+
+@media all and (max-width: 768px) {
+  /* line 64, assetic_compassoQ7B18.scss */
+  .user-image, .user-info, .action-buttons, .user-friends {
+    text-align: center;
+  }
+}

@@ -1,6 +1,6 @@
 {% block file_widget %}
     {% spaceless %}
-        {% if image_url is not null %}
+        {% if image_url is defined and image_url is not null %}
             <img class="file-type-image" src="{{ asset(image_url) }}">
         {% endif %}
         {{ block('form_widget') }}

@@ -1,0 +1,60 @@
+{% extends "profile/profile_layout.html.twig" %}
+
+{% block title %}
+    {{ app.user.username }}'s profile
+{% endblock %}
+
+{% block profile_page_content %}
+    <h3>Your account state</h3>
+    <h3>{{ total | number_format(2, ',', ' ') }} left to pay</h3>
+    
+    {{ knp_pagination_render(auctions) }}
+    
+    <div class="col-md-12">
+        <h3>Your auctions</h3>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Ended</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for auction in auctions %}
+                        <tr>
+                            <td>
+                                {% if auction.images | length > 0 %}
+                                    <img src="{{ asset(auction.getFirstImage)}}">
+                                {% else %}
+                                    No image
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{{ path('auction_single', {'id': auction.id }) }}">
+                                    {{ auction.title }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ auction.price | number_format(2, ',', ' ') }}
+                            </td>
+                            <td>
+                                {% if auction.paid %}
+                                    <button class="btn btn-default button-blue">Paid</button>
+                                {% else %}
+                                    <button class="btn btn-default button-red">Not paid - click to pay</button>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {{ auction.endDate | date('Y-m-d H:i:s') }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

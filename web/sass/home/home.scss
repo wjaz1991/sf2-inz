@@ -30,12 +30,58 @@
                         
                     }
                     img {
-                        width: auto;
-                        height: 45px;
+                        width: 70px;
+                        height: auto;
                         margin-right: 10px;
                     }
                 }
             }
         }
     }   
+}
+
+
+.wall-avatar {
+    height: 40px;
+    width: 40px;
+}
+
+.wall-auction, .wall-post {
+    background-color: white;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.wall-auction-img {
+    width: 150px;
+    height: auto;
+    float: left;
+    margin-right: 10px;
+}
+
+.category-tag {
+    a {
+        color: white;
+        background: black;
+        padding: 1px 5px;
+        @include border-radius(4px);
+    }
+}
+
+.post-form {
+    margin-bottom: 20px;
+}
+
+.more-trigger {
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #333;
+    color: white;
+    margin-bottom: 10px;
+    
+    &:hover {
+        background-color: #555;
+        cursor: pointer;
+    }
 }

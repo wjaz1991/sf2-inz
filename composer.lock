@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ad024c97ad0cf2c34268b1ceb0e36af3",
+    "hash": "4904ae654d8cda0894c8ec288502acd6",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -1193,6 +1193,133 @@
             "type": "library"
         },
         {
+            "name": "knplabs/knp-components",
+            "version": "1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/knp-components.git",
+                "reference": "6d091c2f16eec2769db38f38e08c7bd5847ce072"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/6d091c2f16eec2769db38f38e08c7bd5847ce072",
+                "reference": "6d091c2f16eec2769db38f38e08c7bd5847ce072",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "doctrine/mongodb-odm": "~1.0@beta",
+                "doctrine/orm": "~2.4",
+                "phpunit/phpunit": "~4.2",
+                "ruflin/elastica": "~1.0",
+                "symfony/event-dispatcher": "~2.5"
+            },
+            "suggest": {
+                "doctrine/common": "to allow usage pagination with Doctrine ArrayCollection",
+                "doctrine/mongodb-odm": "to allow usage pagination with Doctrine ODM MongoDB",
+                "doctrine/orm": "to allow usage pagination with Doctrine ORM",
+                "propel/propel1": "to allow usage pagination with Propel ORM",
+                "ruflin/Elastica": "to allow usage pagination with ElasticSearch Client",
+                "solarium/solarium": "to allow usage pagination with Solarium Client"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Component": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/knp-components/contributors"
+                }
+            ],
+            "description": "Knplabs component library",
+            "homepage": "http://github.com/KnpLabs/knp-components",
+            "keywords": [
+                "components",
+                "knp",
+                "knplabs",
+                "pager",
+                "paginator"
+            ],
+            "time": "2014-10-06 10:38:10"
+        },
+        {
+            "name": "knplabs/knp-paginator-bundle",
+            "version": "dev-master",
+            "target-dir": "Knp/Bundle/PaginatorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
+                "reference": "b51aa32f129711fa76f853b7536efefd8c5dbf07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/b51aa32f129711fa76f853b7536efefd8c5dbf07",
+                "reference": "b51aa32f129711fa76f853b7536efefd8c5dbf07",
+                "shasum": ""
+            },
+            "require": {
+                "knplabs/knp-components": "~1.2",
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": "~2.0",
+                "twig/twig": "~1.5"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Bundle\\PaginatorBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony2 Community",
+                    "homepage": "http://github.com/KnpLabs/KnpPaginatorBundle/contributors"
+                }
+            ],
+            "description": "Paginator bundle for Symfony2 to automate pagination and simplify sorting and other features",
+            "homepage": "http://github.com/KnpLabs/KnpPaginatorBundle",
+            "keywords": [
+                "Symfony2",
+                "bundle",
+                "knp",
+                "knplabs",
+                "pager",
+                "pagination",
+                "paginator"
+            ],
+            "time": "2014-11-29 17:18:09"
+        },
+        {
             "name": "kriswallsmith/assetic",
             "version": "v1.2.0",
             "source": {
@@ -1992,7 +2119,7 @@
         },
         {
             "name": "twig/extensions",
-            "version": "v1.2.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig-extensions.git",
@@ -2098,6 +2225,126 @@
                 "templating"
             ],
             "time": "2014-10-17 12:53:44"
+        },
+        {
+            "name": "widop/http-adapter",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/widop/http-adapter.git",
+                "reference": "9f21040064d290cc70db4affe3191828f419f5af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/widop/http-adapter/zipball/9f21040064d290cc70db4affe3191828f419f5af",
+                "reference": "9f21040064d290cc70db4affe3191828f419f5af",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "guzzle/guzzle": "*",
+                "kriswallsmith/buzz": "*",
+                "phpunit/phpunit": "3.7.*",
+                "zendframework/zend-http": "*"
+            },
+            "suggest": {
+                "ext-curl": "Allows you to use cURL adapter",
+                "guzzle/guzzle": "Allows you to use Guzzle adapter",
+                "kriswallsmith/buzz": "Allows you to use Buzz adapter",
+                "zendframework/zend-http": "Allows you to use Zend adapter"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Widop\\HttpAdapter": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                },
+                {
+                    "name": "Widop",
+                    "email": "contact@widop.com"
+                }
+            ],
+            "description": "Issue HTTP request.",
+            "keywords": [
+                "http",
+                "request"
+            ],
+            "time": "2014-07-20 18:29:58"
+        },
+        {
+            "name": "widop/http-adapter-bundle",
+            "version": "dev-master",
+            "target-dir": "Widop/HttpAdapterBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/widop/WidopHttpAdapterBundle.git",
+                "reference": "f8ff24f423ee8db7ba0a72eecafcf53dcb453d79"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/widop/WidopHttpAdapterBundle/zipball/f8ff24f423ee8db7ba0a72eecafcf53dcb453d79",
+                "reference": "f8ff24f423ee8db7ba0a72eecafcf53dcb453d79",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/framework-bundle": "2.*",
+                "widop/http-adapter": "1.1.*"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "guzzle/guzzle": "*",
+                "kriswallsmith/buzz": "*",
+                "phpunit/phpunit": "3.7.*",
+                "zendframework/zend-http": "*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Widop\\HttpAdapterBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                },
+                {
+                    "name": "Widop",
+                    "email": "contact@widop.com"
+                }
+            ],
+            "description": "Issue HTTP request.",
+            "keywords": [
+                "http",
+                "request"
+            ],
+            "time": "2014-07-20 18:40:11"
         },
         {
             "name": "willdurand/geocoder",
@@ -2257,10 +2504,13 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "twig/extensions": 20,
         "twbs/bootstrap-sass": 20,
         "friendsofsymfony/jsrouting-bundle": 20,
         "egeloen/google-map-bundle": 20,
-        "friendsofsymfony/elastica-bundle": 20
+        "friendsofsymfony/elastica-bundle": 20,
+        "knplabs/knp-paginator-bundle": 20,
+        "widop/http-adapter-bundle": 20
     },
     "prefer-stable": false,
     "platform": {

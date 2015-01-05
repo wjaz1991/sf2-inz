@@ -14,8 +14,9 @@
             <ul class="nav nav-pills nav-stacked sidebar-nav">
                 <li><a href="{{ path('profile_index', {'id': app.user.id}) }}">Main profile page</a></li>
                 <li><a href="{{ path('profile_auctions') }}">Auctions settings</a></li>
-                <li><a href="#">Address settings</a></li>
+                <li><a href="{{ path('profile_address', {'id': app.user.id }) }}">Address settings</a></li>
                 <li><a href="#">Friend settings</a></li>
+                <li><a href="{{ path('profile_payments', {'user': app.user.id }) }}">Payments</a></li>
             </ul>
         </div>
         <div class="col-md-8 profile-content col-md-offset-1">

@@ -15,6 +15,8 @@ use Inzynier\AppBundle\Interfaces\AddressInterface;
  * @ORM\Table(name="addresses")
  */
 class Address implements AddressInterface {
+    private $distance = null;
+    
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -41,13 +43,12 @@ class Address implements AddressInterface {
     protected $city;
     
     /**
-     * @ORM\Column(type="string", length=9)
+     * @ORM\Column(type="string", length=9, nullable=true)
      */
     protected $telephone;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Country")
-     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     * @ORM\Column(type="string")
      */
     protected $country;
     
@@ -56,6 +57,22 @@ class Address implements AddressInterface {
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
+    
+    /**
+     * @ORM\Column(type="decimal", scale=2, precision=6, nullable=true)
+     */
+    protected $latitude;
+    
+    /**
+     * @ORM\Column(type="decimal", scale=2, precision=6, nullable=true)
+     */
+    protected $longitude;
+    
+    public function __construct() {
+        $this->latitude = null;
+        $this->longitude = null;
+        $this->distance = null;
+    }
     
     
     //SETTERS, GETTERS
@@ -122,5 +139,32 @@ class Address implements AddressInterface {
     public function getUser()
     {
         return $this->user;
+    }
+    
+    public function getLatitude() {
+        return $this->latitude;
+    }
+    
+    public function setLatitude($latitude) {
+        $this->latitude = $latitude;
+        return $this;
+    }
+    
+    public function getLongitude() {
+        return $this->longitude;
+    }
+    
+    public function setLongitude($longitude) {
+        $this->longitude = $longitude;
+        return $this;
+    }
+    
+    public function getDistance() {
+        return $this->distance;
+    }
+    
+    public function setDistance($distance) {
+        $this->distance = $distance;
+        return $this;
     }
 }

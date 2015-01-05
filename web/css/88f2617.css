@@ -1,13 +1,13 @@
 @import url(../../fonts/Lato/Lato-Regular.css);
-/* line 6, assetic_compassCaAfia.scss */
+/* line 6, assetic_compassT14f0o.scss */
 .profile-wrap h1 {
   text-align: center;
 }
-/* line 10, assetic_compassCaAfia.scss */
+/* line 10, assetic_compassT14f0o.scss */
 .profile-wrap .profile-avatar {
   text-align: center;
 }
-/* line 13, assetic_compassCaAfia.scss */
+/* line 13, assetic_compassT14f0o.scss */
 .profile-wrap .profile-avatar img {
   height: 100%;
   max-height: 400px;
@@ -17,34 +17,34 @@
   -ms-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 20, assetic_compassCaAfia.scss */
+/* line 20, assetic_compassT14f0o.scss */
 .profile-wrap .profile-avatar img:hover {
   -webkit-box-shadow: 0 0 10px 10px #022B52;
   -moz-box-shadow: 0 0 10px 10px #022B52;
   box-shadow: 0 0 10px 10px #022B52;
 }
-/* line 26, assetic_compassCaAfia.scss */
+/* line 26, assetic_compassT14f0o.scss */
 .profile-wrap form .btn-submit {
   margin: 0 auto;
   text-align: center;
 }
-/* line 30, assetic_compassCaAfia.scss */
+/* line 30, assetic_compassT14f0o.scss */
 .profile-wrap form .btn-submit button {
   color: #9fdbfc;
   background-color: #022B52;
 }
-/* line 35, assetic_compassCaAfia.scss */
+/* line 35, assetic_compassT14f0o.scss */
 .profile-wrap form .btn-submit button:hover {
   background-color: #034584;
 }
 
-/* line 45, assetic_compassCaAfia.scss */
+/* line 45, assetic_compassT14f0o.scss */
 ul.sidebar-nav li {
   background-color: transparent;
   border-radius: 0;
   border: 2px solid #022B52;
 }
-/* line 50, assetic_compassCaAfia.scss */
+/* line 50, assetic_compassT14f0o.scss */
 ul.sidebar-nav li a {
   border-radius: 0;
   color: #022B52;
@@ -52,23 +52,104 @@ ul.sidebar-nav li a {
   text-transform: uppercase;
   text-align: center;
 }
-/* line 57, assetic_compassCaAfia.scss */
+/* line 57, assetic_compassT14f0o.scss */
 ul.sidebar-nav li a:hover {
   background-color: #ccc;
 }
 
-/* line 64, assetic_compassCaAfia.scss */
+/* line 64, assetic_compassT14f0o.scss */
 .nav-static {
   position: static;
 }
 
-/* line 70, assetic_compassCaAfia.scss */
-ul.profile-auctions-list img.prof-auction-img {
-  height: 120px;
-  width: auto;
+/* line 69, assetic_compassT14f0o.scss */
+ul.profile-auctions-list {
+  margin-top: 30px;
 }
-/* line 77, assetic_compassCaAfia.scss */
+/* line 72, assetic_compassT14f0o.scss */
+ul.profile-auctions-list img.prof-auction-img {
+  height: auto;
+  width: 195px;
+}
+/* line 79, assetic_compassT14f0o.scss */
 ul.profile-auctions-list li .auction-buttons a {
   display: block;
   margin-bottom: 10px;
+}
+
+/* line 87, assetic_compassT14f0o.scss */
+td button {
+  height: auto !important;
+}
+
+/* line 1, assetic_compassYrKQ9h.scss */
+.user-avatar {
+  width: 200px;
+  height: 200px;
+}
+
+/* line 6, assetic_compassYrKQ9h.scss */
+.friend-avatar {
+  height: 50px;
+  width: 50px;
+}
+
+/* line 11, assetic_compassYrKQ9h.scss */
+.table-responsive {
+  margin-top: 40px;
+}
+
+/* line 16, assetic_compassYrKQ9h.scss */
+tr td:first-child {
+  text-align: center;
+}
+
+/* line 21, assetic_compassYrKQ9h.scss */
+td {
+  vertical-align: middle !important;
+}
+/* line 24, assetic_compassYrKQ9h.scss */
+td img {
+  max-width: 200px;
+  height: auto;
+}
+
+/* line 31, assetic_compassYrKQ9h.scss */
+.action-buttons button {
+  margin-bottom: 10px;
+}
+
+/* line 36, assetic_compassYrKQ9h.scss */
+.user-post {
+  background-color: #ccc;
+}
+/* line 39, assetic_compassYrKQ9h.scss */
+.user-post .post-meta {
+  padding: 5px 5px 3px 5px;
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+}
+/* line 46, assetic_compassYrKQ9h.scss */
+.user-post .post-text {
+  padding: 0 5px 5px 5px;
+  margin-bottom: 0;
+}
+/* line 51, assetic_compassYrKQ9h.scss */
+.user-post .post-votes {
+  padding: 0 5px 5px 5px;
+  background-color: #ccc;
+  margin-top: 0;
+}
+/* line 56, assetic_compassYrKQ9h.scss */
+.user-post .post-votes .votes-up, .user-post .post-votes .votes-down {
+  background-color: white;
+  font-size: 13px;
+}
+
+@media all and (max-width: 768px) {
+  /* line 64, assetic_compassYrKQ9h.scss */
+  .user-image, .user-info, .action-buttons, .user-friends {
+    text-align: center;
+  }
 }

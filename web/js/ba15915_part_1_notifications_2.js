@@ -11,6 +11,8 @@ $(function() {
     $(document).delegate("button[name='friend_confirm']", 'click', function() {
         var id = $(this).attr('data-id');
         
+        var that = $(this);
+        
         var request = $.ajax({
             url: Routing.generate('ajax_friend_accept'),
             method: 'post',
@@ -25,13 +27,27 @@ $(function() {
             if(msg.error) {
                 
             } else {
-                $("button[name='friend_confirm']").parent().remove();
+                $(that).parent().remove();
+                
+                var reqCount = parseInt($(".requests-count").attr('data-count'));
+                
+                console.log(reqCount);
+                
+                if(reqCount >= 1) {
+                    $(".requests-count").text(reqCount - 1);
+                    $(".requests-count").attr('data-count', reqCount - 1);
+                }
+                
+                if(reqCount - 1 == 0) {
+                    $('.pending-requests-trigger').parent().remove();
+                }
             }
         })
     });
     
     $(document).delegate("button[name='friend_reject']", 'click', function() {
         var id = $(this).attr('data-id');
+        var that = $(this);
         
         var request = $.ajax({
             url: Routing.generate('ajax_friend_accept'),
@@ -47,7 +63,7 @@ $(function() {
             if(msg.error) {
                 
             } else {
-                $("button[name='friend_reject']").parent().remove();
+                $(that).parent().remove();
                 
                 var reqCount = parseInt($(".requests-count").attr('data-count'));
                 
@@ -116,7 +132,7 @@ $(function() {
                     if(data[i].avatar) {
                         html += "<img class='img-circle' src='" + data[i].avatar + "'>";
                     }
-                    html += data[i].username;
+                    html += '<a href="' + data[i].link + '">' + data[i].username + '</a>';
                     html += '<button data-id="' + data[i].id + '" type="submit" name="friend_confirm" class="btn btn-default">Confirm</button>';
                     html += '<button data-id="' + data[i].id + '" type="submit" name="friend_reject" class="btn btn-danger">Reject</button>';
 
@@ -160,7 +176,7 @@ $(function() {
                 for(var i=0; i<data.users.length; i++) {
                     var elem = $('<li class="search-user"></li>');
                     elem.append('<img src="' + data.users[i].avatar + '">');
-                    elem.append(data.users[i].username);
+                    elem.append('<a href="' + data.users[i].link + '">' + data.users[i].username + '</a>');
                     
                     $('.search-results').append(elem);
                 }

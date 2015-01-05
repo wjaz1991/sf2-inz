@@ -1,0 +1,9 @@
+{% import 'home.html.twig' as macros %}
+
+{% for entry in wall_data %}
+    {% if entry.getClassName == 'Post' %}
+        {{ macros.wall_post_block(entry) }}
+    {% elseif entry.getClassName == 'Auction' %}
+        {{ macros.wall_auction_block(entry) }}
+    {% endif %}
+{% endfor %}

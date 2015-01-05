@@ -1,5 +1,7 @@
 {% extends '::base.html.twig' %}
 
+{% import _self as macros %}
+
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets 'sass/home/*' filter="compass"%}
@@ -9,22 +11,41 @@
 
 {% block body %}
     <div class="row content-wrap">
+        <input type="hidden" id="date-stamp" value="{{ date_stamp | date('Y-m-d H:i:s') }}">
         <!-- MAIN USER WALL -->
-        <div class="column col-md-7 text-center">
-            <h1>User Wall</h1>
-            {% for friend in friends %}
-                {{ friend.username }}
+        <div class="column col-md-7">
+            <h2 class="text-center">User Wall</h2>
+            
+            <div class="col-md-10 col-md-offset-1 post-form">
+                <form action="" method="post" class="forms-inline">
+                    <h3>Publish something ...</h3>
+                    {{ form_widget(post_form) }}
+                    {{ form_rest(post_form) }}
+                    <button type="submit" class="btn btn-default button-blue">
+                        Publish
+                    </button>
+                </form>
+            </div>
+            {% for entry in wall_data %}
+                {% if entry.getClassName == 'Post' %}
+                    {{ macros.wall_post_block(entry) }}
+                {% elseif entry.getClassName == 'Auction' %}
+                    {{ macros.wall_auction_block(entry) }}
+                {% endif %}
             {% endfor %}
+            <div class="col-md-10 col-md-offset-1 more-trigger text-center">
+                Load more
+            </div>
         </div> <!-- END USER WALL -->
         <!-- SIDEBAR WITH OTHER USEFUL INFORMATIONS -->
         <div class="column col-md-4 text-center">
-            {% if auctions %}
+            {% if newest_auctions and newest_auctions | length > 0 %}
             <div class="col-md-12 sidebar-container">
                 <ul class="list-group text-left sidebar-list">
                     <h3 class="text-center">
                         Latest auctions
                     </h3>
-                    {% for auction in auctions %}
+                    {% for auction in newest_auctions %}
                         <li class="list-group-item">
                             {% if auction.images | length %}
                             <div class="auction-img-small">
@@ -44,11 +65,56 @@
             {% endif %}
             
             <div class="col-md-12 sidebar-container">
-                <h3>Auctions near me</h3>
+                <ul class="list-group text-left sidebar-list">
+                    <h3 class="text-center">
+                        Nearest auctions
+                        <a href="{{ path('profile_map', {'user': app.user.id }) }}">
+                            (view map)
+                        </a>
+                    </h3>
+                    {% if auctions and auctions | length > 0 %}
+                        {% for auction in auctions %}
+                            <li class="list-group-item">
+                                {% if auction.images | length %}
+                                <div class="auction-img-small">
+                                    <img src="{{ asset(auction.getFirstImage) }}" alt="No image">
+                                </div>
+                                {% endif %}
+                                <div class="auction-meta-small">
+                                    <a href="{{ path('auction_single', { 'id': auction.id }) }}">{{ auction.title}}</a><br>
+                                    started on {{ auction.startDate | date('Y-m-d H:i:s') }} <br>
+                                    {% if auction.address %} from {{ auction.address.city }} {% endif %}
+                                    <p>Distance: {{ auction.address.distance | number_format(2) }} km.</p>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                    {% if address_message %}
+                        <h4 class="text-center">{{ address_message }}</h4>
+                    {% endif %}
+                </ul>
             </div>
-            <div class="col-md-12 sidebar-container">
-                <h3>People you may know</h3>
-            </div>
+                
+            {% if recommended_people | length > 0 %}
+                <div class="col-md-12 sidebar-container">
+                    <h3>People you may know</h3>
+                    <ul class="list-group">
+                        {% for person in recommended_people %}
+                            <li class="list-group-item text-left">
+                                {% if person.avatar %}
+                                    <img class="wall-avatar img-circle" src="{{ person.avatar.getWebPath }}">
+                                {% endif %}
+                                <a href="{{ path('user_view', {'user': person.id }) }}">
+                                    {{ person.username }}
+                                </a>
+                                {% if person.addresses | length > 0 %}
+                                    from {{ person.addresses[0].city }}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
         </div><!-- END OF SIDEBAR -->
     </div>
     
@@ -61,3 +127,173 @@
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
+
+{# macro displaying single friend auction #}
+{% macro wall_auction_block(auction) %}
+    <div class="col-md-10 col-md-offset-1 wall-auction">
+        <p>
+            {% if auction.user.avatar %}
+                <img class="wall-avatar img-circle" src="{{ auction.user.avatar.getWebPath }}">
+            {% endif %}
+            <a href="{{ path('user_view', {'user': auction.user.id }) }}">
+                {{ auction.user.username }}
+            </a>
+                added an auction on {{ auction.dateAdded | date('Y-m-d H:i:s') }}
+        </p>
+        <p>
+            {% if auction.images | length > 0 %}
+                <img class="wall-auction-img img-rounded" src="{{ auction.getFirstImage }}">
+            {% endif %}
+        </p>
+        <h4>
+            <a href="{{ path('auction_single', {'id': auction.id }) }}">
+                {{ auction.title }}
+            </a>
+        </h4>
+        {% if auction.category %}
+            <p>
+                Added in category 
+                <span class="category-tag">
+                    <a href="{{ path('category_single', { 'category': auction.category.id }) }}">
+                        {{ auction.category.name }}
+                    </a>
+                </span>
+            </p>
+        {% endif %}
+        <p>
+            {% if auction.description | striptags | length > 200 %} 
+                {{ auction.description | striptags | truncate(200) }}
+            {% else %} 
+                {{ auction.description | striptags }}
+            {% endif %}
+        </p>
+        <div class="auction-votes col-md-12 auction-votes-{{ auction.id }}">
+            <div class="votes-up">
+                <input type="hidden" value="1" name="type">
+                <input type="hidden" value="auction" name="entity_type">
+                <input type="hidden" value="{{ auction.id }}" name="entity_id">
+                <span class="votes-up-count">
+                    {{ auction.getVotesCount['up'] }}
+                </span>
+                <span class="glyphicon glyphicon-thumbs-up vote-up"></span>
+            </div>
+            <div class="votes-down">
+                <input type="hidden" value="0" name="type">
+                <input type="hidden" value="auction" name="entity_type">
+                <input type="hidden" value="{{ auction.id }}" name="entity_id">
+                <span class="glyphicon glyphicon-thumbs-down vote-down"></span>
+                <span class="votes-down-count">
+                    {{ auction.getVotesCount['down'] }}
+                </span>
+            </div>
+        </div>
+        <div class="comment-button col-md-12">
+            <a href="" class="comment-trigger">
+                Show comments 
+            </a>({{ auction.comments | length }})
+            <div class="auction-comments-{{ auction.id }} comments-home col-md-12">
+                <div class="col-md-12">
+                    <form action="{{ path('comment_auction_add') }}" method="post">
+                        <input type="hidden" name="auction_id" value="{{ auction.id }}">
+                        <div class="form-group">
+                            <textarea class="form-control" name="content"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-default">
+                            Comment
+                        </button>
+                    </form>
+                </div>
+                {% for comment in auction.comments %}
+                    <div class="col-md-12 comment-entry">
+                        <p class="comment-meta">
+                            {% if comment.user.avatar %}
+                                <img class="wall-avatar img-circle" src="{{ comment.user.avatar.getWebPath }}">
+                            {% endif %}
+                            posted by 
+                            <a href="{{ path('user_view', {'user': comment.user.id }) }}">
+                                {{ comment.user.username }}
+                            </a>
+                            on {{ comment.dateAdded | date('Y-m-d H:i:s') }}
+                        </p>
+                        <p class="comment-text">
+                            {{ comment.text }}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{# macro for displating friend post #}
+{% macro wall_post_block(post) %}
+    <div class="col-md-10 col-md-offset-1 wall-post">
+        <p>
+            {% if post.user.avatar %}
+                <img class="wall-avatar img-circle" src="{{ post.user.avatar.getWebPath }}">
+            {% endif %}
+            <a href="{{ path('user_view', {'user': post.user.id }) }}">
+                {{ post.user.username }}
+            </a>
+                added a post on {{ post.dateAdded | date('Y-m-d H:i:s') }}
+        </p>
+        <p>
+            {{ post.text | url_convert | raw }}
+        </p>
+        <div class="post-votes col-md-12 post-votes-{{ post.id }}">
+            <div class="votes-up">
+                <input type="hidden" value="1" name="type">
+                <input type="hidden" value="post" name="entity_type">
+                <input type="hidden" value="{{ post.id }}" name="entity_id">
+                <span class="votes-up-count">
+                    {{ post.getVotesCount['up'] }}
+                </span>
+                <span class="glyphicon glyphicon-thumbs-up vote-up"></span>
+            </div>
+            <div class="votes-down">
+                <input type="hidden" value="0" name="type">
+                <input type="hidden" value="post" name="entity_type">
+                <input type="hidden" value="{{ post.id }}" name="entity_id">
+                <span class="glyphicon glyphicon-thumbs-down vote-down"></span>
+                <span class="votes-down-count">
+                    {{ post.getVotesCount['down'] }}
+                </span>
+            </div>
+        </div>
+        <div class="comment-button col-md-12">
+            <a href="" class="comment-trigger">
+                Show comments 
+            </a>({{ post.comments | length }})
+            <div class="post-comments-{{ post.id }} comments-home col-md-12">
+                <div class="col-md-12">
+                    <form action="{{ path('comment_post_add') }}" method="post">
+                        <input type="hidden" name="post_id" value="{{ post.id }}">
+                        <div class="form-group">
+                            <textarea class="form-control" name="content"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-default">
+                            Comment
+                        </button>
+                    </form>
+                </div>
+                {% for comment in post.comments %}
+                    <div class="col-md-12 comment-entry">
+                        <p class="comment-meta">
+                            {% if comment.user.avatar %}
+                                <img class="wall-avatar img-circle" src="{{ comment.user.avatar.getWebPath }}">
+                            {% endif %}
+                            posted by 
+                            <a href="{{ path('user_view', {'user': comment.user.id }) }}">
+                                {{ comment.user.username }}
+                            </a>
+                            on {{ comment.dateAdded | date('Y-m-d H:i:s') }}
+                        </p>
+                        <p class="comment-text">
+                            {{ comment.text }}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

@@ -109,3 +109,14 @@ div.single-auction {
     float: right;
     height: 100%;
 }
+
+a.comment-trigger, .comment-count {
+    font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.comment-entry {
+    margin: 10px 0 0 0 !important;
+    padding: 10px !important;
+}

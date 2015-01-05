@@ -5,9 +5,13 @@ namespace Inzynier\AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 use Inzynier\AppBundle\Entity\Friendship;
 use Inzynier\AppBundle\Entity\User;
+use Inzynier\AppBundle\Entity\Post;
+use Inzynier\AppBundle\Form\Type\PostType;
 
 class DefaultController extends Controller
 {
@@ -36,29 +40,65 @@ class DefaultController extends Controller
     /**
      * @Route("/home", name="homepage")
      */
-    public function homeAction() {
+    public function homeAction(Request $request) {
         $user = $this->getUser();
         
+        $geolocator = $this->get('geolocator');
         $em = $this->getDoctrine()->getManager();
         $repo = $this->get('doctrine')->getManager()->getRepository('InzynierAppBundle:Auction');
-        $auctions = $repo->getNewestAuctions(5);
+        $address_msg = null;
         
-        $repo = $this->get('doctrine')->getManager()->getRepository('InzynierAppBundle:User');
-        $user2 = $repo->find(3);
+        if(count($user->getAddresses())) {
+            $user_address = $user->getAddresses()[0];
+            $auctions = $geolocator->getNearestAuctions($user_address);
+        } else {
+            $auctions = null;
+            $address_msg = 'Add an address in your profile page to get list of nearest auctions.';
+        }
+        
+        //post form handling
+        $post = new Post();
+        $form = $this->createForm(new PostType(), $post);
+        
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid()) {
+            $post->setUser($user);
+            $em->persist($post);
+            $em->flush();
+            
+            $flash = $this->get('braincrafted_bootstrap.flash');
+            $flash->success('Successfully added new post!');
+            
+            return $this->redirectToRoute('homepage');
+        }
+        
+        $newest_auctions = $repo->getNewestAuctions(5);
         
         $friend_service = $this->get('friends.service');
         $friend_requests = $friend_service->getFriendRequests($user, false);
         
-        $friends = $friend_service->getUserFriends($user, true);
+        //getting data from last 2 days
+        $date = new \DateTime();
+        $date->modify('-2 days');
+        $wall_data = $friend_service->getWallData($user, $date);
         
-        //dump($friends);
+        //get recommended people
+        $recommended_people = $friend_service->getRecommendedPeople($user);
         
-        
+        if(count($recommended_people) > 5) {
+            $recommended_people = array_slice($recommended_people, 0, 5);
+        }
         
         return $this->render('home.html.twig', array(
+            'newest_auctions' => $newest_auctions,
             'auctions' => $auctions,
-            'friends' => $friends,
+            'address_message' => $address_msg,
             'friend_req_count' => $friend_requests,
+            'post_form' => $form->createView(),
+            'wall_data' => $wall_data,
+            'date_stamp' => $date,
+            'recommended_people' => $recommended_people,
         ));
     }
     
@@ -75,29 +115,24 @@ class DefaultController extends Controller
     }
     
     /**
-     * @Route("/drop", name="drop_test")
+     * @Route("/home/load", name="home_load_data", options={"expose": true})
      */
-    public function dropAction(Request $request) {
-        //$text = print_r($_FILES, true);
+    public function loadMoreDataAction(Request $request) {
+        $user = $this->getUser();
         
-        return $this->render('dev/drop.html.twig');
-    }
-    
-    /**
-     * @Route("/drop/upload", name="drop_upload")
-     */
-    public function dropUploadAction(Request $request) {
-        $path_locator = $this->get('path.locator');
+        $date_end = $request->request->get('end_date');
+        $date_start = $request->request->get('start_date');
         
-        $file = $request->files->get('file');
+        $start_date = new \DateTime($date_start);
+        $end_date = new \DateTime($date_end);
         
-        $name = $file->getClientOriginalName();
+        $friend_service = $this->get('friends.service');
         
-        $result = $file->move($path_locator->getAssetsPath() . 'images/droptest/', $name);
+        $data = $friend_service->getWallData($user, $start_date, $end_date);
         
-        $json = array($result);
-        
-        return new \Symfony\Component\HttpFoundation\JsonResponse($json);
+        return $this->render('ajax/wall_data.html.twig', [
+            'wall_data' => $data,
+        ]);
     }
     
     /**

@@ -8,6 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Inzynier\AppBundle\Repository\UserRepository;
 use Inzynier\AppBundle\Entity\User;
+use Inzynier\AppBundle\Entity\AuctionVote;
+use Inzynier\AppBundle\Entity\PostVote;
 
 class AjaxController extends Controller {
     /**
@@ -55,6 +57,7 @@ class AjaxController extends Controller {
             $invitee = $friendship->getUserOne();
             $users[$counter]['username'] = $invitee->getUsername();
             $users[$counter]['id'] = $invitee->getId();
+            $users[$counter]['link'] = $this->generateUrl('user_view', ['user' => $invitee->getId()]);
             if($invitee->getAvatar()) {
                 $users[$counter]['avatar'] = $invitee->getAvatar()->getWebPath();
             }
@@ -123,6 +126,7 @@ class AjaxController extends Controller {
             foreach($results as $entity) {
                 if($entity instanceof \Inzynier\AppBundle\Entity\User) {
                     $json['users'][$counter_users]['username'] = $entity->getUsername();
+                    $json['users'][$counter_users]['link'] = $this->generateUrl('user_view', ['user' => $entity->getId()]);
                     if($entity->getAvatar()) {
                         $json['users'][$counter_users]['avatar'] = $entity->getAvatar()->getWebPath();
                     }
@@ -145,5 +149,88 @@ class AjaxController extends Controller {
         }
         
         return new JsonResponse($json);
+    }
+    
+    /**
+     * @Route("/ajax/vote", name="ajax_vote", options={"expose": true})
+     */
+    public function voteAction(Request $request) {
+        $type = $request->request->get('type', null);
+        $entity_type = $request->request->get('entity_type', null);
+        $entity_id = $request->request->get('entity_id', null);
+        
+        if(!is_null($type) && $entity_type && $entity_id) {
+            $em = $this->get('doctrine')->getManager();
+            
+            if($entity_type == 'post') {
+                $repo = $this->get('doctrine')->getRepository('InzynierAppBundle:Post');
+                $post = $repo->find($entity_id);
+                
+                //check for existing vote
+                $vote_repo = $this->get('doctrine')->getRepository('InzynierAppBundle:PostVote');
+                $existing = $vote_repo->findBy([
+                    'post' => $post,
+                    'user' => $this->getUser(),
+                ]);
+                
+                if($existing && $existing[0]->getType() == $type) {
+                    $post_vote = $existing[0];
+                    $em->remove($post_vote);
+                    $em->flush();
+                    return new JsonResponse($post->getVotesCount());
+                } else if($existing && $existing[0]->getType() != $type) {
+                    $post_vote = $existing[0];
+                    $post_vote->setType($type);
+                } else {
+                    $post_vote = new PostVote();
+                    $post_vote->setPost($post);
+                    $post_vote->setType($type);
+                    $post_vote->setUser($this->getUser());
+                }
+                
+                $em->persist($post_vote);
+                $em->flush();
+                
+                $data = $post->getVotesCount();
+                
+                return new JsonResponse($data);
+            }
+            
+            if($entity_type == 'auction') {
+                $repo = $this->get('doctrine')->getRepository('InzynierAppBundle:Auction');
+                $auction = $repo->find($entity_id);
+                
+                //check for existing vote
+                $vote_repo = $this->get('doctrine')->getRepository('InzynierAppBundle:AuctionVote');
+                $existing = $vote_repo->findBy([
+                    'auction' => $auction,
+                    'user' => $this->getUser(),
+                ]);
+                
+                if($existing && $existing[0]->getType() == $type) {
+                    $auction_vote = $existing[0];
+                    $em->remove($auction_vote);
+                    $em->flush();
+                    return new JsonResponse($auction->getVotesCount());
+                } else if($existing && $existing[0]->getType() != $type) {
+                    $auction_vote = $existing[0];
+                    $auction_vote->setType($type);
+                } else {
+                    $auction_vote = new AuctionVote();
+                    $auction_vote->setAuction($auction);
+                    $auction_vote->setType($type);
+                    $auction_vote->setUser($this->getUser());
+                }
+                
+                $em->persist($auction_vote);
+                $em->flush();
+                
+                $data = $auction->getVotesCount();
+                
+                return new JsonResponse($data);
+            }
+        }
+        
+        return new JsonResponse([]);
     }
 }

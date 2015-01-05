@@ -44,6 +44,16 @@ class AuctionController extends Controller {
             
             $images = $auction->getImages();
             
+            //saving geolocation info
+            $geolocator = $this->get('geolocator');
+            $address = $auction->getAddress();
+            $location = $geolocator->getAddressCoordinates($address);
+            
+            if($location) {
+                $auction->getAddress()->setLatitude($location[0]['latitude']);
+                $auction->getAddress()->setLongitude($location[0]['longitude']);
+            }
+            
             foreach($images as $image) {
                 if($image) {
                     $image->setAuction($auction);
@@ -87,6 +97,9 @@ class AuctionController extends Controller {
         $bids = $repo->getNewestBids($auction->getId());
         $highest_bid = (isset($bids[0]) ? $bids[0] : null);
         
+        $category_srv = $this->get('category.service');
+        $parent_categories = $category_srv->getParentCategories($auction->getCategory());
+        
         //getting geolocation data
         $address = $auction->getAddress();
         $geolocator = $this->get('geolocator');
@@ -120,7 +133,8 @@ class AuctionController extends Controller {
         if($bid_form->isValid() && $bid_form->isSubmitted()) {
             $flash = $this->get('braincrafted_bootstrap.flash');
             
-            if($highest_bid->getPrice() < $bid->getPrice()) {
+            if((is_null($highest_bid) && $bid->getPrice() >= $auction->getPrice())
+                    || $highest_bid->getPrice() < $bid->getPrice()) {
                 $bid->setUser($user);
                 $bid->setAuction($auction);
 
@@ -145,6 +159,7 @@ class AuctionController extends Controller {
             'highest_bid' => $highest_bid,
             'map' => $map,
             'active' => $active,
+            'parent_categories' => $parent_categories,
         ));
     }
     

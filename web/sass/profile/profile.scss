@@ -67,9 +67,11 @@ ul.sidebar-nav {
 
 //profile auctions page
 ul.profile-auctions-list {
+    margin-top: 30px;
+    
     img.prof-auction-img {
-        height: 120px;
-        width: auto;
+        height: auto;
+        width: 195px;
     }
     
     li {
@@ -80,4 +82,8 @@ ul.profile-auctions-list {
             }
         }
     }
+}
+
+td button {
+    height: auto !important;
 }

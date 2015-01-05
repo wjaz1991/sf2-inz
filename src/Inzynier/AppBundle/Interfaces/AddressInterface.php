@@ -14,4 +14,10 @@ interface AddressInterface {
     
     public function getCountry();
     public function setCountry($country);
+    
+    public function getLatitude();
+    public function setLatitude($latitude);
+    
+    public function getLongitude();
+    public function setLongitude($longitude);
 }

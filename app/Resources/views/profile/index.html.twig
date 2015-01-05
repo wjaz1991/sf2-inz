@@ -13,9 +13,6 @@
         
         <h1>Your profile page</h1>
         
-        <!-- displaying all flash messages -->
-        {% include 'BraincraftedBootstrapBundle::flash.html.twig' %}
-        
         <form novalidate action="" method="post" {{ form_enctype(editForm) }}> 
             {{ form_widget(editForm) }}
 
@@ -23,7 +20,4 @@
                 <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-save"></span>Update</button>
             </div>
         </form>
-            
-    <!-- closing all flash messages -->
-    {% include 'BraincraftedBootstrapBundle::flash.html.twig' with { 'close': true } %}
 {% endblock %}

@@ -20,7 +20,11 @@
         <div class="row">
             <div class="col-md-12 auction-category">
                 <span>
-                    CATEGORY: {{ auction.category.name }}
+                    CATEGORY: 
+                    {% for category in parent_categories %}
+                        <a href="{{ path('category_single', {'category': category.id }) }}"> {{ category.name }} </a> /
+                    {% endfor %}
+                    <a href="{{ path('category_single', {'category': auction.category.id }) }}"> {{ auction.category.name }} </a>
                 </span>
                 
                 {% if auction.getUser.id == app.user.id and active %}
@@ -66,6 +70,26 @@
                         {{ auction.getDaysLeft }} days
                     </p>
                 {% endif %}
+                <div class="auction-votes col-md-12 auction-votes-{{ auction.id }}">
+                    <div class="votes-up">
+                        <input type="hidden" value="1" name="type">
+                        <input type="hidden" value="auction" name="entity_type">
+                        <input type="hidden" value="{{ auction.id }}" name="entity_id">
+                        <span class="votes-up-count">
+                            {{ auction.getVotesCount['up'] }}
+                        </span>
+                        <span class="glyphicon glyphicon-thumbs-up vote-up"></span>
+                    </div>
+                    <div class="votes-down">
+                        <input type="hidden" value="0" name="type">
+                        <input type="hidden" value="auction" name="entity_type">
+                        <input type="hidden" value="{{ auction.id }}" name="entity_id">
+                        <span class="glyphicon glyphicon-thumbs-down vote-down"></span>
+                        <span class="votes-down-count">
+                            {{ auction.getVotesCount['down'] }}
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -149,7 +173,44 @@
             </div>
         </div>
         <div class="row">
-            
+            <div class="comment-button col-md-12">
+                <a href="" class="comment-trigger">
+                    Show comments 
+                </a>
+                <span class="comment-count">
+                    ({{ auction.comments | length }})
+                </span>
+                <div class="auction-comments-{{ auction.id }} comments-home col-md-12">
+                    <div class="col-md-12">
+                        <form action="{{ path('comment_auction_add') }}" method="post">
+                            <input type="hidden" name="auction_id" value="{{ auction.id }}">
+                            <div class="form-group">
+                                <textarea class="form-control" name="content"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default">
+                                Comment
+                            </button>
+                        </form>
+                    </div>
+                    {% for comment in auction.comments %}
+                        <div class="col-md-12 comment-entry">
+                            <p class="comment-meta">
+                                {% if comment.user.avatar %}
+                                    <img class="wall-avatar img-circle" src="{{ comment.user.avatar.getWebPath }}">
+                                {% endif %}
+                                posted by 
+                                <a href="{{ path('user_view', {'user': comment.user.id }) }}">
+                                    {{ comment.user.username }}
+                                </a>
+                                on {{ comment.dateAdded | date('Y-m-d H:i:s') }}
+                            </p>
+                            <p class="comment-text">
+                                {{ comment.text }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
                 

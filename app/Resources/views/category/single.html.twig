@@ -1,5 +1,100 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    Single category view
+    <!-- page title -->
+    <div class="row">
+        <div class="col-md-12 text-center category-header">
+            <a class="back-link" href="{{ path('category_all') }}">
+                <button class="btn btn-default button-blue">
+                    {{ icon('arrow-left') }} Categories list
+                </button>
+            </a>
+            <h1>Category {{ category.name }}</h1>
+        </div>
+    </div>
+        
+    <!-- category path and pagination -->
+    <div class="row">
+        <!-- pagination -->
+        <div class="col-md-6 text-center">
+            <div class="pagination-big">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+        
+        <!-- category path -->
+        <div class="col-md-6 text-center category-path">
+            <span>
+                {% for parent in parents %}
+                    <a href="{{ path('category_single', {'category': parent.id }) }}">
+                        {{ parent.name }}
+                    </a> /
+                {% endfor %}
+                <a href="{{ path('category_single', {'category': category.id }) }}">
+                    {{ category.name }}
+                </a>
+            </span>
+        </div>
+    </div>
+    
+    <!-- auctions -->
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Days left</th>
+                            <th>Bids</th>
+                            <th>Views</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for auction in pagination %}
+                            <tr>
+                                <td>
+                                    {% if auction.images | length > 0 %}
+                                        <img src="{{ asset(auction.getFirstImage)}}">
+                                    {% else %}
+                                        No image
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{{ path('auction_single', {'id': auction.id }) }}">
+                                        {{ auction.title }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('category_single', {'category': auction.category.id }) }}">
+                                        {{ auction.category.name }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ auction.getDaysLeft }}
+                                </td>
+                                <td>
+                                    {{ auction.bids | length }}
+                                </td>
+                                <td>
+                                    {{ auction.views }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    {% stylesheets 'sass/category/single.scss' filter='compass' %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
 {% endblock %}

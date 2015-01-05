@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Inzynier\AppBundle\Repository\AuctionCategoryRepository")
  * @ORM\Table(name="auction_categories")
  */
 class AuctionCategory {
@@ -25,7 +25,12 @@ class AuctionCategory {
     protected $name;
     
     /**
-     * @ORM\OneToOne(targetEntity="AuctionCategory")
+     * @ORM\OneToMany(targetEntity="AuctionCategory", mappedBy="parent")
+     */
+    protected $children;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="AuctionCategory", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
      */
     protected $parent;
@@ -45,6 +50,7 @@ class AuctionCategory {
         $this->parent = null;
         $this->auctions = new ArrayCollection;
         $this->images = new ArrayCollection;
+        $this->children = new ArrayCollection();
     }
     
     public function getId() {
@@ -82,6 +88,26 @@ class AuctionCategory {
      */
     public function setParent(AuctionCategory $parent) {
         $this->parent = $parent;
+        return $this;
+    }
+    
+    public function getChildren() {
+        return $this->children;
+    }
+    
+    public function addChild(AuctionCategory $category) {
+        if(!$this->children->contains($category)) {
+            $this->children->add($category);
+        }
+        
+        return $this;
+    }
+    
+    public function removeChild(AuctionCategory $category) {
+        if($this->children->contains($category)) {
+            $this->children->removeElement($category);
+        }
+        
         return $this;
     }
     

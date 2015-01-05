@@ -66,33 +66,33 @@ button.button-blue:hover {
   color: #011120;
 }
 
-/* line 5, assetic_compassAWymeR.scss */
+/* line 5, assetic_compassP4XmpB.scss */
 .file-type-image {
   width: 300px;
   height: auto;
 }
 
-/* line 9, assetic_compassAWymeR.scss */
+/* line 9, assetic_compassP4XmpB.scss */
 .clear {
   display: block;
   clear: both;
   content: "";
 }
 
-/* line 15, assetic_compassAWymeR.scss */
+/* line 15, assetic_compassP4XmpB.scss */
 html {
   min-height: 100%;
   height: 100% !important;
 }
 
-/* line 20, assetic_compassAWymeR.scss */
+/* line 20, assetic_compassP4XmpB.scss */
 body, html {
   font-family: 'Lato', sans-serif;
   background-color: #f9f8f8;
   height: 100%;
 }
 
-/* line 27, assetic_compassAWymeR.scss */
+/* line 27, assetic_compassP4XmpB.scss */
 #page-wrap {
   min-height: 100%;
   height: auto !important;
@@ -101,12 +101,12 @@ body, html {
   margin: 0 auto-75px;
 }
 
-/* line 35, assetic_compassAWymeR.scss */
+/* line 35, assetic_compassP4XmpB.scss */
 #page-wrap:after {
   height: 75px;
 }
 
-/* line 39, assetic_compassAWymeR.scss */
+/* line 39, assetic_compassP4XmpB.scss */
 footer#footer-main {
   margin-top: 40px;
   height: 75px;
@@ -114,7 +114,7 @@ footer#footer-main {
   background-color: #022B52;
 }
 
-/* line 46, assetic_compassAWymeR.scss */
+/* line 46, assetic_compassP4XmpB.scss */
 #content-wrap {
   padding-bottom: 75px;
   padding-top: 180px;
@@ -125,12 +125,12 @@ footer#footer-main {
   transition: margin-top 0.3s;
 }
 
-/* line 56, assetic_compassAWymeR.scss */
+/* line 56, assetic_compassP4XmpB.scss */
 #content-wrap.smaller {
   padding-top: 105px;
 }
 
-/* line 60, assetic_compassAWymeR.scss */
+/* line 60, assetic_compassP4XmpB.scss */
 header {
   height: 150px;
   width: 100%;
@@ -145,7 +145,7 @@ header {
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 70, assetic_compassAWymeR.scss */
+/* line 70, assetic_compassP4XmpB.scss */
 header h1#logo {
   margin: 0;
   padding: 0;
@@ -162,16 +162,16 @@ header h1#logo {
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 82, assetic_compassAWymeR.scss */
+/* line 82, assetic_compassP4XmpB.scss */
 header h1#logo a {
   color: white;
 }
-/* line 87, assetic_compassAWymeR.scss */
+/* line 87, assetic_compassP4XmpB.scss */
 header nav {
   display: inline-block;
   float: right;
 }
-/* line 91, assetic_compassAWymeR.scss */
+/* line 91, assetic_compassP4XmpB.scss */
 header nav .nav-avatar {
   background: #022B52;
   float: right;
@@ -183,7 +183,7 @@ header nav .nav-avatar {
   -ms-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 101, assetic_compassAWymeR.scss */
+/* line 101, assetic_compassP4XmpB.scss */
 header nav .nav-avatar img {
   height: 55px;
   width: 55px;
@@ -192,23 +192,23 @@ header nav .nav-avatar img {
   -ms-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 108, assetic_compassAWymeR.scss */
+/* line 108, assetic_compassP4XmpB.scss */
 header nav .nav-avatar:hover {
   -webkit-box-shadow: 0 0 5px 5px red;
   -moz-box-shadow: 0 0 5px 5px red;
   box-shadow: 0 0 5px 5px red;
 }
-/* line 112, assetic_compassAWymeR.scss */
+/* line 112, assetic_compassP4XmpB.scss */
 header nav > ul {
   width: auto;
   list-style-type: none;
   float: right;
 }
-/* line 116, assetic_compassAWymeR.scss */
+/* line 116, assetic_compassP4XmpB.scss */
 header nav > ul > li {
   float: right;
 }
-/* line 118, assetic_compassAWymeR.scss */
+/* line 118, assetic_compassP4XmpB.scss */
 header nav > ul > li > a {
   line-height: 150px;
   margin-left: 20px;
@@ -221,11 +221,11 @@ header nav > ul > li > a {
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-/* line 131, assetic_compassAWymeR.scss */
+/* line 131, assetic_compassP4XmpB.scss */
 header nav > ul > li > a:hover {
   color: white;
 }
-/* line 137, assetic_compassAWymeR.scss */
+/* line 137, assetic_compassP4XmpB.scss */
 header nav > ul li.nav-dropdown ul {
   list-style-type: none;
   clear: both;
@@ -234,39 +234,39 @@ header nav > ul li.nav-dropdown ul {
   display: none;
   padding-left: 0;
 }
-/* line 146, assetic_compassAWymeR.scss */
+/* line 146, assetic_compassP4XmpB.scss */
 header nav > ul li.nav-dropdown ul li a {
   display: block;
   font-size: 12px;
   color: #9fdbfc;
   padding: 5px 20px;
 }
-/* line 153, assetic_compassAWymeR.scss */
+/* line 153, assetic_compassP4XmpB.scss */
 header nav > ul li.nav-dropdown ul li a:hover {
   background-color: #011120;
 }
 
-/* line 163, assetic_compassAWymeR.scss */
+/* line 163, assetic_compassP4XmpB.scss */
 header.smaller {
   height: 75px;
 }
-/* line 166, assetic_compassAWymeR.scss */
+/* line 166, assetic_compassP4XmpB.scss */
 header.smaller h1#logo {
   width: 150px;
   height: 75px;
   line-height: 75px;
   font-size: 30px;
 }
-/* line 172, assetic_compassAWymeR.scss */
+/* line 172, assetic_compassP4XmpB.scss */
 header.smaller h1#logo a {
   line-height: 75px;
 }
-/* line 180, assetic_compassAWymeR.scss */
+/* line 180, assetic_compassP4XmpB.scss */
 header.smaller nav > ul > li > a {
   line-height: 75px;
 }
 
-/* line 188, assetic_compassAWymeR.scss */
+/* line 188, assetic_compassP4XmpB.scss */
 .welcome-title {
   font-size: 50px;
   font-weight: bold;
@@ -274,22 +274,22 @@ header.smaller nav > ul > li > a {
   text-align: center;
 }
 
-/* line 196, assetic_compassAWymeR.scss */
+/* line 196, assetic_compassP4XmpB.scss */
 ul.nav-notifications {
   float: left;
 }
-/* line 199, assetic_compassAWymeR.scss */
+/* line 199, assetic_compassP4XmpB.scss */
 ul.nav-notifications li {
   position: relative;
 }
-/* line 202, assetic_compassAWymeR.scss */
+/* line 202, assetic_compassP4XmpB.scss */
 ul.nav-notifications li .search-dropdown, ul.nav-notifications li .requests-dropdown {
   position: absolute;
   top: 75px;
   left: 0;
   width: 350px;
 }
-/* line 210, assetic_compassAWymeR.scss */
+/* line 210, assetic_compassP4XmpB.scss */
 ul.nav-notifications > li > a {
   color: #022B52;
   background: white;
@@ -311,11 +311,11 @@ ul.nav-notifications > li > a {
   -ms-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 225, assetic_compassAWymeR.scss */
+/* line 225, assetic_compassP4XmpB.scss */
 ul.nav-notifications > li > a:hover {
   text-decoration: none;
 }
-/* line 231, assetic_compassAWymeR.scss */
+/* line 231, assetic_compassP4XmpB.scss */
 ul.nav-notifications .search-trigger:hover {
   cursor: pointer;
   background: red;
@@ -324,7 +324,7 @@ ul.nav-notifications .search-trigger:hover {
   -moz-box-shadow: 0px 0px 5px 5px white;
   box-shadow: 0px 0px 5px 5px white;
 }
-/* line 240, assetic_compassAWymeR.scss */
+/* line 240, assetic_compassP4XmpB.scss */
 ul.nav-notifications .pending-requests-trigger:hover {
   cursor: pointer;
   background: #034584;
@@ -334,49 +334,49 @@ ul.nav-notifications .pending-requests-trigger:hover {
   box-shadow: 0px 0px 5px 5px;
 }
 
-/* line 252, assetic_compassAWymeR.scss */
+/* line 252, assetic_compassP4XmpB.scss */
 .requests-dropdown ul.requests-results li {
   text-align: center;
 }
-/* line 255, assetic_compassAWymeR.scss */
+/* line 255, assetic_compassP4XmpB.scss */
 .requests-dropdown ul.requests-results li img {
   height: 40px;
   width: 40px;
   margin-right: 10px;
 }
-/* line 261, assetic_compassAWymeR.scss */
+/* line 261, assetic_compassP4XmpB.scss */
 .requests-dropdown ul.requests-results li button {
   margin-left: 10px;
 }
 
-/* line 268, assetic_compassAWymeR.scss */
+/* line 268, assetic_compassP4XmpB.scss */
 .search-dropdown {
   list-style-type: none;
 }
 
-/* line 272, assetic_compassAWymeR.scss */
+/* line 272, assetic_compassP4XmpB.scss */
 .search-dropdown, .requests-dropdown {
   background: #022B52;
   padding: 10px 10px;
 }
-/* line 276, assetic_compassAWymeR.scss */
+/* line 276, assetic_compassP4XmpB.scss */
 .search-dropdown > li, .requests-dropdown > li {
   padding: 10px 20px;
 }
 
-/* line 281, assetic_compassAWymeR.scss */
+/* line 281, assetic_compassP4XmpB.scss */
 a.nav-btn-clicked {
   background: green !important;
   color: white !important;
 }
 
-/* line 286, assetic_compassAWymeR.scss */
+/* line 286, assetic_compassP4XmpB.scss */
 .search-results {
   list-style-type: none;
   padding: 0 20px;
   color: white;
 }
-/* line 291, assetic_compassAWymeR.scss */
+/* line 291, assetic_compassP4XmpB.scss */
 .search-results img {
   width: 40px;
   height: auto;
@@ -384,24 +384,24 @@ a.nav-btn-clicked {
 }
 
 @media all and (max-width: 880px) {
-  /* line 302, assetic_compassAWymeR.scss */
+  /* line 302, assetic_compassP4XmpB.scss */
   header.smaller nav ul li a {
     font-size: 13px;
   }
 
-  /* line 307, assetic_compassAWymeR.scss */
+  /* line 307, assetic_compassP4XmpB.scss */
   .nav-links {
     padding-left: 0;
   }
 }
 @media all and (max-width: 768px) {
-  /* line 314, assetic_compassAWymeR.scss */
+  /* line 314, assetic_compassP4XmpB.scss */
   header.smaller {
     display: block;
     position: relative;
     height: auto !important;
   }
-  /* line 319, assetic_compassAWymeR.scss */
+  /* line 319, assetic_compassP4XmpB.scss */
   header.smaller h1#logo {
     display: block;
     float: none;
@@ -410,7 +410,7 @@ a.nav-btn-clicked {
     line-height: 100px;
     text-align: center;
   }
-  /* line 328, assetic_compassAWymeR.scss */
+  /* line 328, assetic_compassP4XmpB.scss */
   header.smaller nav {
     display: block;
     float: none;
@@ -418,67 +418,179 @@ a.nav-btn-clicked {
     text-align: center;
     margin: 0 auto;
   }
-  /* line 335, assetic_compassAWymeR.scss */
+  /* line 335, assetic_compassP4XmpB.scss */
   header.smaller nav .nav-avatar {
     display: none;
   }
-  /* line 339, assetic_compassAWymeR.scss */
+  /* line 339, assetic_compassP4XmpB.scss */
   header.smaller nav ul {
     float: none;
     padding-left: 0;
     padding-top: 20px;
   }
-  /* line 344, assetic_compassAWymeR.scss */
+  /* line 344, assetic_compassP4XmpB.scss */
   header.smaller nav ul li {
     float: none;
   }
-  /* line 346, assetic_compassAWymeR.scss */
+  /* line 346, assetic_compassP4XmpB.scss */
   header.smaller nav ul li a {
     line-height: 50px;
     margin: 0 10px;
   }
-  /* line 351, assetic_compassAWymeR.scss */
+  /* line 351, assetic_compassP4XmpB.scss */
   header.smaller nav ul li ul {
     position: relative;
     padding-top: 0;
   }
-  /* line 356, assetic_compassAWymeR.scss */
+  /* line 356, assetic_compassP4XmpB.scss */
   header.smaller nav ul li ul li a {
     height: 30px;
     line-height: 30px;
     padding: 0;
   }
 
-  /* line 368, assetic_compassAWymeR.scss */
+  /* line 368, assetic_compassP4XmpB.scss */
   .nav-notifications {
     margin-top: 10px;
   }
-  /* line 371, assetic_compassAWymeR.scss */
+  /* line 371, assetic_compassP4XmpB.scss */
   .nav-notifications li {
     display: inline-block;
   }
 
-  /* line 376, assetic_compassAWymeR.scss */
+  /* line 376, assetic_compassP4XmpB.scss */
   ul.nav-links {
     padding-top: 0 !important;
   }
 
-  /* line 380, assetic_compassAWymeR.scss */
+  /* line 380, assetic_compassP4XmpB.scss */
   header.smaller {
     height: 75px;
   }
-  /* line 383, assetic_compassAWymeR.scss */
+  /* line 383, assetic_compassP4XmpB.scss */
   header.smaller h1#logo {
     height: 40px;
     line-height: 40px;
     font-size: 30px;
   }
-  /* line 389, assetic_compassAWymeR.scss */
+  /* line 389, assetic_compassP4XmpB.scss */
   header.smaller nav {
     height: 35px;
   }
-  /* line 392, assetic_compassAWymeR.scss */
+  /* line 392, assetic_compassP4XmpB.scss */
   header.smaller nav a {
     line-height: 35px;
   }
+}
+/* line 402, assetic_compassP4XmpB.scss */
+div.pagination-big div.pagination span.first a, div.pagination-big div.pagination span.previous a, div.pagination-big div.pagination span.page a, div.pagination-big div.pagination span.next a, div.pagination-big div.pagination span.last a {
+  padding: 10px;
+  background-color: #888;
+  margin: 0;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 411, assetic_compassP4XmpB.scss */
+div.pagination-big div.pagination span.first a:hover, div.pagination-big div.pagination span.previous a:hover, div.pagination-big div.pagination span.page a:hover, div.pagination-big div.pagination span.next a:hover, div.pagination-big div.pagination span.last a:hover {
+  background-color: #022234;
+}
+/* line 417, assetic_compassP4XmpB.scss */
+div.pagination-big div.pagination span.current {
+  padding: 10px;
+  background-color: #000203;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 430, assetic_compassP4XmpB.scss */
+div.pagination-small div.pagination span.first a, div.pagination-small div.pagination span.previous a, div.pagination-small div.pagination span.page a, div.pagination-small div.pagination span.next a, div.pagination-small div.pagination span.last a {
+  padding: 6px;
+  background-color: #888;
+  margin: 0;
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 439, assetic_compassP4XmpB.scss */
+div.pagination-small div.pagination span.first a:hover, div.pagination-small div.pagination span.previous a:hover, div.pagination-small div.pagination span.page a:hover, div.pagination-small div.pagination span.next a:hover, div.pagination-small div.pagination span.last a:hover {
+  background-color: #022234;
+}
+/* line 445, assetic_compassP4XmpB.scss */
+div.pagination-small div.pagination span.current {
+  padding: 6px;
+  background-color: #000203;
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 455, assetic_compassP4XmpB.scss */
+.auction-votes, .post-votes {
+  margin-top: 10px;
+  font-size: 15px;
+}
+/* line 459, assetic_compassP4XmpB.scss */
+.auction-votes .votes-up, .auction-votes .votes-down, .post-votes .votes-up, .post-votes .votes-down {
+  border: 1px solid #aaa;
+  display: inline-block;
+  padding: 2px 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+}
+/* line 465, assetic_compassP4XmpB.scss */
+.auction-votes .votes-up .votes-up-count, .auction-votes .votes-down .votes-up-count, .post-votes .votes-up .votes-up-count, .post-votes .votes-down .votes-up-count {
+  color: green;
+  font-weight: bold;
+}
+/* line 471, assetic_compassP4XmpB.scss */
+.auction-votes .votes-up .vote-up:hover, .auction-votes .votes-down .vote-up:hover, .post-votes .votes-up .vote-up:hover, .post-votes .votes-down .vote-up:hover {
+  color: green;
+  cursor: pointer;
+}
+/* line 477, assetic_compassP4XmpB.scss */
+.auction-votes .votes-up .votes-down-count, .auction-votes .votes-down .votes-down-count, .post-votes .votes-up .votes-down-count, .post-votes .votes-down .votes-down-count {
+  color: red;
+}
+/* line 482, assetic_compassP4XmpB.scss */
+.auction-votes .votes-up .vote-down:hover, .auction-votes .votes-down .vote-down:hover, .post-votes .votes-up .vote-down:hover, .post-votes .votes-down .vote-down:hover {
+  color: red;
+  cursor: pointer;
+}
+
+/* line 490, assetic_compassP4XmpB.scss */
+.comments-home {
+  display: none;
+}
+
+/* line 494, assetic_compassP4XmpB.scss */
+.comment-entry {
+  border: 2px solid #ccc;
+  margin-top: 10px;
+  padding-top: 5px;
+}
+
+/* line 500, assetic_compassP4XmpB.scss */
+.wall-avatar {
+  height: 40px;
+  width: 40px;
 }

@@ -2,6 +2,10 @@ services:
 #    inzynier_app.example:
 #        class: Inzynier\AppBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }
 
     path.locator:
         class: Inzynier\AppBundle\Services\PathLocator
@@ -9,7 +13,7 @@ services:
         
     geolocator:
         class: Inzynier\AppBundle\Services\Geolocator
-        arguments: [@ivory_google_map.map.builder]
+        arguments: [@ivory_google_map.map.builder, @doctrine, @router]
         
     friends.service:
         class: Inzynier\AppBundle\Services\FriendsService
@@ -22,3 +26,9 @@ services:
             
     category.service:
         class: Inzynier\AppBundle\Services\CategoryService
+        arguments: [@router]
+        
+    twig.url_extension:
+        class: Inzynier\AppBundle\Twig\UrlExtension
+        tags:
+            - { name: twig.extension }

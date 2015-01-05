@@ -395,3 +395,109 @@ a.nav-btn-clicked {
     }
   }
 }
+
+//pagination styling
+div.pagination-big div.pagination {
+    span.first, span.previous, span.page, span.next, span.last {
+        a {
+            padding: 10px;
+            background-color: #888;
+            margin: 0;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            @include border-radius(5px);
+            
+            &:hover {
+                background-color: darken($nav-link-color, 70%);
+            }
+        }
+    }
+    
+    span.current {
+        padding: 10px;
+        background-color: darken($nav-link-color, 80%);
+        font-size: 15px;
+        font-weight: bold;
+        color: white;
+        @include border-radius(5px);
+    }
+    
+}
+
+div.pagination-small div.pagination {
+    span.first, span.previous, span.page, span.next, span.last {
+        a {
+            padding: 6px;
+            background-color: #888;
+            margin: 0;
+            font-size: 13px;
+            font-weight: bold;
+            color: white;
+            @include border-radius(5px);
+            
+            &:hover {
+                background-color: darken($nav-link-color, 70%);
+            }
+        }
+    }
+    
+    span.current {
+        padding: 6px;
+        background-color: darken($nav-link-color, 80%);
+        font-size: 13px;
+        font-weight: bold;
+        color: white;
+        @include border-radius(5px);
+    }
+}
+
+.auction-votes, .post-votes { 
+    margin-top: 10px;
+    font-size: 15px;
+    
+    .votes-up, .votes-down {
+        border: 1px solid #aaa;
+        display: inline-block;
+        padding: 2px 4px;
+        @include border-radius(2px);
+        
+        .votes-up-count {
+            color: green;
+            font-weight: bold;
+        }
+        
+        .vote-up {
+            &:hover {
+                color: green;
+                cursor: pointer;
+            }
+        }
+        
+        .votes-down-count {
+            color: red;
+        }
+        
+        .vote-down {
+            &:hover {
+                color: red;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.comments-home {
+    display: none;
+}
+
+.comment-entry {
+    border: 2px solid #ccc;
+    margin-top: 10px;
+    padding-top: 5px;
+}
+
+.wall-avatar {
+    height: 40px;
+    width: 40px;
+}

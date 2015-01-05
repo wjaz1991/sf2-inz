@@ -1,10 +1,10 @@
 @import url(../../fonts/Lato/Lato-Regular.css);
-/* line 4, assetic_compassggTVVc.scss */
+/* line 4, assetic_compassiNGH2G.scss */
 .content-wrap {
   background: #f9f8f8;
   overflow: hidden;
 }
-/* line 8, assetic_compassggTVVc.scss */
+/* line 8, assetic_compassiNGH2G.scss */
 .content-wrap .column {
   padding: 0;
   margin: 20px;
@@ -12,13 +12,13 @@
   padding-bottom: 9999px;
   margin-bottom: -9999px;
 }
-/* line 15, assetic_compassggTVVc.scss */
+/* line 15, assetic_compassiNGH2G.scss */
 .content-wrap .column .sidebar-container {
   padding: 0;
   width: 90%;
   margin: 20px 5%;
 }
-/* line 21, assetic_compassggTVVc.scss */
+/* line 21, assetic_compassiNGH2G.scss */
 .content-wrap .column .sidebar-container ul.sidebar-list li {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -27,15 +27,67 @@
   padding: 10px 30px;
   position: relative;
 }
-/* line 26, assetic_compassggTVVc.scss */
+/* line 26, assetic_compassiNGH2G.scss */
 .content-wrap .column .sidebar-container ul.sidebar-list li div.auction-img-small {
   text-align: center;
   width: 80px;
   float: left;
 }
-/* line 32, assetic_compassggTVVc.scss */
+/* line 32, assetic_compassiNGH2G.scss */
 .content-wrap .column .sidebar-container ul.sidebar-list li img {
-  width: auto;
-  height: 45px;
+  width: 70px;
+  height: auto;
   margin-right: 10px;
+}
+
+/* line 44, assetic_compassiNGH2G.scss */
+.wall-avatar {
+  height: 40px;
+  width: 40px;
+}
+
+/* line 49, assetic_compassiNGH2G.scss */
+.wall-auction, .wall-post {
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+/* line 55, assetic_compassiNGH2G.scss */
+.wall-auction-img {
+  width: 150px;
+  height: auto;
+  float: left;
+  margin-right: 10px;
+}
+
+/* line 63, assetic_compassiNGH2G.scss */
+.category-tag a {
+  color: white;
+  background: black;
+  padding: 1px 5px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 71, assetic_compassiNGH2G.scss */
+.post-form {
+  margin-bottom: 20px;
+}
+
+/* line 75, assetic_compassiNGH2G.scss */
+.more-trigger {
+  padding: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #333;
+  color: white;
+  margin-bottom: 10px;
+}
+/* line 83, assetic_compassiNGH2G.scss */
+.more-trigger:hover {
+  background-color: #555;
+  cursor: pointer;
 }

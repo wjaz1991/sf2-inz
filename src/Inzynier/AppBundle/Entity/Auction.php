@@ -91,11 +91,28 @@ class Auction {
      */
     private $address;
     
+    /**
+     * @ORM\OneToMany(targetEntity="AuctionVote", mappedBy="auction", cascade={"remove"})
+     */
+    private $votes;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="auction", cascade={"remove"})
+     */
+    private $comments;
+    
+    /**
+     * @ORM\Column(type="boolean", options={"default": 0})
+     */
+    private $paid;
+    
     public function __construct() {
         $this->dateAdded = new \DateTime();
         $this->views = 0;
         $this->bids = new ArrayCollection;
         $this->images = new ArrayCollection;
+        $this->votes = new ArrayCollection;
+        $this->paid = 0;
     }
     
     //helper methods
@@ -262,6 +279,66 @@ class Auction {
     
     public function setAddress(AuctionAddress $address) {
         $this->address = $address;
+        return $this;
+    }
+    
+    public function getClassName() {
+        return 'Auction';
+    }
+    
+    public function getVotes() {
+        return $this->votes;
+    }
+    
+    public function addVote(AuctionVote $vote) {
+        $this->votes[] = $vote;
+        return $this;
+    }
+    
+    public function removeVote(AuctionVote $vote) {
+        $this->votes->removeElement($vote);
+        return $this;
+    }
+    
+    public function getVotesCount() {
+        $votes = $this->getVotes();
+        $data = [];
+        $data['up'] = 0;
+        $data['down'] = 0;
+        
+        if(count($votes)) {
+            foreach($votes as $vote) {
+                if($vote->getType() == 0) {
+                    $data['down']++;
+                } else if($vote->getType() == 1) {
+                    $data['up']++;
+                }
+            }
+        }
+        
+        return $data;
+    }
+    
+    public function getComments() {
+        return $this->comments;
+    }
+    
+    public function addComment(Comment $comment) {
+        $this->comments[] = $comment;
+        return $this;
+    }
+    
+    public function removeComment(Comment $comment) {
+        $this->comments->removeElement($comment);
+        return $this;
+    }
+    
+    public function getPaid() {
+        return $this->paid;
+    }
+    
+    public function setPaid($paid) {
+        $this->paid = $paid;
         return $this;
     }
 }

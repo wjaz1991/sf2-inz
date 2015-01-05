@@ -88,6 +88,11 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable {
      */
     private $avatar;
     
+    /**
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="user", cascade={"remove"})
+     */
+    private $posts;
+    
     public function __construct() {
         $this->isActive = true;
         $this->addresses = new ArrayCollection;
@@ -97,6 +102,7 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable {
         $this->dateAdded = new \DateTime();
         $this->my_friends = new ArrayCollection();
         $this->friends_with_me = new ArrayCollection();
+        $this->posts = new ArrayCollection();
     }
     
     public function getId() {
@@ -182,6 +188,26 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable {
     
     public function setDateAdded(\DateTime $date) {
         $this->dateAdded = $date;
+        return $this;
+    }
+    
+    public function getPosts() {
+        return $this->posts;
+    }
+    
+    public function addPost(Post $post) {
+        if(!$this->posts->contains($post)) {
+            $this->posts[] = $post;
+        }
+        
+        return $this;
+    }
+    
+    public function removePost(Post $post) {
+        if($this->posts->contains($post)) {
+            $this->posts->removeElement($post);
+        }
+        
         return $this;
     }
 

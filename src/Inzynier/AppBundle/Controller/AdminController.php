@@ -70,10 +70,19 @@ class AdminController extends Controller {
         
         if($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            if($category->getParent()) {
+                $parent = $category->getParent();
+                $parent->addChild($category);
+                $em->persist($parent);
+            }
+            
             $em->persist($category);
             $em->flush();
             
             $flash->success('Successfully added new category.');
+            
+            return $this->redirectToRoute('admin_category_add');
         }
         
         return $this->render('admin/manage/category_add.html.twig', [

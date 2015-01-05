@@ -4,6 +4,7 @@ namespace Inzynier\AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NoResultException;
+use Inzynier\AppBundle\Entity\User;
 
 class AuctionRepository extends EntityRepository {
     public function getNewestBids($auction_id) {
@@ -18,7 +19,7 @@ class AuctionRepository extends EntityRepository {
     
     public function getNewestAuctions($number) {
         $em = $this->getEntityManager();
-        $dql = 'SELECT a FROM Inzynier\AppBundle\Entity\Auction a ORDER BY a.startDate';
+        $dql = 'SELECT a FROM Inzynier\AppBundle\Entity\Auction a ORDER BY a.startDate DESC';
         $query = $em->createQuery($dql);
         $query->setMaxResults($number);
         
@@ -38,6 +39,80 @@ class AuctionRepository extends EntityRepository {
         $auctions = $query->getResult();
         
         return $auctions;
+    }
+    
+    public function getUserAuctions(User $user, $active = true) {
+        $em = $this->getEntityManager();
+        
+        if($active) {
+            $active_where = ' AND a.endDate >= :date ';
+        } else {
+            $active_where = ' AND a.endDate < :date ';
+        }
+        
+        $dql = 'SELECT a FROM Inzynier\AppBundle\Entity\Auction a WHERE a.user = :user' . $active_where . 'ORDER BY a.startDate DESC';
+        $query = $em->createQuery($dql);
+        $query->setParameter('user', $user);
+        $today = new \DateTime();
+        $query->setParameter('date', $today->format('Y-m-d H:i:s'));
+        
+        $results = $query->getResult();
+        
+        return $results;
+    }
+    
+    public function getFriendsAuctions($friends) {
+        $em = $this->getEntityManager();
+        
+        $auctions = [];
+        
+        $dql = "SELECT a FROM Inzynier\AppBundle\Entity\Auction a WHERE a.user = :user "
+                . "AND a.endDate >= :date ORDER BY a.startDate DESC";
+        $query = $em->createQuery($dql);
+        $today = new \DateTime();
+        $query->setParameter('date', $today);
+        
+        foreach($friends as $friend) {
+            $query->setParameter('user', $friend);
+            
+            $results = $query->getResult();
+            
+            $auctions = array_merge($auctions, $results);
+        }
+        
+        return $auctions;
+    }
+    
+    public function getAuctionsByDays($days = 10) {
+        $em = $this->getEntityManager();
+        
+        $dql = "SELECT a FROM Inzynier\AppBundle\Entity\Auction a WHERE a.endDate >= :date AND a.dateAdded >= :date_from";
+        $query = $em->createQuery($dql);
+        $now = new \DateTime();
+        $date_from = new \DateTime();
+        $date_from->modify("- $days days");
+        $query->setParameter('date', $now);
+        $query->setParameter('date_from', $date_from);
+        
+        $results = $query->getResult();
+        
+        return $results;
+    }
+    
+    public function getEndedUserAuctions(User $user) {
+        $em = $this->getEntityManager();
+        
+        $dql = 'SELECT a FROM Inzynier\AppBundle\Entity\Auction a JOIN a.bids b WHERE b.user = :user '
+                . 'AND a.endDate <= :date';
+        
+        $query = $em->createQuery($dql);
+        $query->setParameter('user', $user);
+        $now = new \DateTime();
+        $query->setParameter('date', $now);
+        
+        $results = $query->getResult();
+        
+        return $results;
     }
 }
 

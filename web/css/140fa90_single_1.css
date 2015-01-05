@@ -1,46 +1,46 @@
-/* line 6, assetic_compassNdsRKJ.scss */
+/* line 6, assetic_compassAMEQl2.scss */
 div.single-auction .row {
   overflow: hidden;
 }
-/* line 9, assetic_compassNdsRKJ.scss */
+/* line 9, assetic_compassAMEQl2.scss */
 div.single-auction .row [class*="col-"] {
   padding-bottom: 9999px;
   margin-bottom: -9999px;
 }
-/* line 15, assetic_compassNdsRKJ.scss */
+/* line 15, assetic_compassAMEQl2.scss */
 div.single-auction .address-row {
   margin-bottom: 20px;
 }
-/* line 19, assetic_compassNdsRKJ.scss */
+/* line 19, assetic_compassAMEQl2.scss */
 div.single-auction .auction-image {
   text-align: center;
   display: table-row;
   vertical-align: middle;
 }
-/* line 24, assetic_compassNdsRKJ.scss */
+/* line 24, assetic_compassAMEQl2.scss */
 div.single-auction .auction-image img {
   vertical-align: middle;
   max-height: 300px;
   max-width: 100%;
 }
-/* line 31, assetic_compassNdsRKJ.scss */
+/* line 31, assetic_compassAMEQl2.scss */
 div.single-auction .auction-meta {
   padding-top: 20px;
   font-size: 20px;
 }
-/* line 36, assetic_compassNdsRKJ.scss */
+/* line 36, assetic_compassAMEQl2.scss */
 div.single-auction .auction-description {
   padding: 40px 20px;
   font-size: 18px;
 }
-/* line 42, assetic_compassNdsRKJ.scss */
+/* line 42, assetic_compassAMEQl2.scss */
 div.single-auction .auction-views p {
   padding: 10px;
   background: #ccc;
   font-weight: bold;
   font-size: 15px;
 }
-/* line 51, assetic_compassNdsRKJ.scss */
+/* line 51, assetic_compassAMEQl2.scss */
 div.single-auction .auction-category span {
   margin: 10px 0;
   text-align: center;
@@ -50,7 +50,7 @@ div.single-auction .auction-category span {
   width: 300px;
   padding: 10px;
 }
-/* line 63, assetic_compassNdsRKJ.scss */
+/* line 63, assetic_compassAMEQl2.scss */
 div.single-auction .auction-bids .highest-bid {
   background: black;
   color: white;
@@ -60,38 +60,51 @@ div.single-auction .auction-bids .highest-bid {
   -ms-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 70, assetic_compassNdsRKJ.scss */
+/* line 70, assetic_compassAMEQl2.scss */
 div.single-auction .auction-bids h3 {
   background: #ccc;
   padding: 10px;
 }
-/* line 75, assetic_compassNdsRKJ.scss */
+/* line 75, assetic_compassAMEQl2.scss */
 div.single-auction .auction-bids h4 {
   font-weight: bold;
 }
-/* line 79, assetic_compassNdsRKJ.scss */
+/* line 79, assetic_compassAMEQl2.scss */
 div.single-auction .auction-bids .bid-price, div.single-auction .auction-bids .bid-date {
   font-weight: bold;
 }
-/* line 85, assetic_compassNdsRKJ.scss */
+/* line 85, assetic_compassAMEQl2.scss */
 div.single-auction .auction-new-bid h3 {
   background: #ccc;
   padding: 10px;
 }
-/* line 92, assetic_compassNdsRKJ.scss */
+/* line 92, assetic_compassAMEQl2.scss */
 div.single-auction .auction-address h3 {
   background: #ccc;
   padding: 10px;
 }
-/* line 99, assetic_compassNdsRKJ.scss */
+/* line 99, assetic_compassAMEQl2.scss */
 div.single-auction .auction-address-map h3 {
   background: #ccc;
   padding: 10px;
 }
 
-/* line 107, assetic_compassNdsRKJ.scss */
+/* line 107, assetic_compassAMEQl2.scss */
 .form-edit-link {
   display: inline;
   float: right;
   height: 100%;
+}
+
+/* line 113, assetic_compassAMEQl2.scss */
+a.comment-trigger, .comment-count {
+  font-size: 17px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* line 119, assetic_compassAMEQl2.scss */
+.comment-entry {
+  margin: 10px 0 0 0 !important;
+  padding: 10px !important;
 }

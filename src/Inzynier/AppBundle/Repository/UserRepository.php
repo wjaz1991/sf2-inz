@@ -17,7 +17,7 @@ class UserRepository extends EntityRepository implements UserProviderInterface {
         $query->setFirstResult(0);
         $query->setMaxResults($number);
         
-        $users = $query->getArrayResult();
+        $users = $query->getResult();
         
         return $users;       
     }

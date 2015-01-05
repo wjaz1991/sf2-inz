@@ -1,0 +1,67 @@
+.user-avatar {
+    width: 200px;
+    height: 200px;
+}
+
+.friend-avatar {
+    height: 50px;
+    width: 50px;
+}
+
+.table-responsive {
+    margin-top: 40px;
+}
+
+tr {
+    td:first-child {
+        text-align: center;
+    }
+}
+
+td {
+    vertical-align: middle !important;
+    
+    img {
+        max-width: 200px;
+        height: auto;
+    }
+}
+
+.action-buttons {
+    button {
+        margin-bottom: 10px;
+    }
+}
+
+.user-post {
+    background-color: #ccc;
+    
+    .post-meta {
+        padding: 5px 5px 3px 5px;
+        background-color: #333;
+        color: white;
+        font-weight: bold;
+    }
+    
+    .post-text {
+        padding: 0 5px 5px 5px;
+        margin-bottom: 0;
+    }
+    
+    .post-votes {
+        padding: 0 5px 5px 5px;
+        background-color: #ccc;
+        margin-top: 0;
+        
+        .votes-up, .votes-down {
+            background-color: white;
+            font-size: 13px;
+        }
+    }
+}
+
+@media all and(max-width: 768px) {
+    .user-image, .user-info, .action-buttons, .user-friends {
+        text-align: center;
+    }
+}

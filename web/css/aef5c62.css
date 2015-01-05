@@ -1,0 +1,71 @@
+/* line 1, assetic_compass0qQIDL.scss */
+.category-header {
+  position: relative;
+}
+
+/* line 5, assetic_compass0qQIDL.scss */
+.back-link {
+  position: absolute;
+  left: 10px;
+}
+
+/* line 10, assetic_compass0qQIDL.scss */
+.pagination {
+  float: left;
+}
+
+/* line 14, assetic_compass0qQIDL.scss */
+.category-path {
+  color: white;
+}
+/* line 17, assetic_compass0qQIDL.scss */
+.category-path span {
+  padding: 10px;
+  background-color: black;
+  min-width: 300px;
+  display: inline-block;
+  float: right;
+}
+/* line 24, assetic_compass0qQIDL.scss */
+.category-path span a {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* line 32, assetic_compass0qQIDL.scss */
+.table-responsive {
+  margin-top: 40px;
+}
+
+/* line 37, assetic_compass0qQIDL.scss */
+tr td:first-child {
+  text-align: center;
+}
+
+/* line 42, assetic_compass0qQIDL.scss */
+td {
+  vertical-align: middle !important;
+}
+/* line 45, assetic_compass0qQIDL.scss */
+td img {
+  max-width: 200px;
+  height: auto;
+}
+
+@media all and (max-width: 768px) {
+  /* line 52, assetic_compass0qQIDL.scss */
+  .back-link {
+    position: relative;
+  }
+
+  /* line 56, assetic_compass0qQIDL.scss */
+  .pagination {
+    float: none;
+  }
+
+  /* line 61, assetic_compass0qQIDL.scss */
+  .category-path span {
+    float: none;
+  }
+}

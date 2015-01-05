@@ -1,11 +1,166 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ dump(status) }}
-    {{ dump(is_logged) }}
-    {{ dump(user) }}
+    <div class="row user-information">
+        {% if user.avatar %}
+            <div class="col-md-2 user-image">
+                <img src="{{ user.avatar.getWebPath }}" class="user-avatar img-circle">
+            </div>
+            <div class="col-md-7 user-info">
+        {% else %}
+            <div class="col-md-9 user-info">
+        {% endif %}
+            <h2>{{ user.username }} profile</h2>
+            {% if user.addresses | length %}
+                <h3>From {{ user.addresses[0].city }}, {{ user.addresses[0].country }}</h3>
+            {% endif %}
+            <h3>Member since {{ user.dateAdded | date('Y-m-d') }}</h3>
+        </div>
+        <div class="col-md-3 text-right action-buttons">
+            {% if status == 'friend' %}
+                <button class="btn btn-default button-blue">Your friend</button>
+                <form action="{{ path('profile_friend_remove') }}" method="POST">
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <button class="btn btn-default button-red">Remove</button>
+                </form>
+            {% elseif status == 'inviting' %}
+                <button class="btn btn-default button-blue">He is inviting you</button>
+                <form action="{{ path('profile_friend_action') }}" method="POST">
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <input type="hidden" name="action" value="accept">
+                    <button class="btn btn-default button-green">Accept</button>
+                </form>
+                <form action="{{ path('profile_friend_action') }}" method="POST">
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <input type="hidden" name="action" value="reject">
+                    <button class="btn btn-default button-red">Reject</button>
+                </form>
+            {% elseif status == 'invited' %}
+                <button class="btn btn-default button-blue">Sent an invitation</button>
+            {% elseif status == 'none' %}
+                <form action="{{ path('profile_invite') }}" method="POST">
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <button class="btn btn-default button-green">Send an invitation</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row user-infos">
+        <div class="col-md-6 user-friends">
+            <h3>User friends ({{ friends_paginated.getTotalItemCount }})</h3>
+            <div class="col-md-12 pagination-small text-center">
+                {{ knp_pagination_render(friends_paginated) }}
+            </div>
+            <div class="col-md-12">
+                {% for friend in friends_paginated %}
+                    {% if friend.avatar %}
+                        <img class="friend-avatar img-circle" src="{{ asset(friend.avatar.getWebPath) }}">
+                    {% endif %}
+                    <a href="{{ path('user_view', {'user': friend.id}) }}">
+                        {{ friend.username }}
+                    </a><br><br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h3>Latest posts</h3>
+            <div class="col-md-12 pagination-small text-center">
+                {{ knp_pagination_render(posts_paginated) }}
+            </div>
+            <div class="col-md-12 user-posts">
+                {% for post in posts_paginated %}
+                    <div class="user-post">
+                        <p class="post-meta">Published on {{ post.dateAdded | date('Y-m-d H:i:s') }}</p>
+                        <p class="post-text">{{ post.text }}</p>
+                        <div class="post-votes col-md-12 post-votes-{{ post.id }}">
+                            <div class="votes-up">
+                                <input type="hidden" value="1" name="type">
+                                <input type="hidden" value="post" name="entity_type">
+                                <input type="hidden" value="{{ post.id }}" name="entity_id">
+                                <span class="votes-up-count">
+                                    {{ post.getVotesCount['up'] }}
+                                </span>
+                                <span class="glyphicon glyphicon-thumbs-up vote-up"></span>
+                            </div>
+                            <div class="votes-down">
+                                <input type="hidden" value="0" name="type">
+                                <input type="hidden" value="post" name="entity_type">
+                                <input type="hidden" value="{{ post.id }}" name="entity_id">
+                                <span class="glyphicon glyphicon-thumbs-down vote-down"></span>
+                                <span class="votes-down-count">
+                                    {{ post.getVotesCount['down'] }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h3>User auctions</h3>
+            <div class="col-md-12 text-center">
+                <div class="pagination-big">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+            <div class="col-md-12">
+                {% for auction in pagination %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Days left</th>
+                                    <th>Bids</th>
+                                    <th>Views</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for auction in pagination %}
+                                    <tr>
+                                        <td>
+                                            {% if auction.images | length > 0 %}
+                                                <img src="{{ asset(auction.getFirstImage)}}">
+                                            {% else %}
+                                                No image
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <a href="{{ path('auction_single', {'id': auction.id }) }}">
+                                                {{ auction.title }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ path('category_single', {'category': auction.category.id }) }}">
+                                                {{ auction.category.name }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {{ auction.getDaysLeft }}
+                                        </td>
+                                        <td>
+                                            {{ auction.bids | length }}
+                                        </td>
+                                        <td>
+                                            {{ auction.views }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
     
-    {% if is_logged %}
-        <button class="btn btn-default button-blue">Logged in</button>
-    {% endif %}
+    {% stylesheets 'sass/profile/view.scss' filter='compass' %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
 {% endblock %}
