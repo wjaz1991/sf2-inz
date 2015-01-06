@@ -51,7 +51,6 @@ class AccountController extends Controller {
      * @Route("/login", name="access_login")
      */
     public function loginAction(Request $request) {
-        dump($request->getLocale());
         $session = $this->get('session');
         
         $login = new Login();

@@ -58,9 +58,7 @@ class DefaultController extends Controller
         } else {
             $auctions = null;
             $translator = $this->get('translator');
-            dump($request->getLocale());
             $address_msg = $translator->trans('Add an address in your profile page to get list of nearest auctions', [], 'polish');
-            dump($address_msg);
         }
         
         //post form handling
