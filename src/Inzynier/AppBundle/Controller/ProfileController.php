@@ -17,7 +17,7 @@ use Inzynier\AppBundle\Form\Type\AvatarType;
 
 class ProfileController extends Controller {
     /**
-     * @Route("/{id}/profile", name="profile_index")
+     * @Route("/profile/{id}", name="profile_index")
      */
     public function indexAction($id, Request $request) {
         $user = $this->getUser();
