@@ -1,3 +1,5 @@
+{% trans_default_domain "polish" %}
+
 {% block text_label %}
     <h4>{{ form_label(form) }}</h4>
 {% endblock %}
@@ -21,7 +23,7 @@
 {% block form %}
     <form novalidate action="" method="post" enctype="multipart/form-data">
         <div class="col-md-12">
-            <h3>Basic information</h3>
+            <h3>{{'Basic information' | trans }}</h3>
         </div>
         
         <div class="col-md-12">
@@ -55,7 +57,7 @@
         </div>
         
         <div class="col-md-12">
-            <h3>Auction address</h3>
+            <h3>{{'Auction address' | trans }}</h3>
         </div>
         
         <div class="col-md-6">
@@ -79,7 +81,7 @@
         </div>
         
         <div class="col-md-12">
-            <h3>Auction images gallery</h3>
+            <h3>{{'Auction images gallery' | trans }}</h3>
         </div>
         
         <div class="col-md-12" id="images-list" data-prototype="{{ form_widget(form.images.vars.prototype)|e }}">
@@ -87,11 +89,11 @@
         </div>
         
         <div class="col-md-12">
-            <button type="button" class="btn btn-default button-blue" id="image-add">Add image</button>
+            <button type="button" class="btn btn-default button-blue" id="image-add">{{'Add image' | trans }}</button>
         </div>
         
         <div class="col-md-12">
-            <h3>Privacy option</h3>
+            <h3>{{'Privacy option' | trans }}</h3>
         </div>
         
         <div class="col-md-12">
@@ -100,7 +102,7 @@
         </div>
         
         <div class="col-md-12">
-            <button type="submit" class="btn btn-default button-blue">Update</button>
+            <button type="submit" class="btn btn-default button-blue">{{'Update' | trans }}</button>
         </div>
         
         {{ form_end(form) }}

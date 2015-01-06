@@ -19,12 +19,15 @@ class FriendController extends Controller {
             $friendship = $friendRepo->findExisting($user->getId(), $friend_id);
             
             $flash = $this->get('braincrafted_bootstrap.flash');
+            $translator = $this->get('translator');
             
             if($friendship) {
                 if($friendship->getAccepted()) {
-                    $flash->success('You are already a friend with this user.');
+                    $message = $translator->trans('You are already a friend with this user.', [], 'polish');
+                    $flash->success($message);
                 } else {
-                    $flash->success('You already have sent an invitiation to this user, or he sent it to you.');
+                    $message = $translator->trans('You already have sent an invitiation to this user, or he sent it to you.', [], 'polish');
+                    $flash->success($message);
                 }
                 
                 return $this->redirect($request->headers->get('referer'));
@@ -45,7 +48,8 @@ class FriendController extends Controller {
             
             $em->flush();
             
-            $flash->success('You have successfully sent an invitation!');
+            $message = $translator->trans('You have successfully sent an invitation!', [], 'polish');
+            $flash->success($message);
         }
         
         return $this->redirect($request->headers->get('referer'));

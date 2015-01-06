@@ -1,21 +1,22 @@
 {% extends '::layout.html.twig' %}
+{% trans_default_domain "polish" %}
 
 {# navigation links #}
 {% block nav_links %}
     <ul>
     {% if app.user is null %}
         <li>
-            <a href="{{ path('access_login') }}">Login</a>
+            <a href="{{ path('access_login') }}">{{'Login'|trans()}}</a>
         </li>
         <li>
-            <a href="{{ path('account_register') }}">Sign up</a>
+            <a href="{{ path('account_register') }}">{{'Sign up'|trans()}}</a>
         </li>
     {% endif %}
     </ul>
 {% endblock %}
 
 {% block body %}
-    <h1 class="welcome-title">Hello in Inzynier <br> a place to trade and socialize!</h1>
+    <h1 class="welcome-title">{{'Hello in Inzynier <br> a place to trade and socialize!'|trans | raw}}</h1>
     <div class="row">
         <img src="{{ asset('images/auction-hammer.png') }}">
     </div>

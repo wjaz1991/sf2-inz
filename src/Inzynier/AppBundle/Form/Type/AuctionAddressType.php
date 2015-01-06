@@ -19,10 +19,18 @@ class AuctionAddressType extends AbstractType {
     }
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('street')
-                ->add('postcode')
-                ->add('city')
-                ->add('country');
+        $builder->add('street', 'text', [
+            'label' => 'form.auction_address.street'
+        ])
+                ->add('postcode', 'text', [
+            'label' => 'form.auction_address.postcode'
+        ])
+                ->add('city', 'text', [
+            'label' => 'form.auction_address.city'
+        ])
+                ->add('country', 'text', [
+            'label' => 'form.auction_address.country'
+        ]);
     }
 }
 

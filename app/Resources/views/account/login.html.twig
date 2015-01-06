@@ -1,4 +1,5 @@
 {% extends "::welcome.html.twig" %}
+{% trans_default_domain "polish" %}
 
 {% block stylesheets %}
     {% stylesheets 'sass/account/*' filter="compass"%}
@@ -12,26 +13,33 @@
         <div id="login-form-inner">
             {% if errorLogin %}
                 <div class="error-message alert alert-danger">
-                    {{ icon('remove-circle') }} {{ errorLogin.message | replace({
-                        "Bad credentials" : "Invalid username/email or password. Check your credentials and try again."
-                    })}}
+                    {% if app.session.get('_locale') == 'pl' or app.session.get('_locale') == 'pl_PL' %}
+                        {{ icon('remove-circle') }} {{ errorLogin.message | replace({
+                            "Bad credentials" : "Złe dane logowania. Sprawdź poprawność swoich danych i spróbuj ponownie się zalogować."
+                        })}}
+                    {% endif %}
+                    {% if app.session.get('_locale') == 'en' or app.session.get('_locale') == 'en_GB' or app.session.get('_locale') == 'en_US' %}
+                        {{ icon('remove-circle') }} {{ errorLogin.message | replace({
+                            "Bad credentials" : "Invalid username/email or password. Check your credentials and try again."
+                        })}}
+                    {% endif %}
                 </div>
             {% endif %}
-            <h3>Provide your credentials to login</h3>
+            <h3>{{'Provide your credentials to login'|trans }}</h3>
             <div class="form-group">
-                <label for="username">Username or email:</label>
+                <label for="username">{{'Username or email' | trans}}:</label>
                 <input class="form-control" type="text" id="username" name="_username" value="{{ lastUsername }}" />
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
+                <label for="password">{{'Password' | trans }}:</label>
                 <input class="form-control" type="password" id="password" name="_password" />
             </div>
             <div class="form-group">
-                <label for="remember">Remember me</label>
+                <label for="remember">{{'Remember me' | trans }}</label>
                 <input type="checkbox" id="remember" name="_remember_me" />
             </div>
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
-            <button type="submit" class="btn btn-default">{{ icon('ok') }} Login</button>
+            <button type="submit" class="btn btn-default">{{ icon('ok') }} {{'Login' | trans }}</button>
         </div>
     </form>
 {% endblock %}

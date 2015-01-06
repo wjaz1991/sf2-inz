@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% trans_default_domain "polish" %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -12,10 +13,11 @@
     <div class="row profile-wrap">
         <div class="col-md-3 profile-sidebar">
             <ul class="nav nav-pills nav-stacked sidebar-nav">
-                <li><a href="{{ path('profile_index', {'id': app.user.id}) }}">Profile</a></li>
-                <li><a href="{{ path('profile_auctions') }}">Auctions</a></li>
-                <li><a href="{{ path('profile_address', {'id': app.user.id }) }}">Address</a></li>
-                <li><a href="{{ path('profile_payments', {'user': app.user.id }) }}">Payments</a></li>
+                <li><a href="{{ path('profile_index', {'id': app.user.id}) }}">{{'Profile' | trans }}</a></li>
+                <li><a href="{{ path('profile_avatar', {'user': app.user.id}) }}">{{'Avatar' | trans }}</a></li>
+                <li><a href="{{ path('profile_auctions') }}">{{'Auctions' | trans }}</a></li>
+                <li><a href="{{ path('profile_address', {'id': app.user.id }) }}">{{'Address' | trans }}</a></li>
+                <li><a href="{{ path('profile_payments', {'user': app.user.id }) }}">{{'Payments' | trans }}</a></li>
             </ul>
         </div>
         <div class="col-md-8 profile-content col-md-offset-1">

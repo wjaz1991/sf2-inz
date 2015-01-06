@@ -19,7 +19,7 @@ class DefaultController extends Controller
      * 
      * @Route("/", name="welcome")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $security = $this->get('security.context');
         if($security->isGranted('IS_AUTHENTICATED_FULLY')
@@ -28,6 +28,10 @@ class DefaultController extends Controller
                 //redirect to admin panel if user is logged as super admin
                 return $this->redirect($this->generateUrl('admin_index'));
             } else {
+                $user = $this->getUser();
+                $locale = $user->getLanguage();
+                $session = $request->getSession();
+                $session->set('_locale', $locale);
                 //redirect user to homepage
                 return $this->redirect($this->generateUrl('homepage'));
             }
@@ -53,7 +57,10 @@ class DefaultController extends Controller
             $auctions = $geolocator->getNearestAuctions($user_address);
         } else {
             $auctions = null;
-            $address_msg = 'Add an address in your profile page to get list of nearest auctions.';
+            $translator = $this->get('translator');
+            dump($request->getLocale());
+            $address_msg = $translator->trans('Add an address in your profile page to get list of nearest auctions', [], 'polish');
+            dump($address_msg);
         }
         
         //post form handling
@@ -68,7 +75,10 @@ class DefaultController extends Controller
             $em->flush();
             
             $flash = $this->get('braincrafted_bootstrap.flash');
-            $flash->success('Successfully added new post!');
+            
+            $translator = $this->get('translator');
+            $message = $translator->trans('Successfully added new post!', [], 'polish');
+            $flash->success($message);
             
             return $this->redirectToRoute('homepage');
         }

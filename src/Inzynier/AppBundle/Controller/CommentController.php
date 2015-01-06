@@ -30,7 +30,9 @@ class CommentController extends Controller {
             $em->flush();
             
             $flash = $this->get('braincrafted_bootstrap.flash');
-            $flash->success('Successfully added new comment.');
+            $translator = $this->get('translator');
+            $message = $translator->trans('Successfully added new comment.', [], 'polish');
+            $flash->success($message);
         }
         
         $referer = $request->headers->get('referer');
@@ -58,27 +60,15 @@ class CommentController extends Controller {
             $em->persist($comment);
             $em->flush();
             
+            $translator = $this->get('translator');
+            $message = $translator->trans('Successfully added new comment.', [], 'polish');
             $flash = $this->get('braincrafted_bootstrap.flash');
-            $flash->success('Successfully added new comment.');
+            
+            $flash->success($message);
         }
         
         $referer = $request->headers->get('referer');
         
         return $this->redirect($referer);
     }
-    /*
-    public function getRefererRoute($request)
-    {
-        //look for the referer route
-        $referer = $request->headers->get('referer');
-        dump($request);
-        $lastPath = substr($referer, strpos($referer, $request->getBaseUrl()));
-        $lastPath = str_replace($request->getBaseUrl(), '', $lastPath);
-
-        $matcher = $this->get('router')->getMatcher();
-        $parameters = $matcher->match($lastPath);
-        $route = $parameters['_route'];
-
-        return $route;
-    }*/
 }

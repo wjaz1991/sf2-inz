@@ -1,0 +1,37 @@
+form.register.username: Username
+form.register.email: Email address
+form.register.password.first: Password
+form.register.password.second: Repeated password
+
+form.address.street: Street
+form.address.postcode: Postcode
+form.address.city: City
+form.address.country: Country
+form.address.telephone: Telephone
+
+form.avatar.file: Select file
+
+form.profile.username: Your username
+form.profile.email: Email address
+form.profile.language: Website language
+
+form.bid.price: Price
+
+form.category.name: Category name
+form.category.parent: Parent category
+
+form.auction_address.street: Street
+form.auction_address.postcode: Postcode
+form.auction_address.city: City
+form.auction_address.country: Country
+
+form.auction.title: Auction title
+form.auction.description: Description
+form.auction.private: Private
+form.auction.startDate: Start date
+form.auction.endDate: End date
+form.auction.price: Price
+form.auction.category: Category
+form.auction.images: Auction images
+
+form.gallery.file: Select image

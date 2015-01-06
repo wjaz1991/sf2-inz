@@ -35,7 +35,9 @@ class AccountController extends Controller {
             $em->flush();
             
             $flash = $this->get('braincrafted_bootstrap.flash');
-            $flash->success('Successfully created your account. You can login using new credentials.');
+            $translator = $this->get('translator');
+            $message = $translator->trans('Successfully created your account. You can login using new credentials.', [], 'polish');
+            $flash->success($message);
             
             return $this->redirectToRoute('access_login');
         }
@@ -49,6 +51,7 @@ class AccountController extends Controller {
      * @Route("/login", name="access_login")
      */
     public function loginAction(Request $request) {
+        dump($request->getLocale());
         $session = $this->get('session');
         
         $login = new Login();

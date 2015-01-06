@@ -65,7 +65,9 @@ class AuctionController extends Controller {
             $em->flush();
             
             $flash = $this->get('braincrafted_bootstrap.flash');
-            $flash->success('Successfully added new auction.');
+            $translator = $this->get('translator');
+            $message = $translator->trans('Successfully added new auction.', [], 'polish');
+            $flash->success($message);
             
             return $this->redirectToRoute('auction_single', [
                 'id' => $auction->getId(),
@@ -139,6 +141,7 @@ class AuctionController extends Controller {
         $bid_form = $this->createForm(new BidType, $bid);
         
         $bid_form->handleRequest($request);
+        $translator = $this->get('translator');
         
         if($bid_form->isValid() && $bid_form->isSubmitted()) {
             $flash = $this->get('braincrafted_bootstrap.flash');
@@ -151,14 +154,15 @@ class AuctionController extends Controller {
                 $em->persist($bid);
                 $em->flush();
                 
-                $msg = $flash->success('You just have placed an offer!');
+                $message = $translator->trans('You just have placed an offer!', [], 'polish');
+                $msg = $flash->success($message);
             } else {
-                $msg = $flash->error('Failed to place new bid! You must specify an offer with higher value than current highest bid.');
+                $message = $translator->trans('Failed to place new bid! You must specify an offer with higher value than current highest bid.', [], 'polish');
+                $msg = $flash->error($message);
             }
 
             return $this->redirectToRoute('auction_single', array(
                 'id' => $auction->getId(),
-                'msg' => $msg,
             ));
         }
         

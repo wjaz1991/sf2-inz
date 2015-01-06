@@ -19,8 +19,16 @@ class UserProfileType extends AbstractType {
     }
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('username', 'text')
-                ->add('email', 'email')
-                ->add('avatar', new AvatarType());
+        $builder->add('username', 'text', [
+                    'label' => 'form.profile.username',
+                ])
+                ->add('email', 'email', [
+                    'label' => 'form.profile.email',
+                ])
+                ->add('language', 'choice', [
+                    'choices' => ['en' => 'English', 'pl' => 'Polski'],
+                    'label' => 'form.profile.language',
+                ]);
+                //->add('avatar', new AvatarType());
     }
 }

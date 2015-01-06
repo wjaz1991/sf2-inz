@@ -1,8 +1,9 @@
 {% extends "base.html.twig" %}
+{% trans_default_domain "polish" %}
 
 {% block body %}
     <div class="col-md-10 col-md-offset-1">
-        <h1 class="text-center">Newest active auctions</h1><br>
+        <h1 class="text-center">{{'Newest active auctions' | trans }}</h1><br>
         <div class="col-md-12 pagination-small text-center">
             {{ knp_pagination_render(auctions) }}
         </div>
@@ -26,19 +27,19 @@
                                 </a>
                             </h4>
                             <p class="auction-meta">
-                                Added by 
+                                {{'Added by' | trans }} 
                                 {{ auction.user.username }} 
-                                on {{ auction.dateAdded | date('Y-m-d') }}
-                                , ends on {{ auction.endDate | date('Y-m-d') }}
+                                {{ 'on' | trans }} {{ auction.dateAdded | date('Y-m-d') }}
+                                , {{'ends on' | trans }} {{ auction.endDate | date('Y-m-d') }}
                             </p>
                             <p class="action-price">
-                                <span class="text-label">Price:</span> {{ auction.price }}
+                                <span class="text-label">{{'Price' | trans }}:</span> {{ auction.price }}
                             </p>
                             <p class="auction-left">
-                                <span class="text-label">Days left:</span> {{ auction.getDaysLeft }}
+                                <span class="text-label">{{'Days left' | trans }}:</span> {{ auction.getDaysLeft }}
                             </p>
                             <p class="auction-left">
-                                <span class="text-label">Number of offers:</span> {{ auction.getBids | length }}
+                                <span class="text-label">{{'Number of offers' | trans }}:</span> {{ auction.getBids | length }}
                             </p>
                             <p class="auction-description">
                                 {{ auction.description | striptags }}

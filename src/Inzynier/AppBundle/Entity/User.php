@@ -83,7 +83,7 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable {
     protected $friends_with_me;
     
     /**
-     * @ORM\OneToOne(targetEntity="Avatar", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="Avatar", cascade={"remove"})
      * @ORM\JoinColumn(name="avatar_id", referencedColumnName="id")
      */
     private $avatar;
@@ -92,6 +92,11 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable {
      * @ORM\OneToMany(targetEntity="Post", mappedBy="user", cascade={"remove"})
      */
     private $posts;
+    
+    /**
+     * @ORM\Column(type="string", options={"default": "en"})
+     */
+    private $language;
     
     public function __construct() {
         $this->isActive = true;
@@ -103,6 +108,7 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable {
         $this->my_friends = new ArrayCollection();
         $this->friends_with_me = new ArrayCollection();
         $this->posts = new ArrayCollection();
+        $this->language = 'en';
     }
     
     public function getId() {
@@ -208,6 +214,15 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable {
             $this->posts->removeElement($post);
         }
         
+        return $this;
+    }
+    
+    public function getLanguage() {
+        return $this->language;
+    }
+    
+    public function setLanguage($language) {
+        $this->language = $language;
         return $this;
     }
 

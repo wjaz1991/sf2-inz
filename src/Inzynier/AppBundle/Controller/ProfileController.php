@@ -12,6 +12,8 @@ use Inzynier\AppBundle\Entity\Friendship;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Inzynier\AppBundle\Entity\Address;
 use Inzynier\AppBundle\Form\Type\AddressType;
+use Inzynier\AppBundle\Entity\Avatar;
+use Inzynier\AppBundle\Form\Type\AvatarType;
 
 class ProfileController extends Controller {
     /**
@@ -19,6 +21,8 @@ class ProfileController extends Controller {
      */
     public function indexAction($id, Request $request) {
         $user = $this->getUser();
+        $lang = $user->getLanguage();
+        $request->getSession()->set('_locale', $lang);
         
         $editForm = $this->createForm(new UserProfileType(), $user);
         
@@ -33,16 +37,18 @@ class ProfileController extends Controller {
             $em = $this->get('doctrine')->getManager();
             $em->persist($user);
             $em->flush();
-            $msg = $flash->success('Successfully updated your data.');
-        }
-        if($editForm->isSubmitted() && !$editForm->isValid()) {
-            $msg = $flash->error('Failed to update your information.');
-        }
+            $translator = $this->get('translator');
+            $msg = $translator->trans('Successfully updated your data.', [], 'polish');
+            $flash->success($msg);
+            //dump('redirecting');
+            $lang = $user->getLanguage();
+            $request->getSession()->set('_locale', $lang);
+            return $this->redirectToRoute('profile_index', ['id' => $user->getId()]);
+        } else {
         
         return $this->render('profile/index.html.twig', array(
             'editForm' => $editForm->createView(),
-            'message' => $msg,
-        ));
+        ));}
     }
     
     /**
@@ -150,14 +156,17 @@ class ProfileController extends Controller {
         $friendship = $friendship[0];
         
         $flash = $this->get('braincrafted_bootstrap.flash');
+        $translator = $this->get('translator');
         
         if($action == 'accept') {
             $friendship->setAccepted(true);
-            $flash->success('You just have accepted an invitation from ' . $inviting->getUsername());
+            $message = $translator->trans('You just have accepted an invitation.', [], 'polish');
+            $flash->success($message);
         } else if($action == 'reject') {
             $friendship->setAccepted(false);
             $friendship->setRejected(true);
-            $flash->warning('You just have rejected an invitation from ' . $inviting->getUsername());
+            $message = $translator->trans('You just have rejected an invitation.', [], 'polish');
+            $flash->warning($message);
         }
         
         $em = $this->getDoctrine()->getManager();
@@ -186,8 +195,10 @@ class ProfileController extends Controller {
         $em->flush();
         
         $flash = $this->get('braincrafted_bootstrap.flash');
+        $translator = $this->get('translator');
         
-        $flash->success('You just have sent an invitation to ' . $invited->getUsername());
+        $message = $translator->trans('You just have sent an invitation.', [], 'polish');
+        $flash->success($message);
         
         return $this->redirectToRoute('user_view', ['user' => $invited->getId()]);
     }
@@ -230,8 +241,10 @@ class ProfileController extends Controller {
         $em->flush();
         
         $flash = $this->get('braincrafted_bootstrap.flash');
+        $translator = $this->get('translator');
         
-        $flash->success('You removed ' . $invited->getUsername() . ' from your friends.');
+        $message = $translator->trans('You removed this user from your friends.', [], 'polish');
+        $flash->success($message);
         
         return $this->redirectToRoute('user_view', ['user' => $invited->getId()]);
     }
@@ -271,7 +284,9 @@ class ProfileController extends Controller {
             $em->flush();
             
             $flash = $this->get('braincrafted_bootstrap.flash');
-            $flash->success('Updated address information!');
+            $translator = $this->get('translator');
+            $message = $translator->trans('Updated address information!', [], 'polish');
+            $flash->success($message);
             
             return $this->redirectToRoute('profile_address', [
                 'id' => $this->getUser()->getId(),
@@ -341,6 +356,39 @@ class ProfileController extends Controller {
         return $this->render('profile/map.html.twig', [
             'auctions' => $nearest_auctions,
             'map' => $map,
+        ]);
+    }
+    
+    /**
+     * @Route("/profile/{user}/avatar", name="profile_avatar")
+     */
+    public function avatarAction(Request $request) {
+        $user = $this->getUser();
+        
+        if($user->getAvatar()) {
+            $avatar = $user->getAvatar();
+        } else {
+            $avatar = new Avatar();
+        }
+        
+        $form = $this->createForm(new AvatarType(), $avatar);
+        
+        $form->handleRequest($request);
+        
+        if($form->isValid()) {
+            $em = $this->get('doctrine')->getManager();
+            $user->setAvatar($avatar);
+            $em->persist($avatar);
+            $em->flush();
+            
+            $flash = $this->get('braincrafted_bootstrap.flash');
+            $translator = $this->get('translator');
+            $message = $translator->trans('Successfully changed your avatar.', [], 'polish');
+            $flash->success($message);
+        }
+        
+        return $this->render('profile/avatar.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }

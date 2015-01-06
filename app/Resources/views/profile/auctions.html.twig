@@ -1,19 +1,20 @@
 {% extends 'profile/profile_layout.html.twig' %}
+{% trans_default_domain "polish" %}
 
 {% block profile_page_content %}
-    <h2>List of your auctions</h2>
+    <h2>{{'List of your auctions' | trans }}</h2>
     
     <!-- active filter -->
     <div class="col-md-12">
-        <p><strong>Auction status filter</strong></p>
+        <p><strong>{{'Auction status filter' | trans }}</strong></p>
         <form action="" method="GET" class="form-inline">
             <div class="form-group">
                 <select class="form-control" name="active">
-                    <option value="true">Active</option>
-                    <option value="false">Ended</option>
+                    <option value="true">{{'Active' | trans }}</option>
+                    <option value="false">{{'Ended' | trans }}</option>
                 </select>
                 <button type="submit" class="btn btn-default">
-                    Filter
+                    {{'Filter' | trans }}
                 </button>
             </div>
         </form>
@@ -34,30 +35,30 @@
 
                     <p class="prof-auction-title">{{ auction.title }}</p>
                     <p class="prof-auction-dates">
-                        Started on: {{ auction.startDate | date('Y-m-d H:i:s') }},
-                        ends on {{ auction.endDate | date('Y-m-d H:i:s') }}
+                        {{'Started on' | trans }}: {{ auction.startDate | date('Y-m-d H:i:s') }},
+                        {{'ends on' | trans }} {{ auction.endDate | date('Y-m-d H:i:s') }}
                     </p>
                     {% if auction.getDaysLeft %}
-                        <p class="prof-auction-days">{{ auction.getDaysLeft }} days left</p>
+                        <p class="prof-auction-days">{{ auction.getDaysLeft }} {{'days left' | trans }}</p>
                     {% endif %}
                     <p class="prof-auction-price">{{ auction.price | number_format(2, '.', ' ')}}</p>
-                    <p class="prof-auction-bids">{{ auction.bids | length }} bids</p>
+                    <p class="prof-auction-bids">{{ auction.bids | length }} {{'bids' | trans }}</p>
                 </div>
                 <div class="col-md-3 auction-buttons">
                     {% if auction.getDaysLeft %}
                         <a href="{{ path('auction_edit', {'id': auction.id }) }}">
-                            <button class="btn btn-default button-blue">Edit</button>
+                            <button class="btn btn-default button-blue">{{'Edit' | trans }}</button>
                         </a>
                         <a href="{{ path('auction_delete', {'auction': auction.id }) }}">
-                            <button class="btn btn-default button-blue">Delete</button>
+                            <button class="btn btn-default button-blue">{{'Delete' | trans }}</button>
                         </a>
                     {% else %}
-                        <button class="btn btn-default button-red">Ended</button>
+                        <button class="btn btn-default button-red">{{'Ended' | trans }}</button>
                     {% endif %}
                 </div>
             </li>
         {% else %}
-            <h3>You have no auctions yet.</h3>
+            <h3>{{'You have no auctions yet' | trans }}.</h3>
         {% endfor %}
         </ul>
     </div>

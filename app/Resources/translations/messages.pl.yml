@@ -1,0 +1,37 @@
+form.register.username: Nazwa użytkownika
+form.register.email: Adres email
+form.register.password.first: Hasło
+form.register.password.second: Powtórz hasło
+
+form.address.street: Ulica
+form.address.postcode: Kod pocztowy
+form.address.city: Miasto
+form.address.country: Kraj
+form.address.telephone: Telefon
+
+form.avatar.file: Wybierz plik
+
+form.profile.username: Nazwa użytkownika
+form.profile.email: Adres email
+form.profile.language: Język strony
+
+form.bid.price: Cena
+
+form.category.name: Nazwa kategorii
+form.category.parent: Kategoria nadrzędna
+
+form.auction_address.street: Ulica
+form.auction_address.postcode: Kod pocztowy
+form.auction_address.city: Miasto
+form.auction_address.country: Kraj
+
+form.auction.title: Tytuł aukcji
+form.auction.description: Opis
+form.auction.private: Prywatna
+form.auction.startDate: Data rozpoczęcia
+form.auction.endDate: Data zakończenia
+form.auction.price: Cena
+form.auction.category: Kategoria
+form.auction.images: Zdjęcia
+
+form.gallery.file: Wybierz zdjęcie

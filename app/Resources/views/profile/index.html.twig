@@ -1,23 +1,19 @@
 {% extends "profile/profile_layout.html.twig" %}
+{% trans_default_domain "polish" %}
 
 {% block title %}
-    {{ app.user.username }}'s profile
+    {{ app.user.username }} {{"profile" | trans }}
 {% endblock %}
 
 {% block profile_page_content %}
-        {% if app.user.avatar %}
-            <div class="profile-avatar">
-                <img src="{{ asset(app.user.avatar.getWebPath) }}" alt="Avatar image">
-            </div>
-        {% endif %}
         
-        <h1>Your profile page</h1>
+        <h1>{{'Your profile page' | trans }}</h1>
         
         <form novalidate action="" method="post" {{ form_enctype(editForm) }}> 
             {{ form_widget(editForm) }}
 
             <div class="btn-submit">
-                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-save"></span>Update</button>
+                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-save"></span>{{'Update' | trans }}</button>
             </div>
         </form>
 {% endblock %}

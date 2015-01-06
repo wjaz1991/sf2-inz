@@ -1,0 +1,134 @@
+#główne tytuły, pasek nawigacji
+Welcome to: Witaj w
+Categories: Kategorie
+Auctions: Aukcje
+Add auction: Dodaj aukcję
+Browse all: Przeglądaj
+Profile: Profil
+Logout: Wyloguj
+
+Sign up: Zarejestruj
+Login: Zaloguj
+
+#stron logowania
+Hello in Inzynier <br> a place to trade and socialize!: Witaj w Inzynier!
+Provide your credentials to login: Podaj swoje dane aby się zalogować
+Username or email: Nazwa użytkownika lub hasło
+Password: Hasło
+Remember me: Zapamiętaj mnie
+Login: Zaloguj
+
+#strona rejestracji
+Provide your data to register: Uzupełnij swoje dane, aby się zarejestrować
+Agree to the terms of service: Akceptuję warunki usługi
+Register: Rejestruj
+
+form.register.username: Nazwa użytkownika
+
+#strona domowa - ściana
+User Wall: Tablica
+Publish something ...: Napisz coś ...
+Publish: Opublikuj
+Load more: Wczytaj więcej
+Latest auctions: Najnowsze aukcje
+started on: rozpoczęta
+from: z
+Nearest auctions: Najbliższe aukcje
+(view map): (zobacz mapę)
+Distance: Odległość
+People you may know: Możesz ich znać
+added an auction on: dodał(a) aukcję
+Added in category: W kategorii
+Show comments: Pokaż komentarze
+Comment: Skomentuj
+posted by: opublikowany przez
+on: dnia
+added a post on: dodał(a) post
+
+#strony kategorii
+Browse categories: Przeglądaj kategorie
+Categories list: Lista kategorii
+Category: Kategoria
+Title: Tytuł
+Days left: Pozostało dni
+Bids: Oferty
+Views: Wyświetlenia
+
+#strony aukcji
+Newest active auctions: Najnowsze aktywne aukcje
+Added by: Dodana przez
+ends on: kończy się
+Price: Cena
+Number of offers: Ilość ofert
+CATEGORY: KATEGORIA
+Edit: Edytuj
+Started on: Rozpoczęta
+Ends on: Kończy się
+Ended on: Zakończyła się
+Auction address: Adres aukcji
+Street: Ulica
+City: Miasto
+Postcode: Kod pocztowy
+Country: Kraj
+Place on map: Położenie na mapie
+Viewed: Obejrzana
+times: razy
+Current bids: Oferty kupna
+Bid history: Historia ofert kupna
+Current highest bid is: Obecna najwyższa oferta
+Highest bid was: Najwyższa oferta
+There are no bids. Be the first: Nie ma jeszcze ofert. Bądź pierwszy
+placed by: dodana przez
+Place new bid: Licytuj aukcję
+Place it: Licytuj
+Add new auction: Dodaj aukcję
+Edit auction: Edytuj aukcję
+
+#strony profilu
+Address: Adres
+Payments: Płatności
+profile: profil
+Your profile page: Twój profil
+Update: Aktualizuj
+List of your auctions: Lista Twoich aukcji
+Auction status filter: Filtrowanie
+Active: Aktywne
+Ended: Zakończone
+Filter: Filtruj
+bids: ofert
+Delete: Usuń
+days left: dni do końca
+Update your address info: Zaktualizuj informacje o adresie
+Your account state: Stan Twojego konta
+left to pay: należności
+Your auctions: Wygrane aukcje
+Paid: Zapłacono
+Not paid - click to pay: Zapłać
+Update your avatar: Zaktualizuj zdjęcie profilowe
+You have no auctions yet: Nie masz jeszcze żadnej aukcji
+
+#aukcje
+Basic information: Informacje podstawowe
+Auction images gallery: Galeria zdjęć
+Add image: Dodaj zdjęcie
+Privacy option: Prywatność
+Add it: Dodaj
+
+#wiadomości
+Add an address in your profile page to get list of nearest auctions: Dodaj adres do swojego profilu, aby otrzymać listę najbliższych aukcji
+Successfully added new post!: Pomyślnie dodano nową wiadomość!
+Successfully updated your data.: Pomyślnie zaktualizowane Twoje dane.
+You just have accepted an invitation.: Zaakceptowałeś zaproszenie.
+You just have rejected an invitation.: Odrzuciłeś zaproszenie.
+You just have sent an invitation.: Wysłano zaproszenie.
+You removed this user from your friends.: Usunięto użytkownika z Twoich znajomych.
+Updated address information!: Zaktualizowano informacje o adresie.
+Successfully changed your avatar.: Pomyślnie zaktualizowano zdjęcie profilowe.
+Successfully created your account. You can login using new credentials.: Stworzono Twoje konto. Możesz się zalogować za pomocą swoich danych.
+Successfully added new auction.: Pomyślnie dodano nową aukcję.
+You just have placed an offer!: Dodano nową ofertę.
+Failed to place new bid! You must specify an offer with higher value than current highest bid.: Nie udało się dodać nowej oferty. Twoja oferta musi być wyższa od aktualnie najwyższej oferty.
+Successfully added new comment.: Dodano nowy komentarz.
+You are already a friend with this user.: Jesteś już znajomym tego użytkownika.
+You already have sent an invitiation to this user, or he sent it to you.: Już wysłałeś zaproszenie temu użytkownikowi, lub on je wysłał do Ciebie.
+You have successfully sent an invitation!: Wysłano zaproszenie!

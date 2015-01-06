@@ -20,6 +20,8 @@ class AvatarType extends AbstractType {
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('upload', 'hidden')
-                ->add('file', 'file');
+                ->add('file', 'file', [
+                    'label' => 'form.avatar.file'
+                ]);
     }
 }

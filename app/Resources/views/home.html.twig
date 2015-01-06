@@ -1,4 +1,5 @@
 {% extends '::base.html.twig' %}
+{% trans_default_domain "polish" %}
 
 {% import _self as macros %}
 
@@ -14,15 +15,15 @@
         <input type="hidden" id="date-stamp" value="{{ date_stamp | date('Y-m-d H:i:s') }}">
         <!-- MAIN USER WALL -->
         <div class="column col-md-7">
-            <h2 class="text-center">User Wall</h2>
+            <h2 class="text-center">{{'User Wall'|trans}}</h2>
             
             <div class="col-md-10 col-md-offset-1 post-form">
                 <form action="" method="post" class="forms-inline">
-                    <h3>Publish something ...</h3>
+                    <h3>{{'Publish something ...' | trans }}</h3>
                     {{ form_widget(post_form) }}
                     {{ form_rest(post_form) }}
                     <button type="submit" class="btn btn-default button-blue">
-                        Publish
+                        {{'Publish' | trans }}
                     </button>
                 </form>
             </div>
@@ -34,7 +35,7 @@
                 {% endif %}
             {% endfor %}
             <div class="col-md-10 col-md-offset-1 more-trigger text-center">
-                Load more
+                {{'Load more' | trans }}
             </div>
         </div> <!-- END USER WALL -->
         <!-- SIDEBAR WITH OTHER USEFUL INFORMATIONS -->
@@ -43,7 +44,7 @@
             <div class="col-md-12 sidebar-container">
                 <ul class="list-group text-left sidebar-list">
                     <h3 class="text-center">
-                        Latest auctions
+                        {{'Latest auctions' | trans }}
                     </h3>
                     {% for auction in newest_auctions %}
                         <li class="list-group-item">
@@ -54,8 +55,8 @@
                             {% endif %}
                             <div class="auction-meta-small">
                                 <a href="{{ path('auction_single', { 'id': auction.id }) }}">{{ auction.title}}</a><br>
-                                started on {{ auction.startDate | date('Y-m-d H:i:s') }} <br>
-                                {% if auction.address %} from {{ auction.address.city }} {% endif %}
+                                {{'started on' | trans }} {{ auction.startDate | date('Y-m-d H:i:s') }} <br>
+                                {% if auction.address %} {{'from' | trans }} {{ auction.address.city }} {% endif %}
                             </div>
                         </li>
                     {% endfor %}
@@ -67,9 +68,9 @@
             <div class="col-md-12 sidebar-container">
                 <ul class="list-group text-left sidebar-list">
                     <h3 class="text-center">
-                        Nearest auctions
+                        {{'Nearest auctions' | trans }}
                         <a href="{{ path('profile_map', {'user': app.user.id }) }}">
-                            (view map)
+                            {{'(view map)' | trans }}
                         </a>
                     </h3>
                     {% if auctions and auctions | length > 0 %}
@@ -82,9 +83,9 @@
                                 {% endif %}
                                 <div class="auction-meta-small">
                                     <a href="{{ path('auction_single', { 'id': auction.id }) }}">{{ auction.title}}</a><br>
-                                    started on {{ auction.startDate | date('Y-m-d H:i:s') }} <br>
-                                    {% if auction.address %} from {{ auction.address.city }} {% endif %}
-                                    <p>Distance: {{ auction.address.distance | number_format(2) }} km.</p>
+                                    {{'started on' | trans }} {{ auction.startDate | date('Y-m-d H:i:s') }} <br>
+                                    {% if auction.address %} {{'from' | trans }} {{ auction.address.city }} {% endif %}
+                                    <p>{{'Distance' | trans }}: {{ auction.address.distance | number_format(2) }} km.</p>
                                 </div>
                             </li>
                         {% endfor %}
@@ -97,7 +98,7 @@
                 
             {% if recommended_people | length > 0 %}
                 <div class="col-md-12 sidebar-container">
-                    <h3>People you may know</h3>
+                    <h3>{{'People you may know'| trans }}</h3>
                     <ul class="list-group">
                         {% for person in recommended_people %}
                             <li class="list-group-item text-left">
@@ -108,7 +109,7 @@
                                     {{ person.username }}
                                 </a>
                                 {% if person.addresses | length > 0 %}
-                                    from {{ person.addresses[0].city }}
+                                    {{'from' | trans }} {{ person.addresses[0].city }}
                                 {% endif %}
                             </li>
                         {% endfor %}
@@ -138,7 +139,7 @@
             <a href="{{ path('user_view', {'user': auction.user.id }) }}">
                 {{ auction.user.username }}
             </a>
-                added an auction on {{ auction.dateAdded | date('Y-m-d H:i:s') }}
+                {{'added an auction on' | trans }} {{ auction.dateAdded | date('Y-m-d H:i:s') }}
         </p>
         <p>
             {% if auction.images | length > 0 %}
@@ -152,7 +153,7 @@
         </h4>
         {% if auction.category %}
             <p>
-                Added in category 
+                {{'Added in category' | trans }} 
                 <span class="category-tag">
                     <a href="{{ path('category_single', { 'category': auction.category.id }) }}">
                         {{ auction.category.name }}
@@ -189,7 +190,7 @@
         </div>
         <div class="comment-button col-md-12">
             <a href="" class="comment-trigger">
-                Show comments 
+                {{'Show comments' | trans }} 
             </a>({{ auction.comments | length }})
             <div class="auction-comments-{{ auction.id }} comments-home col-md-12">
                 <div class="col-md-12">
@@ -199,7 +200,7 @@
                             <textarea class="form-control" name="content"></textarea>
                         </div>
                         <button type="submit" class="btn btn-default">
-                            Comment
+                            {{'Comment' | trans }}
                         </button>
                     </form>
                 </div>
@@ -209,11 +210,11 @@
                             {% if comment.user.avatar %}
                                 <img class="wall-avatar img-circle" src="{{ asset(comment.user.avatar.getWebPath) }}">
                             {% endif %}
-                            posted by 
+                            {{'posted by' | trans }} 
                             <a href="{{ path('user_view', {'user': comment.user.id }) }}">
                                 {{ comment.user.username }}
                             </a>
-                            on {{ comment.dateAdded | date('Y-m-d H:i:s') }}
+                            {{'on' | trans }} {{ comment.dateAdded | date('Y-m-d H:i:s') }}
                         </p>
                         <p class="comment-text">
                             {{ comment.text }}
@@ -235,7 +236,7 @@
             <a href="{{ path('user_view', {'user': post.user.id }) }}">
                 {{ post.user.username }}
             </a>
-                added a post on {{ post.dateAdded | date('Y-m-d H:i:s') }}
+                {{'added a post on' | trans }} {{ post.dateAdded | date('Y-m-d H:i:s') }}
         </p>
         <p>
             {{ post.text | url_convert | raw }}
@@ -262,7 +263,7 @@
         </div>
         <div class="comment-button col-md-12">
             <a href="" class="comment-trigger">
-                Show comments 
+                {{'Show comments' | trans }} 
             </a>({{ post.comments | length }})
             <div class="post-comments-{{ post.id }} comments-home col-md-12">
                 <div class="col-md-12">
@@ -272,7 +273,7 @@
                             <textarea class="form-control" name="content"></textarea>
                         </div>
                         <button type="submit" class="btn btn-default">
-                            Comment
+                            {{'Comment' | trans }}
                         </button>
                     </form>
                 </div>
@@ -282,11 +283,11 @@
                             {% if comment.user.avatar %}
                                 <img class="wall-avatar img-circle" src="{{ asset(comment.user.avatar.getWebPath) }}">
                             {% endif %}
-                            posted by 
+                            {{'posted by' | trans }} 
                             <a href="{{ path('user_view', {'user': comment.user.id }) }}">
                                 {{ comment.user.username }}
                             </a>
-                            on {{ comment.dateAdded | date('Y-m-d H:i:s') }}
+                            {{'on' | trans }} {{ comment.dateAdded | date('Y-m-d H:i:s') }}
                         </p>
                         <p class="comment-text">
                             {{ comment.text }}

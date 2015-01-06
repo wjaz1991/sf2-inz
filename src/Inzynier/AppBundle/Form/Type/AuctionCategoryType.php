@@ -19,11 +19,14 @@ class AuctionCategoryType extends AbstractType {
     }
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('name', 'text')
+        $builder->add('name', 'text', [
+            'label' => 'form.category.name',
+        ])
                 ->add('parent', 'entity', [
                     'class' => 'InzynierAppBundle:AuctionCategory',
                     'property' => 'name',
                     'empty_value' => 'Select category',
+                    'label' => 'form.category.parent',
                 ]);
     }
 }

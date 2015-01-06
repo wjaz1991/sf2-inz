@@ -20,10 +20,10 @@ class UserType extends AbstractType {
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('username', 'text', array(
-                    'label' => 'Provide an username',
+                    'label' => 'form.register.username',
                 ))
                 ->add('email', 'email', array(
-                    'label' => 'Provide an email',
+                    'label' => 'form.register.email',
                     'attr' => array(
                         'input_group' => array(
                             'prepend' => '@',
@@ -35,8 +35,8 @@ class UserType extends AbstractType {
                     'type' => 'password',
                     'invalid_message' => 'Password fields must match',
                     'required' => true,
-                    'first_options' => array('label' => 'Provide a password'),
-                    'second_options' => array('label' => 'Repeat a password')
+                    'first_options' => array('label' => 'form.register.password.first'),
+                    'second_options' => array('label' => 'form.register.password.second')
                 ));
     }
 }

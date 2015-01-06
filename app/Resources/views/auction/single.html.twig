@@ -1,4 +1,5 @@
 {% extends "base.html.twig" %}
+{% trans_default_domain "polish" %}
 
 {% block title %}
     {{ auction.title }} -
@@ -9,7 +10,7 @@
         {% include 'BraincraftedBootstrapBundle::flash.html.twig' %}
         {% if not active %}
             <div class="alert alert-warning text-center text-uppercase">
-                This auction has ended.
+                {{'This auction has ended.' | trans }}
             </div>
         {% endif %}
         <div class="row text-center">
@@ -20,7 +21,7 @@
         <div class="row">
             <div class="col-md-12 auction-category">
                 <span>
-                    CATEGORY: 
+                    {{'CATEGORY' | trans }}: 
                     {% for category in parent_categories %}
                         <a href="{{ path('category_single', {'category': category.id }) }}"> {{ category.name }} </a> /
                     {% endfor %}
@@ -30,7 +31,7 @@
                 {% if auction.getUser.id == app.user.id and active %}
                 <a class="form-edit-link" href="{{ path('auction_edit', {'id': auction.id }) }}">
                     <button type="submit" name="btn-auction-edit" class="btn btn-default btn-custom-red">
-                        Edit
+                        {{'Edit' | trans }}
                     </button>
                 </a>
                 {% endif %}
@@ -49,18 +50,18 @@
             </div>
             {% endif %}
             <div class="col-md-7 col-sm-7 col-xs-12 auction-meta">
-                <p><strong>Price:</strong> {{ auction.price | number_format(2, ',', ' ') }}</p>
-                <p><strong>Placed by:</strong> <a href='{{ path('user_view', {'user': auction.user.id }) }}'>
+                <p><strong>{{'Price' | trans }}:</strong> {{ auction.price | number_format(2, ',', ' ') }}</p>
+                <p><strong>{{'Added by' | trans }}:</strong> <a href='{{ path('user_view', {'user': auction.user.id }) }}'>
                     {{ auction.user.username }}
                     </a>
                 </p>
-                <p><strong>Started on:</strong> {{ auction.startDate | date('Y-m-d') }}</p>
+                <p><strong>{{'Started on' | trans }}:</strong> {{ auction.startDate | date('Y-m-d') }}</p>
                 <p>
                     <strong>
                         {% if active %}
-                            Ends on:
+                            {{'Ends on' | trans }}:
                         {% else %}
-                            Ended on:
+                            {{'Ended on' | trans }}:
                         {% endif %}
                     </strong> 
                     {{ auction.endDate | date('Y-m-d') }}
@@ -68,9 +69,9 @@
                 {% if active %}
                     <p>
                         <strong>
-                            Time left:
+                            {{'Days left' | trans }}:
                         </strong>
-                        {{ auction.getDaysLeft }} days
+                        {{ auction.getDaysLeft }} {{'days' | trans }}
                     </p>
                 {% endif %}
                 <div class="auction-votes col-md-12 auction-votes-{{ auction.id }}">
@@ -102,22 +103,22 @@
         </div>
         <div class="row address-row">
             <div class="col-md-6 auction-address">
-                <h3>{{ icon('envelope') }} Auction address</h3>
+                <h3>{{ icon('envelope') }} {{'Auction address' | trans }}</h3>
                 {% if auction.address %}
-                    <p><strong>Street:</strong> {{ auction.address.street }}</p>
+                    <p><strong>{{'Street' | trans }}:</strong> {{ auction.address.street }}</p>
                 {% endif %}
                 {% if auction.address %}
-                    <p><strong>Postcode:</strong> {{ auction.address.postcode }}</p>
+                    <p><strong>{{'Postcode' | trans }}:</strong> {{ auction.address.postcode }}</p>
                 {% endif %}
                 {% if auction.address %}
-                    <p><strong>City:</strong> {{ auction.address.city }}</p>
+                    <p><strong>{{'City' | trans }}:</strong> {{ auction.address.city }}</p>
                 {% endif %}
                 {% if auction.address %}
-                    <p><strong>Country:</strong> {{ auction.address.country }}</p>
+                    <p><strong>{{'Country' | trans }}:</strong> {{ auction.address.country }}</p>
                 {% endif %}
             </div>
             <div class="col-md-6 auction-address-map">
-                <h3>{{ icon('map-marker') }} Place on map</h3>
+                <h3>{{ icon('map-marker') }} {{'Place on map' | trans }}</h3>
                 {% if map %}
                     {{ google_map(map) }}
                 {% endif %}
@@ -125,23 +126,23 @@
         </div>
         <div class="row">
             <div class="col-md-12 auction-views">
-                <p>{{ icon('stats') }} Viewed {{ auction.views }} times</p>
+                <p>{{ icon('stats') }} {{'Viewed' | trans }} {{ auction.views }} {{'times' | trans }}</p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 auction-bids">
                 <h3>{{ icon('th-list') }}
-                    {% if active %} Current bids {% else %} Bid history {% endif %}
+                    {% if active %} {{'Current bids' | trans }} {% else %} {{'Bid history' | trans }} {% endif %}
                 </h3>
                 {% if highest_bid %}
                     <h4>
-                        {% if active %} Current highest bid is {% else %} Highest bid was {% endif %}
+                        {% if active %} {{'Current highest bid is' | trans }} {% else %} {{'Highest bid was' | trans }} {% endif %}
                         <span class="highest-bid">
                             {{ highest_bid.price }}
                         </span>
                     </h4>
                 {% else %}
-                    <h4>There are no bids. Be the first!</h4>
+                    <h4>{{'There are no bids. Be the first' | trans }}!</h4>
                 {% endif %}
                 {% if bids | length > 0 %}
                     {% for bid in bids %}
@@ -151,8 +152,8 @@
                                 <span class="bid-price">
                                     {{ bid.price }}
                                 </span>
-                                placed by {{ bid.user.username }}
-                                on 
+                                {{'placed by' | trans }} {{ bid.user.username }}
+                                {{'on' | trans }} 
                                 <span class="bid-date">
                                     {{ bid.date | date('Y-m-d H:i:s') }}
                                 </span>
@@ -163,13 +164,13 @@
             </div>
             <div class="col-md-6 auction-new-bid">
                 {% if active and app.user.id != auction.user.id %}
-                <h3>{{ icon('shopping-cart') }} Place new bid</h3>
+                <h3>{{ icon('shopping-cart') }} {{'Place new bid' | trans }}</h3>
                 <form action="" method="post" {{ form_enctype(bid_form) }} novalidate>
                     {{ form_widget(bid_form) }}
                     {{ form_rest(bid_form) }}
                     <button type="submit" class="btn btn-default">
                         {{ icon('ok') }}
-                        Place it
+                        {{'Place it' | trans }}
                     </button>
                 </form>
                 {% endif %}
@@ -178,7 +179,7 @@
         <div class="row">
             <div class="comment-button col-md-12">
                 <a href="" class="comment-trigger">
-                    Show comments 
+                    {{'Show comments' | trans }} 
                 </a>
                 <span class="comment-count">
                     ({{ auction.comments | length }})
@@ -191,7 +192,7 @@
                                 <textarea class="form-control" name="content"></textarea>
                             </div>
                             <button type="submit" class="btn btn-default">
-                                Comment
+                                {{'Comment' | trans }}
                             </button>
                         </form>
                     </div>
@@ -201,11 +202,11 @@
                                 {% if comment.user.avatar %}
                                     <img class="wall-avatar img-circle" src="{{ asset(comment.user.avatar.getWebPath) }}">
                                 {% endif %}
-                                posted by 
+                                {{'posted by' | trans }} 
                                 <a href="{{ path('user_view', {'user': comment.user.id }) }}">
                                     {{ comment.user.username }}
                                 </a>
-                                on {{ comment.dateAdded | date('Y-m-d H:i:s') }}
+                                {{'on' | trans }} {{ comment.dateAdded | date('Y-m-d H:i:s') }}
                             </p>
                             <p class="comment-text">
                                 {{ comment.text }}

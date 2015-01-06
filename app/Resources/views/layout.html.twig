@@ -1,8 +1,9 @@
+{% trans_default_domain "polish" %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome to{% endblock %}inzynier.dev.com</title>
+        <title>{% block title %}{{ 'Welcome to' | trans }}{% endblock %} inzynier</title>
         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
         {% block stylesheets %}
             {% stylesheets 'sass/*' filter="compass"%}

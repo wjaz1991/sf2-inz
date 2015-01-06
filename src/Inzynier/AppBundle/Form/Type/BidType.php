@@ -19,7 +19,9 @@ class BidType extends AbstractType {
     }
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('price', 'money');
+        $builder->add('price', 'money', [
+            'label' => 'form.bid.price',
+        ]);
     }
 }
 

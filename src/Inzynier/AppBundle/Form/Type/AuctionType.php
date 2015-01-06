@@ -19,29 +19,40 @@ class AuctionType extends AbstractType {
     }
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('title', 'text')
-                ->add('description', 'textarea')
-                ->add('private', 'checkbox')
+        $builder->add('title', 'text', [
+                    'label' => 'form.auction.title',
+                ])
+                ->add('description', 'textarea', [
+                    'label' => 'form.auction.description',
+                ])
+                ->add('private', 'checkbox', [
+                    'label' => 'form.auction.private',
+                ])
                 ->add('startDate', 'date', array(
                     'widget' => 'single_text',
                     'format' => 'dd/MM/yyyy',
+                    'label' => 'form.auction.startDate',
                 ))
                 ->add('endDate', 'date', array(
                     'widget' => 'single_text',
                     'format' => 'dd/MM/yyyy',
+                    'label' => 'form.auction.endDate',
                 ))
-                ->add('price', 'number')
+                ->add('price', 'number', [
+                    'label' => 'form.auction.price',
+                ])
                 ->add('category', 'entity', array(
                     'class' => 'InzynierAppBundle:AuctionCategory',
                     'property' => 'name',
+                    'label' => 'form.auction.category',
                 ))
                 ->add('images', 'collection', array(
                     'required' => false,
                     'allow_add' => true,
                     'allow_delete' => true,
                     'type' => new GalleryType(),
-                    'label' => false,
                     'by_reference' => true,
+                    'label' => 'form.auction.images',
                 ))
                 ->add('address', new AuctionAddressType());
     }

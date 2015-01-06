@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% trans_default_domain "polish" %}
 
 {% block body %}
     <!-- page title -->
@@ -6,10 +7,10 @@
         <div class="col-md-12 text-center category-header">
             <a class="back-link" href="{{ path('category_all') }}">
                 <button class="btn btn-default button-blue">
-                    {{ icon('arrow-left') }} Categories list
+                    {{ icon('arrow-left') }} {{'Categories list' | trans }}
                 </button>
             </a>
-            <h1>Category {{ category.name }}</h1>
+            <h1>{{'Category' | trans }} {{ category.name }}</h1>
         </div>
     </div>
         
@@ -45,11 +46,11 @@
                     <thead>
                         <tr>
                             <th>&nbsp;</th>
-                            <th>Title</th>
-                            <th>Category</th>
-                            <th>Days left</th>
-                            <th>Bids</th>
-                            <th>Views</th>
+                            <th>{{'Title' | trans }}</th>
+                            <th>{{'Category' | trans }}</th>
+                            <th>{{'Days left' | trans }}</th>
+                            <th>{{'Bids' | trans }}</th>
+                            <th>{{'Views' | trans }}</th>
                         </tr>
                     </thead>
                     <tbody>
