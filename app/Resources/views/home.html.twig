@@ -163,9 +163,9 @@
         {% endif %}
         <p>
             {% if auction.description | striptags | length > 200 %} 
-                {{ auction.description | striptags | truncate(200) }}
+                {{ auction.description | striptags  | truncate(200) | raw }}
             {% else %} 
-                {{ auction.description | striptags }}
+                {{ auction.description | striptags | raw }}
             {% endif %}
         </p>
         <div class="auction-votes col-md-12 auction-votes-{{ auction.id }}">

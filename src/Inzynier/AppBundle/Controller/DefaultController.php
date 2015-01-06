@@ -55,6 +55,9 @@ class DefaultController extends Controller
         if(count($user->getAddresses())) {
             $user_address = $user->getAddresses()[0];
             $auctions = $geolocator->getNearestAuctions($user_address);
+            if(count($auctions) > 5) {
+                $auctions = array_slice($auctions, 0, 5);
+            }
         } else {
             $auctions = null;
             $translator = $this->get('translator');
