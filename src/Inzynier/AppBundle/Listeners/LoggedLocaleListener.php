@@ -24,9 +24,11 @@ class LoggedLocaleListener
     public function setLocaleForAuthenticatedUser(InteractiveLoginEvent $event)
     {
         $user = $event->getAuthenticationToken()->getUser();
-
-        if ($lang = $user->getLanguage()) {
-            $this->session->set('_locale', $lang);
-        }
+        
+        /*if(function_exists($user->getLocale())) {
+            if ($lang = $user->getLanguage()) {
+                $this->session->set('_locale', $lang);
+            }
+        }*/
     }
 }

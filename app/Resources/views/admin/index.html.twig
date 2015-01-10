@@ -32,9 +32,6 @@
                     <li><a href="{{ path('admin_users') }}">Manage users</a></li>
                     <li><a href="#">Manage auctions</a></li>
                     <li><a href="{{ path('admin_categories') }}">Manage categories</a></li>
-                    <li><a href="#">Some action</a></li>
-                    <li><a href="#">Some action</a></li>
-                    <li><a href="#">Some action</a></li>
                 {% endblock %}
                 </ul>
         </div><!-- END SIDEBAR -->
@@ -45,6 +42,10 @@
             {% block admin_page_content %}
                 <h2>Website summary</h2>
                 <h4>Current user count: {{ user_count['all'] }} ({{ user_count['active'] }} active)</h4>
+                <h4>Total auctions: {{ auctions_count }} ({{ active_auctions }} active)</h4>
+                <h4>Number of posts: {{ posts }}</h4>
+                <h4>Number of comments: {{ comments }}</h4>
+                <h4>Number of categories: {{ categories }}</h4>
             {% endblock %}
             </div>
         </div><!-- END CONTENT -->

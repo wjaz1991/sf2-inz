@@ -11,40 +11,76 @@
         Manage users
 {% endblock %}
 
-{% block admin_left_nav %}
+{# block admin_left_nav %}
     <li><a href="{{ path('admin_users_add') }}">Add user</a></li>
     <li><a href="#">Delete user</a></li>
     <li><a href="#">Edit user</a></li>
     <li><a href="#">Block an account</a></li>
-{% endblock %}
+{% endblock #}
     
 {% block body %}
     {{ parent() }}
 {% endblock %}
 
 {% block admin_page_content %}
-    <h1 class="text-center admin-title">List of 10 newest users</h1>
-    <ul class="list-group user-list">
-        <li class="list-group-item list-group-item-heading list-group-item-success">
-            List of users
-        </li>
-        {% for user in users %}
-            <li class="list-group-item">
-                {% if user.avatar %}
-                    <img src="{{ asset(user.avatar.getWebPath) }}" alt="no avatar">
-                {% else %}
-                    <img src="/images/light_honeycomb.png" alt="no avatar">
-                {% endif %}
-                <div class="user-details">
-                    <span><a href="#">{{ user.username }}</a></span>
-                    <span>{{ user.email }}</span>
-                    <span>{{ user.isActive }}</span>
-                    <span>{{ user.dateAdded|date('Y-m-d') }}</span>
-                    <span class="pull-right">
-                        <a href="#"><button class="btn btn-danger" type="button">Delete</button></a>
-                    </span>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
+    <h1 class="text-center admin-title">List of users</h1>
+    <div class="col-md-12 text-center pagination-small">
+        {{ knp_pagination_render(users) }}
+    </div>
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tr>
+                    <th>User ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Active</th>
+                    <th>Added</th>
+                    <th>Block account</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>
+                            {% if user.avatar %}
+                                <img src="{{ asset(user.avatar.getWebPath) }}" alt="no avatar">
+                            {% else %}
+                                <img src="/images/light_honeycomb.png" alt="no avatar">
+                            {% endif %}
+                            {{ user.username }}
+                        </td>
+                        <td>
+                            {{ user.email }}
+                        </td>
+                        <td>
+                            {% if user.isActive %} YES {% else %} NO {% endif %}
+                        </td>
+                        <td>
+                            {{ user.dateAdded|date('Y-m-d') }}
+                        </td>
+                        <td class="td-button">
+                            <a href="{{ path('admin_users_block', {'user': user.id }) }}">
+                                <button type="submit" class="btn btn-warning" type="button">
+                                    {% if user.isActive %} Block {% else %} Unblock {% endif %}
+                                </button>
+                            </a>
+                        </td>
+                        <td class="td-button">
+                            <a href="{{ path('admin_users_edit', {'user': user.id }) }}">
+                                <button type="submit" class="btn btn-success" type="button">Edit</button></a>
+                            </a>
+                        </td>
+                        </td>
+                        <td class="td-button">
+                            <a href="{{ path('admin_users_delete', {'user': user.id }) }}">
+                                <button type="submit" class="btn btn-danger" type="button">Delete</button></a>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 {% endblock %} 

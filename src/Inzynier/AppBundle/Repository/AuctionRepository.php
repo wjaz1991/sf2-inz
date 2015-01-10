@@ -116,5 +116,31 @@ class AuctionRepository extends EntityRepository {
         
         return $results;
     }
+    
+    public function getAuctionsCount() {
+        $em = $this->getEntityManager();
+        
+        $dql = 'SELECT COUNT(a) FROM Inzynier\AppBundle\Entity\Auction a';
+        
+        $query = $em->createQuery($dql);
+        
+        $result = $query->getSingleScalarResult();
+        
+        return $result;
+    }
+    
+    public function getActiveAuctionsCount() {
+        $em = $this->getEntityManager();
+        
+        $dql = 'SELECT COUNT(a) FROM Inzynier\AppBundle\Entity\Auction a WHERE a.endDate >= :date';
+        
+        $query = $em->createQuery($dql);
+        $now = new \DateTime();
+        $query->setParameter('date', $now);
+        
+        $result = $query->getSingleScalarResult();
+        
+        return $result;
+    }
 }
 
