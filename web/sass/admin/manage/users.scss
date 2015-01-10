@@ -2,16 +2,15 @@
     text-transform: uppercase;
 }
 
-.user-list li img {
+table img {
     height: 50px;
     width: 50px;
 }
 
-.user-details {
-    display: inline;
+table tr td {
+    vertical-align: middle !important;
 }
 
-.user-details span {
-    margin-left: 20px;
-    font-size: 15px;
+td.td-button {
+    text-align: center;
 }
