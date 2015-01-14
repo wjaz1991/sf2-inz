@@ -1,0 +1,25 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/errors/error403.css">
+{% endblock %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Access Denied</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="error-code">
+                    {{ status_code }}
+                </div>
+                <h1 class="text-center text-uppercase">You have no rights to access this page</h1>
+                <h1 class="text-center">You can back to the homepage by clicking 
+                    <a href="{{ path('welcome') }}">this link</a>
+                </h1>
+            </div>
+        </div>
+    </body>
+</html>

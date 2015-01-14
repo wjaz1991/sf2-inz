@@ -85,8 +85,10 @@ $(function() {
     $('.search-trigger').on('click', function(event) {
         var element = $('.search-dropdown');
         event.preventDefault();
-        var leftOffset = element.width() / 2 - ($(this).innerWidth() / 2);
-        element.css('left', '-' + leftOffset + 'px');
+        if(window.innerWidth > 768) {
+            var leftOffset = element.width() / 2 - ($(this).innerWidth() / 2);
+            element.css('left', '-' + leftOffset + 'px');
+        }
         if(element.is(':visible')) {
             element.addClass('hide');
             $(this).removeClass('nav-btn-clicked');

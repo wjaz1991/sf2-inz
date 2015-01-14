@@ -1,0 +1,10 @@
+.error-code {
+    text-align: center;
+    font-size: 120px;
+    font-weight: bolder;
+    color: red;
+}
+
+body {
+    background: #eee;;
+}

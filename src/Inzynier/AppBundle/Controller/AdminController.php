@@ -8,6 +8,7 @@ use Inzynier\AppBundle\Form\Type\UserType;
 use Inzynier\AppBundle\Form\Type\AuctionCategoryType;
 use Inzynier\AppBundle\Entity\AuctionCategory;
 use Inzynier\AppBundle\Entity\User;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class AdminController extends Controller {
     /**
@@ -66,6 +67,23 @@ class AdminController extends Controller {
     public function userAddAction(Request $request, User $user) {
         $form = $this->createForm(new UserType(), $user);
         
+        $form->handleRequest($request);
+        
+        if($form->isValid()) {
+            $password = $user->getPassword();
+            $factory = $this->get('security.encoder_factory');
+            $encoder = $factory->getEncoder($user);
+            $hashed = $encoder->encodePassword($password, NULL);
+            $user->setPassword($hashed);
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            
+            $flash = $this->get('braincrafted_bootstrap.flash');
+            $flash->success('Updated ' . $user->getUsername() . "'s account");
+        }
+        
         return $this->render('admin/manage/users_add.html.twig', array(
             'form' => $form->createView()
         ));
@@ -74,8 +92,17 @@ class AdminController extends Controller {
     /**
      * @Route("/admin/categories", name="admin_categories")
      */
-    public function adminCategoriesAction() {
-        return $this->render('admin/manage/categories.html.twig');
+    public function adminCategoriesAction(Request $request) {
+        $repo = $this->getDoctrine()->getManager()->getRepository('InzynierAppBundle:AuctionCategory');
+        $categories = $repo->findAll();
+        
+        $page = $request->query->get('page', 1);
+        $paginator = $this->get('knp_paginator');
+        $categories = $paginator->paginate($categories, $page, 10);
+        
+        return $this->render('admin/manage/categories.html.twig', [
+            'categories' => $categories,
+        ]);
     }
     
     /**
@@ -144,5 +171,91 @@ class AdminController extends Controller {
         $flash->success('Removed an user account');
         
         return $this->redirectToRoute('admin_users');
+    }
+    
+    /**
+     * @Route("/admin/auctions", name="admin_auctions")
+     */
+    public function auctionsAction(Request $request) {
+        $repo = $this->getDoctrine()->getManager()->getRepository('InzynierAppBundle:Auction');
+        $auctions = $repo->getActiveAuctions();
+        
+        $page = $request->query->get('page', 1);
+        $paginator = $this->get('knp_paginator');
+        $auctions = $paginator->paginate($auctions, $page, 10);
+        
+        return $this->render('admin/manage/auctions.html.twig', [
+            'auctions' => $auctions,
+        ]);
+    }
+    
+    /**
+     * @Route("/admin/auction/delete", name="admin_auction_delete")
+     */
+    public function deleteAuction(Request $request) {
+        $security = $this->get('security.context');
+        if(!$security->isGranted('ROLE_SUPER_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+        
+        $auction_id = $request->request->get('auction_id');
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('InzynierAppBundle:Auction');
+        
+        $auction = $repo->find($auction_id);
+        
+        $em->remove($auction);
+        $em->flush();
+        
+        $flash = $this->get('braincrafted_bootstrap.flash');
+        $flash->success('Deleted an auction.');
+        
+        return $this->redirectToRoute('admin_auctions');
+    }
+    
+    /**
+     * @Route("/admin/category/delete", name="admin_category_delete")
+     */
+    public function deleteCategoryAction(Request $request) {
+        $security = $this->get('security.context');
+        if(!$security->isGranted('ROLE_SUPER_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+        
+        $category_id = $request->request->get('category_id');
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('InzynierAppBundle:AuctionCategory');
+        
+        $category = $repo->find($category_id);
+        
+        $em->remove($category);
+        $em->flush();
+        
+        $flash = $this->get('braincrafted_bootstrap.flash');
+        $flash->success('Deleted a category.');
+        
+        return $this->redirectToRoute('admin_categories');
+    }
+    
+    /**
+     * @Route("/admin/category/edit/{category}", name="admin_edit_category")
+     */
+    public function editCategory(Request $request, AuctionCategory $category) {
+        $form = $this->createForm(new AuctionCategoryType(), $category);
+        
+        $form->handleRequest($request);
+        
+        if($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($category);
+            $em->flush();
+            
+            $flash = $this->get('braincrafted_bootstrap.flash');
+            $flash->success('Edited a category.');
+        }
+        
+        return $this->render('admin/manage/category_edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }

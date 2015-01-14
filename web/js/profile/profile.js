@@ -1,5 +1,18 @@
 $(function() {
-    if(window.innerWidth < 992) {
+    $('.payment-confirm').click(function(e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+        
+        var ask = confirm('Are you sure you want to pay for this item?');
+        
+        if(ask) {
+            window.location = url;
+        }
+    });
+        //var ask = confirm('Are you sure you want to pay for this item?');
+        
+        //return 
+    /*if(window.innerWidth < 992) {
         $('.sidebar-nav').addClass('nav-static');
     }
     
@@ -29,6 +42,6 @@ $(function() {
                 //element.addClass('col-md-12');
             }
         }
-    });
+    });*/
     
 });

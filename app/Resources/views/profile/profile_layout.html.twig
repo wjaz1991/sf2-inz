@@ -15,7 +15,7 @@
             <ul class="nav nav-pills nav-stacked sidebar-nav">
                 <li><a href="{{ path('profile_index', {'id': app.user.id}) }}">{{'Profile' | trans }}</a></li>
                 <li><a href="{{ path('profile_avatar', {'user': app.user.id}) }}">{{'Avatar' | trans }}</a></li>
-                <li><a href="{{ path('profile_auctions') }}">{{'Auctions' | trans }}</a></li>
+                <li><a href="{{ path('profile_auctions', {'id': app.user.id }) }}">{{'Auctions' | trans }}</a></li>
                 <li><a href="{{ path('profile_address', {'id': app.user.id }) }}">{{'Address' | trans }}</a></li>
                 <li><a href="{{ path('profile_payments', {'user': app.user.id }) }}">{{'Payments' | trans }}</a></li>
             </ul>

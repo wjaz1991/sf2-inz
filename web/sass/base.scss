@@ -376,7 +376,7 @@ a.nav-btn-clicked {
   .nav-notifications {
       margin-top: 10px;
       
-      li {
+      > li {
           display: inline-block;
       }
   }
@@ -402,6 +402,26 @@ a.nav-btn-clicked {
       }
     }
   }
+  
+    //search function styles
+    .search-trigger {
+        margin: 0 auto !important;
+    }
+    
+    ul.nav-notifications li ul.search-dropdown {
+        position: relative;
+        top: 10px;
+        left: 0;
+        margin: 0 auto;
+        
+        li {
+            ul {
+                li {
+                    display: block;
+                }
+            }
+        }
+    }
 }
 
 //pagination styling

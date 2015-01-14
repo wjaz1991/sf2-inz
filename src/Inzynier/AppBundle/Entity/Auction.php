@@ -31,12 +31,6 @@ class Auction {
     protected $description;
     
     /**
-     * @ORM\Column(type="boolean")
-     * @Assert\Type(type="boolean")
-     */
-    protected $private;
-    
-    /**
      * @ORM\Column(type="integer", options={"unsigned":true, "default":0})
      */
     protected $views;
@@ -163,15 +157,6 @@ class Auction {
         return $this;
     }
     
-    public function isPrivate() {
-        return $this->private;
-    }
-    
-    public function setPrivate($private) {
-        $this->private = $private;
-        return $this;
-    }
-    
     public function getViews() {
         return $this->views;
     }
@@ -269,8 +254,12 @@ class Auction {
     }
     
     public function getFirstImage() {
-        $image = $this->images->get(0);
-        return $image->getWebPath();
+        if(count($this->images)) {
+            $image = $this->images->get(0);
+            return $image->getWebPath();
+        } else {
+            return null;
+        }
     }
     
     public function getAddress() {

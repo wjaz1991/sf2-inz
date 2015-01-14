@@ -39,8 +39,9 @@ $(function() {
             if(msg && $.trim(msg).length > 0) {
                 $('.more-trigger').before(msg);
             } else {
-                $('.more-trigger').before('<div class="col-md-12 text-center"><h3>No data left to load</h3></div>');
-                $('.more-trigger').fadeOut('slow');
+                //$('.more-trigger').click();
+                //$('.more-trigger').before('<div class="col-md-12 text-center"><h3>No data left to load</h3></div>');
+                //$('.more-trigger').fadeOut('slow');
             }
         });
     });

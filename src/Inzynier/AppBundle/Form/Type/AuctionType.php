@@ -25,9 +25,6 @@ class AuctionType extends AbstractType {
                 ->add('description', 'textarea', [
                     'label' => 'form.auction.description',
                 ])
-                ->add('private', 'checkbox', [
-                    'label' => 'form.auction.private',
-                ])
                 ->add('startDate', 'date', array(
                     'widget' => 'single_text',
                     'format' => 'dd/MM/yyyy',

@@ -46,7 +46,9 @@
                                 {% if auction.paid %}
                                     <button class="btn btn-default button-blue">{{'Paid' | trans }}</button>
                                 {% else %}
-                                    <button class="btn btn-default button-red">{{'Not paid - click to pay' | trans }}</button>
+                                    <a class="btn btn-default button-red payment-confirm" href="{{ path('profile_pay', {'user': app.user.id, 'auction': auction.id }) }}">
+                                        {{'Not paid - click to pay' | trans }}
+                                    </a>
                                 {% endif %}
                             </td>
                             <td>

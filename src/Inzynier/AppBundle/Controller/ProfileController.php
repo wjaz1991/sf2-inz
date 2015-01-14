@@ -21,6 +21,9 @@ class ProfileController extends Controller {
      */
     public function indexAction($id, Request $request) {
         $user = $this->getUser();
+        if($id != $this->getUser()->getId()) {
+            throw new AccessDeniedException();
+        }
         $lang = $user->getLanguage();
         $request->getSession()->set('_locale', $lang);
         
@@ -53,10 +56,13 @@ class ProfileController extends Controller {
     
     /**
      * 
-     * @Route("/profile/auctions", name="profile_auctions")
+     * @Route("/profile/{id}/auctions", name="profile_auctions")
      */
-    public function auctionAction(Request $request) {
+    public function auctionAction(Request $request, $id) {
         $user = $this->getUser();
+        if($user->getId() != $id) {
+            throw new AccessDeniedException();
+        }
         $repo = $this->getDoctrine()->getManager()->getRepository('InzynierAppBundle:Auction');
         
         $active_req = $request->query->get('active', true);
@@ -177,7 +183,7 @@ class ProfileController extends Controller {
     }
     
     /**
-     * @Route("/profile/invite", name="profile_invite")
+     * @Route("/profile/user/invite", name="profile_invite")
      */
     public function inviteAction(Request $request) {
         $user = $this->getUser();
@@ -204,7 +210,7 @@ class ProfileController extends Controller {
     }
     
     /**
-     * @Route("/profile/remove", name="profile_friend_remove")
+     * @Route("/profile/user/remove", name="profile_friend_remove")
      */
     public function removeFriendAction(Request $request) {
         $user = $this->getUser();
@@ -302,6 +308,10 @@ class ProfileController extends Controller {
      * @Route("/profile/{user}/payments", name="profile_payments")
      */
     public function paymentsAction(User $user, Request $request) {
+        if($user != $this->getUser()) {
+            throw new AccessDeniedException();
+        }
+        
         $repo = $this->get('doctrine')->getRepository('InzynierAppBundle:Auction');
         $auctions = $repo->getEndedUserAuctions($user);
         
@@ -362,7 +372,11 @@ class ProfileController extends Controller {
     /**
      * @Route("/profile/{user}/avatar", name="profile_avatar")
      */
-    public function avatarAction(Request $request) {
+    public function avatarAction(Request $request, User $user) {
+        if($user != $this->getUser()) {
+            throw new AccessDeniedException();
+        }
+        
         $user = $this->getUser();
         
         if($user->getAvatar()) {
@@ -390,6 +404,26 @@ class ProfileController extends Controller {
         return $this->render('profile/avatar.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+    
+    //pay for an auction
+    /**
+     * @Route("/profile/pay/{auction}/{user}", name="profile_pay")
+     */
+    public function payAction(Request $request, Auction $auction, User $user) {
+        if($user != $this->getUser()) {
+            throw new AccessDeniedException();
+        }
+        
+        $em = $this->get('doctrine')->getManager();
+        $repo = $this->get('doctrine')->getRepository('InzynierAppBundle:Auction');
+        $auction = $repo->find($auction);
+        $flash = $this->get('braincrafted_bootstrap.flash');
+        
+        $auction->setPaid(1);
+        $em->flush();
+        
+        return $this->redirectToRoute('profile_payments', ['user' => $user]);      
     }
 }
 

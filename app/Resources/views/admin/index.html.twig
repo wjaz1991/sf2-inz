@@ -30,7 +30,7 @@
                 <ul class="nav nav-pills nav-stacked" id="admin-left-nav">
                 {% block admin_left_nav %}
                     <li><a href="{{ path('admin_users') }}">Manage users</a></li>
-                    <li><a href="#">Manage auctions</a></li>
+                    <li><a href="{{ path('admin_auctions') }}">Manage auctions</a></li>
                     <li><a href="{{ path('admin_categories') }}">Manage categories</a></li>
                 {% endblock %}
                 </ul>

@@ -26,10 +26,15 @@ button.btn-custom-red, button.button-red {
     @include button_template(#cc0029);
 }
 
-button.button-green {
+button.button-green, a.button-green {
     @include button_template(green);
 }
 
-button.button-blue {
+button.button-blue, a.button-green {
     @include button_template($nav-color);
+}
+
+a.button-red {
+    @include button_template(#cc0029);
+    height: auto;
 }

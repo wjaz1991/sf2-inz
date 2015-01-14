@@ -6,4 +6,47 @@
             Add category
         </button>
     </a>
+    <h1 class="text-center admin-title">List of categories</h1>
+    <div class="col-md-12 text-center pagination-small">
+        {{ knp_pagination_render(categories) }}
+    </div>
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tr>
+                    <th>Category ID</th>
+                    <th>Name</th>
+                    <th>Parent</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                {% for category in categories %}
+                    <tr>
+                        <td>{{ category.id }}</td>
+                        <td>
+                            {{ category.name }}
+                        </td>
+                        <td>
+                            {% if category.parent %} {{ category.parent.name }} {% else %} none {% endif %}
+                        </td>
+                        <td class="td-button">
+                            <a href='{{ path('admin_edit_category', {'category': category.id }) }}'>
+                                <button type="submit" class="btn btn-success" type="button">
+                                    Edit
+                                </button>
+                            </a>
+                        </td>
+                        <td class="td-button">
+                            <form action='{{ path('admin_category_delete') }}' method='post'>
+                                <input type='hidden' name='category_id' value="{{ category.id }}">
+                                <button type="submit" class="btn btn-danger" type="button">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 {% endblock %}

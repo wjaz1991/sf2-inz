@@ -1,0 +1,73 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets 'sass/admin/manage/users.scss' filter="compass" %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block admin_page_title %}
+        Manage auctions
+{% endblock %}
+    
+{% block body %}
+    {{ parent() }}
+{% endblock %}
+
+{% block admin_page_content %}
+    <h1 class="text-center admin-title">List of auctions</h1>
+    <div class="col-md-12 text-center pagination-small">
+        {{ knp_pagination_render(auctions) }}
+    </div>
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tr>
+                    <th>Auction ID</th>
+                    <th>Title</th>
+                    <th>Added</th>
+                    <th>Ends on</th>
+                    <th>Bids</th>
+                    <th>Views</th>
+                    <th>Delete</th>
+                </tr>
+                {% for auction in auctions %}
+                    <tr>
+                        <td>{{ auction.id }}</td>
+                        <td>
+                            {% if auction.images | length > 0 %}
+                                <img src="{{ asset(auction.getFirstImage) }}" alt="no avatar">
+                            {% else %}
+                                <img src="/images/light_honeycomb.png" alt="no avatar">
+                            {% endif %}
+                            <a href='{{ path('auction_single', {'id': auction.id }) }}'>
+                                {{ auction.title }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ auction.dateAdded | date('Y-m-d') }}
+                        </td>
+                        <td>
+                            {{ auction.endDate | date('Y-m-d') }}
+                        </td>
+                        <td>
+                            {{ auction.bids | length }}
+                        </td>
+                        <td>
+                            {{ auction.views }}
+                        </td>
+                        <td class="td-button">
+                            <form action='{{ path('admin_auction_delete') }}' method='post'>
+                                <input type='hidden' name='auction_id' value="{{ auction.id }}">
+                                <button type="submit" class="btn btn-danger" type="button">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %} 
