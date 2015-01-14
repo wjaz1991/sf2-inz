@@ -14,6 +14,7 @@ use Inzynier\AppBundle\Entity\Address;
 use Inzynier\AppBundle\Form\Type\AddressType;
 use Inzynier\AppBundle\Entity\Avatar;
 use Inzynier\AppBundle\Form\Type\AvatarType;
+use Inzynier\AppBundle\Entity\Auction;
 
 class ProfileController extends Controller {
     /**
