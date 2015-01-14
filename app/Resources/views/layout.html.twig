@@ -46,6 +46,7 @@
             {% endblock %}
         </div>
     </div>
+        <div class="clearfix"></div>
     <footer id="footer-main">
 
     </footer>
@@ -57,7 +58,7 @@
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         {% block javascripts %}
             {% if app.request.get('_route') == 'welcome' %}
-                <script src="{{ asset('js/utils/header.js') }}"></script>
+                <!--<script src="{{ asset('js/utils/header.js') }}"></script>-->
             {% endif %}
             {% javascripts 'js/base/*' %}
                 <script src="{{ asset_url }}"></script>
