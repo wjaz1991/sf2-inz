@@ -424,7 +424,7 @@ class ProfileController extends Controller {
         $auction->setPaid(1);
         $em->flush();
         
-        return $this->redirectToRoute('profile_payments', ['user' => $user]);      
+        return $this->redirectToRoute('profile_payments', ['user' => $user->getId()]);      
     }
 }
 
